@@ -20,4 +20,7 @@ class BooksController < ApplicationController
 		book.save
 		redirect_to root_path
 	end
+	def show
+		@book = Book.find(params[:id])
+	end
 end

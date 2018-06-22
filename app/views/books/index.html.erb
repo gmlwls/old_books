@@ -80,11 +80,13 @@
       <div class="row">
         <% @books.each do |b| %>
         <div class="col-12 col-lg-3 col-md-4 col-sm-6 card">
+          <%= link_to book_path(b.id)do %>
           <div class="card-image-top" style="background-image: url(<%=b.img_url%>);"></div>
           <div class="card-body">
             <h4 class="card-title title"><%=b.bookname%></h4>
             <p class="card-text price"><%= b.price%>원</p>
           </div>
+          <% end %>
         </div>
 
         
