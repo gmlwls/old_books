@@ -1,0 +1,32 @@
+.logo {
+  height: 60px;
+  background-image: url(/assets/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media all and (max-width: 992px){
+  .logo {
+    width: 144px;
+  }
+}
+@media all and (min-width: 992px) {
+  .logo-link{
+    width: 15%;
+  }
+  .logo {
+    width: 100%;
+  }
+  .navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end;
+  }
+}
+.nav-search {
+  justify-content: center;
+}
+.nav-search .search-form {
+  width: 40%;
+}
+.nav-search .search-form .form-control {
+  width: 80%;
+}

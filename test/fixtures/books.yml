@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  bookname: MyText
+  author: MyText
+  classname: MyString
+  price: 1
+  major: MyString
+  state: 1
+  img_url: MyString
+  method: 1
+  content: MyText
+
+two:
+  user: two
+  bookname: MyText
+  author: MyText
+  classname: MyString
+  price: 1
+  major: MyString
+  state: 1
+  img_url: MyString
+  method: 1
+  content: MyText
