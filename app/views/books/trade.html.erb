@@ -11,8 +11,8 @@
 		color: gray;
 	}
 	.letter { padding: 0 60px; }
-	.book-like {
-		min-height: 700px;
+	.book-like, .list {
+		min-height: 400px;
 	}
   .card {
     border: none;
@@ -95,7 +95,8 @@
 <%= render 'nav2' %>
 </header>
 <main>
-	<div class="container book-like">
+	<div class="container">
+		<div class="book-like">
 		<div class="title">
 			<h3>찜한 책</h3>
 			<hr>
@@ -113,6 +114,8 @@
 	      </div>
 	      <% end %>
 	    </div>
+	    </div>
+	    <div class="list">
 	    <div class="title">
 	    	<h3>쪽지 리스트</h3>
 	    	<hr>
@@ -125,6 +128,7 @@
 	    			<% end %>
 	    		</ul>
     		</div>
+	    </div>
 	    </div>
 	</div>
 </main>

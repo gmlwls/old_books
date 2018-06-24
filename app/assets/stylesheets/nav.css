@@ -60,3 +60,12 @@ ul.navbar-nav > li.nav-item > a.log{
     width: 30%;
   }
 }
+.read{
+  display: flex;
+  align-items: center;
+}
+.dropdown-menu {
+  width: 300px;
+  text-align: center;
+  left: -180px;
+}

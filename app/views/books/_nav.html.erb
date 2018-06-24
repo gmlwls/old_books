@@ -13,6 +13,16 @@
         <a class="nav-link" href=<%= new_book_path%>>책 등록하기</a>
       </li>
       <% if user_signed_in? %>
+      <li class="nav-item read">
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b><i class="far fa-bell"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownAlart">
+            <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
+            <div class="dropdown-divider"></div>
+            <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path, class: 'dropdown-item' %>
+          </div>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link log" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
       </li>
