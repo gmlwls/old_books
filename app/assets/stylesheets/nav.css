@@ -31,10 +31,12 @@ ul.navbar-nav > li.nav-item > a.log{
 }
 .nav-search .search-form .form-control {
   width: 100%;
+  border-radius: 30px;
 }
 .search-form2 .form-control {
   width: 100%;
   border-color: #ffc107;
+  border-radius: 30px;
 }
 @media all and (max-width: 576px){
   .nav-search .search-form {

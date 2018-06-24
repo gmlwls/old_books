@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+	respond_to :js, :json, :html
 	def index
 		@books = Book.all
 	end
@@ -22,5 +23,14 @@ class BooksController < ApplicationController
 	end
 	def show
 		@book = Book.find(params[:id])
+	end
+	def like_toggle
+		@book = Book.find(params[:book_id])
+		like = Like.find_by(user_id: current_user.id, book_id: params[:book_id])
+		if like.nil?
+			Like.create(user_id: current_user.id, book_id: params[:book_id])
+		else
+			like.destroy
+		end
 	end
 end

@@ -1,0 +1,4 @@
+(function($){
+    $('.like-btn').toggleClass('button2 button3');
+    $('.like-btn').html('<i class="far fa-heart"></i>'+ <%=@book.likes.size%>);
+})(jQuery)
