@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
-  <%= link_to '#', class: 'logo-link' do%><div class="logo2"></div><% end %>
-  <form class="form-inline search-form2">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  </form>
+  <%= link_to root_path, class: 'logo-link' do%><div class="logo2"></div><% end %>
+  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form2') do %>
+    <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "전공책 또는 저자로 검색해주세요", type: 'search' %>
+  <% end %>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,6 +11,9 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="#">마이페이지</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href=<%= new_book_path%>>거래하기</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href=<%= new_book_path%>>책 등록하기</a>

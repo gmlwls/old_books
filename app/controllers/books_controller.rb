@@ -33,4 +33,12 @@ class BooksController < ApplicationController
 			like.destroy
 		end
 	end
+	def find
+		search = params[:search]
+	    if search.nil? || search.empty?
+	      @books=Book.all
+	    else
+	      @books = Book.where("author LIKE ? OR bookname LIKE ?", "%#{search}%", "%#{search}%")
+	    end
+	end
 end

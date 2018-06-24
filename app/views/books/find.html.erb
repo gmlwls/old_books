@@ -1,0 +1,66 @@
+<style>
+  .card {
+    border: none;
+    align-items: center;
+  }
+  .card-image-top{
+    margin: auto 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .card-body{
+    text-align: center;
+  }
+  .card-title{
+    font-weight: bold;
+  }
+  .title{
+    font-size: 1.2rem;
+  }
+  .book_contents{
+    min-height: 800px;
+    height: auto;
+  }
+  main {
+    background-color: #fbfbfb;
+  }
+@media all and (max-width: 576px){
+  .card-image-top{
+    width: 200px;
+    height: 250px;
+  }
+}
+@media all and (min-width: 576px) and (max-width: 992px){
+  .card-image-top{
+    height: 200px;
+  }
+}
+@media all and (min-width: 992px) {
+  .card-image-top{
+    width: 170px;
+    height: 230px;
+  }
+}
+</style>
+<header>
+<%= render 'nav' %>
+</header>
+<main>
+  <div class="book_contents container">
+    <div class="row">
+      <% @books.each do |b| %>
+      <div class="col-12 col-lg-3 col-md-4 col-sm-6 card">
+        <%= link_to book_path(b.id)do %>
+        <div class="card-image-top" style="background-image: url(<%=b.img_url%>);"></div>
+        <div class="card-body">
+          <h4 class="card-title title"><%=b.bookname%></h4>
+          <p class="card-text price"><%= b.price%>원</p>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</main>
+<%= render 'footer' %>
