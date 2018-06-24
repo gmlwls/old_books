@@ -1,10 +1,16 @@
 <style>
-	.title { 
+	.title, .card-title { 
 		font-size: 1.2rem;
 		margin-bottom: 10px;
-		color: gray; 
 		padding: 0 30px;
+		font-weight: bold;
 	}
+	.title > h3 { color: gray; }
+	.card-title {
+		font-size: 1rem;
+		color: gray;
+	}
+	.letter { padding: 0 60px; }
 	.book-like {
 		min-height: 700px;
 	}
@@ -14,7 +20,7 @@
     align-items: center;
   }
   .card-image-top{
-    margin: auto 0;
+    margin: auto;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -46,6 +52,44 @@
     height: 230px;
   }
 }
+
+.messages-list {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+ 
+.message-sent {
+    position: relative;
+    background-color: #FAEBD7;
+    border: #FAEBD7 0.8px solid;
+    border-radius: 15px;
+    margin: 5px 20px;
+    padding: 10px;
+    margin-left:auto;
+    margin-right: 30px;
+    float: right;
+}
+ 
+.message-sent-date {
+    margin-right: 15px;
+    float: right;
+}
+ 
+.message-received {
+    border: #EABA9D 0.8px solid;
+    border-radius: 15px;
+    margin: 5px 20px;
+    padding: 10px;
+    float: left;
+}
+ 
+.message-received-date {
+    float: left;
+}
+.form-text {
+	height: 50px;
+}
 </style>
 <header>
 <%= render 'nav2' %>
@@ -59,14 +103,47 @@
 		<div class="row">
 	      <% @books.each do |b| %>
 	      <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-6 card">
+	      	<%= link_to conversations_path(user_id: b.user), remote: true, method: :post do %>
 	        <div class="card-image-top" style="background-image: url(<%=b.img_url%>);"></div>
 	        <div class="card-body">
-	          <h4 class="card-title title"><%=b.bookname%></h4>
+	          <h4 class="card-title"><%=b.bookname%></h4>
 	          <p class="card-text price"><%= b.price%>원</p>
 	        </div>
+	        <% end %>
 	      </div>
 	      <% end %>
+	    </div>
+	    <div class="title">
+	    	<h3>쪽지 리스트</h3>
+	    	<hr>
+	    </div>
+	    <div class="row letter">
+	    	<div class="col-12">
+	    		<ul id="conversations-list">
+	    			<% @conversations.each do |conversation| %>
+	    			<%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+	    			<% end %>
+	    		</ul>
+    		</div>
 	    </div>
 	</div>
 </main>
 <%= render 'footer' %>
+
+<script>
+	(function() {
+	  $(document).on('click', '.toggle-window', function(e) {
+	    e.preventDefault();
+	    var panel = $(this).parent().parent();
+	    var messages_list = panel.find('.messages-list');
+	 
+	    panel.find('.panel-body').toggle();
+	    panel.attr('class', 'panel panel-default');
+	 
+	    if (panel.find('.panel-body').is(':visible')) {
+	      var height = messages_list[0].scrollHeight;
+	      messages_list.scrollTop(height);
+	    }
+	  });
+	})();
+</script>

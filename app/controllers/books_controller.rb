@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+	before_action :authenticate_user!, :except => [:index]
 	respond_to :js, :json, :html
 	def index
 		@books = Book.all
@@ -42,6 +43,8 @@ class BooksController < ApplicationController
 	    end
 	end
 	def trade
+		session[:conversations] ||= []
 		@books = current_user.liked_books
+		@conversations = Conversation.all
 	end
 end
