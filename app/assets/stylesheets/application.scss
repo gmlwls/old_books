@@ -60,6 +60,39 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-a {
-    text-decoration: none;
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+.navbar-light .navbar-nav .nav-link {
+    color: initial;
+}
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+.container {
+    padding: 30px 0px;
+    background-color: white;
+}
+@media (min-width: 1200px) {
+    .container{
+    max-width: 1150px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+    .container{
+    max-width: 800px;
+    }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    .container{
+    max-width: 700px;
+    }
+}
+@media (min-width: 576px) and (max-width: 768px){
+    .container{
+    max-width: 540px;
+    }
+}
+hr {
+    margin: 0.5rem 0;
 }

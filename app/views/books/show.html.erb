@@ -1,0 +1,154 @@
+<style>
+main {
+    background-color: #fbfbfb;
+}
+small {
+	font-size: 1rem;
+}
+strong {
+	font-weight: bold;
+}
+.book1 > p > strong {
+	color: red;
+}
+.book-detail {
+	font-size: 1.2rem;
+	padding: 0 30px;
+}
+.book-detail2 {
+	margin-top: 15px;
+}
+.title { 
+	margin-bottom: 30px;
+	color: gray; 
+}
+.image{
+	height: 300px;
+	background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.book-content {
+	padding: 10px 30px;
+}
+.book1 > div > h1 {
+	font-size: 1.8rem;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.book1 > div > p { font-size: 1rem; }
+.book1, .book2, .book3 { 
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+}
+.book3 {
+	height: 65px;
+}
+.book1 {
+	justify-content: space-between;
+}
+.book2, .book3 {
+	font-size: 1rem;
+}
+.book2 { justify-content: center; }
+.book3 { justify-content: flex-start; }
+.book2 > p, .book3 > p {
+	margin: 5px 0;
+}
+
+.content {
+	margin-top: 0.5rem;
+	padding: 15px;
+	font-size: 1rem;
+	min-height: 300px;
+	border: 1px solid rgb(217,217,217);
+	border-radius: 20px;
+}
+.button {
+	width: 100%;
+    background-color: #f7b731;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 16px 32px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.button1 {
+   border-radius: 30px;
+}
+.button2 {
+  background-color: white; 
+  color: #A4A4A4; 
+  border: 1px solid #A4A4A4;
+  border-radius: 30px;
+}
+.button2 .fa-heart {
+  color: #A4A4A4;
+}
+.button3 {
+  background-color: white; 
+  color: #ff0000; 
+  border: 1px solid #ff0000;
+  border-radius: 30px;
+}
+.button3 .fa-heart {
+  color: #ff0000;
+}
+</style>
+
+<header>
+<%= render 'nav2' %>
+</header>
+<main>
+	<div class="container">
+		<div class="book-detail book-detail1">
+			<div class="title">
+				<h3>기본정보</h3>
+				<hr>
+			</div>
+			<div class="row">
+				<div class="col-4 col-lg-3">
+					<div class="image" style="background-image: url(<%=@book.img_url%>);"></div>
+				</div>
+				<div class="col-8 col-lg-7 book-content">
+					<div class="book1">
+						<div>
+						<h1><%= @book.bookname%></h1>						<p>저자 | <%= @book.author%></p>
+						</div>
+						<p><small>판매가 :</small> <strong><%=@book.price %>원</strong></p>
+					</div>
+					<hr>
+					<div class="book2">
+						<p>학과명 : <strong><%=@book.major %></strong></p>
+						<p>수업명 : <strong><%=@book.classname %></strong></p>
+					</div>
+					<hr>
+					<div class="book3">
+						<p>판매자명 : <a href="/"><%= @book.user.username %></a></p>
+						<p>거래방법 : <% if @book.method == 0 %>직거래<% elsif @book.method == 1 %>사물함 거래<% else %>택배<% end %></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="offset-4 col-2 offset-lg-3 col-lg-2">
+					<button class="button button1">거래하기</button>
+				</div>
+				<div class="offset-3 col-2">
+					<button class="button button1">거래하기</button>
+				</div>
+			</div>
+		</div>
+		<div class="book-detail book-detail2">
+			<h3 style="color: gray;">상세정보</h3>
+			<div class="content">
+				<p><%= @book.content %></p>
+			</div>
+		</div>
+	</div>
+</main>
+<%= render 'footer' %>
