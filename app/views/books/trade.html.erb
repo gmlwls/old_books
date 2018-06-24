@@ -1,0 +1,72 @@
+<style>
+	.title { 
+		font-size: 1.2rem;
+		margin-bottom: 10px;
+		color: gray; 
+		padding: 0 30px;
+	}
+	.book-like {
+		min-height: 700px;
+	}
+  .card {
+    border: none;
+    padding-top: 20px;
+    align-items: center;
+  }
+  .card-image-top{
+    margin: auto 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .card-body{
+    text-align: center;
+  }
+  .card-title{
+    font-weight: bold;
+  }
+    main {
+    background-color: #fbfbfb;
+  }
+@media all and (max-width: 576px){
+  .card-image-top{
+    width: 200px;
+    height: 250px;
+  }
+}
+@media all and (min-width: 576px) and (max-width: 992px){
+  .card-image-top{
+  	width: 150px;
+    height: 200px;
+  }
+}
+@media all and (min-width: 992px) {
+  .card-image-top{
+    width: 170px;
+    height: 230px;
+  }
+}
+</style>
+<header>
+<%= render 'nav2' %>
+</header>
+<main>
+	<div class="container book-like">
+		<div class="title">
+			<h3>찜한 책</h3>
+			<hr>
+		</div>
+		<div class="row">
+	      <% @books.each do |b| %>
+	      <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-6 card">
+	        <div class="card-image-top" style="background-image: url(<%=b.img_url%>);"></div>
+	        <div class="card-body">
+	          <h4 class="card-title title"><%=b.bookname%></h4>
+	          <p class="card-text price"><%= b.price%>원</p>
+	        </div>
+	      </div>
+	      <% end %>
+	    </div>
+	</div>
+</main>
+<%= render 'footer' %>

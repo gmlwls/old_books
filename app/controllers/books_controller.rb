@@ -41,4 +41,7 @@ class BooksController < ApplicationController
 	      @books = Book.where("author LIKE ? OR bookname LIKE ?", "%#{search}%", "%#{search}%")
 	    end
 	end
+	def trade
+		@books = current_user.liked_books
+	end
 end
