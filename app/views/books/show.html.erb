@@ -158,6 +158,24 @@ strong {
 				<p><%= @book.content %></p>
 			</div>
 		</div>
+		<div class="book-detail book-detail2">
+			<h3 style="color: gray;">댓글</h3>
+			<div class="content">
+				<ul id="comments">
+        			<% @book.comments.each do |comment| %>
+        				<%= render partial: "comments/item", locals: { comment: comment } %>
+<!--         				<li><%= comment.content %></li>
+        				<%= link_to "삭제", comment_path(comment), method: :delete %> -->
+        			<% end %>
+    			</ul> 
+    			<p>  
+      			  <%= form_for [@book, @book.comments.new], remote: true do |f| %>
+     		      	 <%= f.text_area :content %>
+       			   	 <%= f.submit %>
+    			  <% end %>
+				</p>
+			</div>
+		</div>
 	</div>
 </main>
 <%= render 'footer' %>
