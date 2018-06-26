@@ -6,6 +6,7 @@ class User < ApplicationRecord
     
   has_many :likes
   has_many :liked_books, through: :likes, source: :book
+  has_many :comments, dependent: :destroy
   
   acts_as_reader
   has_many :new_notifications

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180624154309) do
+ActiveRecord::Schema.define(version: 20180626075044) do
 
   create_table "books", force: :cascade do |t|
     t.integer "user_id"
@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(version: 20180624154309) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer "recipient_id"
-    t.integer "sender_id"
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "book_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
-    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
-    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+    t.index ["book_id"], name: "index_comments_on_book_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -42,16 +42,6 @@ ActiveRecord::Schema.define(version: 20180624154309) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_likes_on_book_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.text "body"
-    t.integer "user_id"
-    t.integer "conversation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "new_notifications", force: :cascade do |t|
