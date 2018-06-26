@@ -5,11 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#회원가입
 gem 'devise'
 gem 'devise-i18n'
+#jQuery
 gem 'jquery-rails'
+#부트스트랩
 gem 'bootstrap', '~> 4.1.1'
+#사진 업로드
 gem 'carrierwave', '~> 1.0'
+#알림
 gem 'unread'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
