@@ -1,1 +1,53 @@
+<style>
+@media all and (max-width: 992px){
+	.submit-form .submit-form-content{
+		width: 70%;
+	}
+}
+@media all and (min-width: 992px) {
+	.submit-form .submit-form-content{
+		width: 50%;
+	}
+}
+.form-control{
+	padding: 0.6rem 0.75rem;
+}
+.submit-form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-group{
+	margin: 1.5rem 0;
+}
+.form-label {
+	margin-bottom: 0.4rem;
+	font-size: 0.9rem;
+	color: gray;
+}
+.main-label {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+textarea {
+	height: 200px;
+}
+fieldset {
+	margin: 40px 0;
+}
+</style>
+
+<div class="whole">
 <%= render 'form', book: @book, path: books_path, form_method: 'post' %>
+</div>
+
+<script>
+	(function() {
+	  $(document).on('click', '.more-book', function(e) {
+	    e.preventDefault();
+	    var p = $('.whole');
+	    p.append("<%= j(render 'form', book: @book, path: books_path, form_method: 'post') %>");
+	  });
+	})();
+</script>

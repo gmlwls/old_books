@@ -121,23 +121,23 @@ strong {
 						<div>
 						<h1><%= @book.bookname%></h1>						<p>저자 | <%= @book.author%></p>
 						</div>
-						<p><small>판매가 :</small> <strong><%=@book.price %>원</strong></p>
 					</div>
 					<hr>
 					<div class="book2">
-						<p>학과명 : <strong><%=@book.major %></strong></p>
-						<p>수업명 : <strong><%=@book.classname %></strong></p>
-					</div>
-					<hr>
-					<div class="book3">
+						<p><small>판매가 :</small> <strong><%=@book.price %>원</strong></p>
 						<p>판매자명 : <%= @book.user.username %></p>
-						<p>거래방법 : <% if @book.method == 0 %>직거래<% elsif @book.method == 1 %>사물함 거래<% else %>택배<% end %></p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4 offset-lg-4 col-lg-3 offset-xl-3 col-xl-2">
-					<%= link_to '거래하기', books_trade_path, class: 'button button1' %>
+					<% if current_user == @book.user %>
+					<% if @book.sell %>
+					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
+					<% else %>
+					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
+					<% end %>
+					<% end %>
 				</div>
 				<div class="offset-sm-4 col-sm-4 offset-lg-2 col-lg-3 offset-xl-3 col-xl-2">
 					<% if current_user.is_like?(@book) %>

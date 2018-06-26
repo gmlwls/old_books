@@ -16,13 +16,10 @@ ActiveRecord::Schema.define(version: 20180624154309) do
     t.integer "user_id"
     t.text "bookname"
     t.text "author"
-    t.string "classname"
     t.integer "price"
-    t.string "major"
-    t.integer "state"
     t.string "img_url"
-    t.integer "method"
     t.text "content"
+    t.boolean "sell", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_books_on_user_id"

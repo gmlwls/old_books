@@ -4,13 +4,10 @@ class CreateBooks < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true
       t.text :bookname
       t.text :author
-      t.string :classname
       t.integer :price
-      t.string :major
-      t.integer :state
       t.string :img_url
-      t.integer :method
       t.text :content
+      t.boolean :sell, default: false
 
       t.timestamps
     end
