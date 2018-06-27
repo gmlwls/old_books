@@ -1,4 +1,9 @@
 <li>  
+	<div id="comment-<%=comment.id%>">
     <%= comment.content %>
-    <%= link_to "삭제", comment_path(comment), method: :delete %>
+    <% if comment.user == current_user %>
+    <%= link_to '수정', '', class: "edit-comment" %>
+    <%= link_to "삭제", book_comment_path(book, comment), remote: true, method: :delete %>
+    <% end %>
+    </div>
 </li>  

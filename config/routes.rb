@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :books do
   	post '/like', to: 'books#like_toggle'
     post '/sell', to: 'books#sell'
-    resources :comments
+    resources :comments, only: [:create, :destroy, :edit, :update]
   end
   resources :conversations, only: [:create] do
   	member do
@@ -17,5 +17,4 @@ Rails.application.routes.draw do
   end
   get '/new_notifications/read_all' => 'new_notifications#read_all'
   resources :new_notifications
-  resources :comments
 end
