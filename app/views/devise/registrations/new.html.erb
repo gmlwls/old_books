@@ -34,6 +34,17 @@
     <%= f.label :이름 %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username", required: true %>
   </div>
+  
+  <div class="field">
+    <%= f.label :학과 %><br />
+    <%= f.text_field :school, autofocus: true, autocomplete: "school", required: true, placeholder: "예) 경영학과" %>
+    
+  </div>
+
+  <div class="field">
+    <%= f.label :학번 %><br />
+    <%= f.text_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "14학번이시라면 '14'라고 숫자만 기입" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
