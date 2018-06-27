@@ -164,8 +164,6 @@ strong {
 				<ul id="comments">
         			<% @book.comments.each do |comment| %>
         				<%= render partial: "comments/item", locals: { comment: comment } %>
-<!--         				<li><%= comment.content %></li>
-        				<%= link_to "삭제", comment_path(comment), method: :delete %> -->
         			<% end %>
     			</ul> 
     			<p>  
