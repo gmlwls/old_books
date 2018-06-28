@@ -1,5 +1,5 @@
 (function($){
-    $("#comment_content").val("");
+	$('#edit_comment_<%= @comment.id %>').empty();
     var html = "<%= escape_javascript(render(partial: 'comments/item', locals: {book: @book, comment: @comment})) %>";
-    $(".comments").append(html);
+    $('#edit_comment_<%= @comment.id %>').append(html);
 })(jQuery)
