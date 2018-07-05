@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626075044) do
+ActiveRecord::Schema.define(version: 20180705000342) do
 
   create_table "books", force: :cascade do |t|
     t.integer "user_id"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 20180626075044) do
     t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable_type_and_readable_id"
     t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
     t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader_type_and_reader_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "user_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

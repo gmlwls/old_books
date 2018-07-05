@@ -1,5 +1,4 @@
 (function($){
-	$('#edit_comment_<%= @comment.id %>').empty();
     var html = "<%= escape_javascript(render(partial: 'comments/item', locals: {book: @book, comment: @comment})) %>";
-    $('#edit_comment_<%= @comment.id %>').append(html);
+    $('#edit_comment_<%= @comment.id %>').replaceWith(html);
 })(jQuery)

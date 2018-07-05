@@ -1,0 +1,4 @@
+<%= form_for [@book, @comment, @comment.replies.new], remote: true do |f| %>
+				  	 <%= f.text_field :content %>
+				   	 <%= f.submit %>
+<% end %>

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :books do
   	post '/like', to: 'books#like_toggle'
     post '/sell', to: 'books#sell'
-    resources :comments, only: [:create, :destroy, :edit, :update]
+    resources :comments, only: [:create, :destroy, :edit, :update] do
+      resources :replies, only: [:new, :create, :destroy, :edit, :update]
+    end
   end
   resources :conversations, only: [:create] do
   	member do
