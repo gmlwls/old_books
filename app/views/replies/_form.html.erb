@@ -1,4 +1,5 @@
 <%= form_for [@book, @comment, @comment.replies.new], remote: true do |f| %>
-				  	 <%= f.text_field :content %>
+					 <% comment_id = @comment.id%>
+				  	 <%= f.text_field :content, id: "reply_content-#{comment_id}" %>
 				   	 <%= f.submit %>
 <% end %>

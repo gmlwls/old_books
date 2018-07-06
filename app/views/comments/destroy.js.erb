@@ -1,3 +1,4 @@
 (function($){
     $('#comment-<%= @comment.id %>').remove();
+    $('.replies-comment-<%= @comment.id %>').remove();
 })(jQuery)

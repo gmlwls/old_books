@@ -1,0 +1,6 @@
+(function($){
+    // $("#reply_content-<%=@comment.id%>").val("");
+    $("#new_reply").remove();
+    var html = "<%= escape_javascript(render(partial: 'replies/item', locals: {book: @book, comment: @comment, reply: @reply})) %>";
+    $(".replies-comment-<%=@comment.id%>").append(html);
+})(jQuery)

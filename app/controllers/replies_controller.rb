@@ -5,6 +5,7 @@ class RepliesController < ApplicationController
   	@reply = Reply.new
   end
   def create
+    @book = Book.find(params[:book_id])
     @comment = Comment.find(params[:comment_id])
     @reply = @comment.replies.build(comment_params)
     @reply.user_id = current_user.id
