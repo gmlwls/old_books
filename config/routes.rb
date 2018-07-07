@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root 'books#index'
   root to: 'books#index'
   get 'books/find', as: 'books_find'
+
+  # 아래는 양곤이 임시로 추가 
+  get '/books/new', to: 'books#sell', as: 'books_trade'
+  
   resources :books do
   	post '/like', to: 'books#like_toggle'
     post '/sell', to: 'books#sell'
