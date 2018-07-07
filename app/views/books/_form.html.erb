@@ -1,46 +1,7 @@
-<style>
-@media all and (max-width: 992px){
-	.submit-form .submit-form-content{
-		width: 70%;
-	}
-}
-@media all and (min-width: 992px) {
-	.submit-form .submit-form-content{
-		width: 50%;
-	}
-}
-.form-control{
-	padding: 0.6rem 0.75rem;
-}
-.submit-form{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.form-group{
-	margin: 1.5rem 0;
-}
-.form-label {
-	margin-bottom: 0.4rem;
-	font-size: 0.9rem;
-	color: gray;
-}
-.main-label {
-	font-size: 1.2rem;
-	font-weight: bold;
-}
-textarea {
-	height: 200px;
-}
-fieldset {
-	margin: 40px 0;
-}
-</style>
 <div class="submit-form">
-<%= form_for book, url: path, method: form_method,multipart: true, :html => {class: 'submit-form-content'} do |f| %>
+<%= form_for book, url: path, method: form_method, multipart: true, :html => {class: 'submit-form-content'} do |f| %>
 	<fieldset>
-		<legend class="main-label">내 책 기본 정보</legend>
+		<legend class="main-label">내 책 정보 <%= link_to '', class: 'more-book' do %><i class="fas fa-plus"></i><% end %></legend>
 		<hr>
 		<div class="form-group">
 			<%= f.label :도서명, class: 'form-label' %>
@@ -49,55 +10,17 @@ fieldset {
 	  <div class="form-group">
 			<%= f.label :저자, class: 'form-label' %>
 			<%= f.text_field :author, class: 'form-control', :required => true%>
-	  </div> 
-	  <div class="form-group">
-			<%= f.label :수업명, class: 'form-label' %>
-			<%= f.text_field :classname, class: 'form-control', :required => true%>
-	  </div> 
+	  </div>
 	  <div class="form-group">
 			<%= f.label :가격, class: 'form-label' %>
 			<%= f.text_field :price, class: 'form-control', :required => true%>
 	  </div> 
-	  </fieldset>
-	  <fieldset>
-	  	<legend class="main-label">내 책 상세 정보</legend>
-	  	<hr>
-	  	<div class="form-group">
-	  		<%= f.label :전공선택, class: 'form-label' %>
-	  		<%= f.select(:major, ['경제학부', '경영학부', '공학부', '자연과학부', '기타'], {}, { :class => 'form-control' }) %>
-		</div>
-		<h4 class= 'form-label'>책 상태</h4>
-		<div class="form-check form-check-inline">
-			<%= f.radio_button :state, 0, :checked => true, class: 'form-check-input' %>
-			<%= f.label :새책수준, class: 'form-check-label' %>
-		</div>
-		<div class="form-check form-check-inline">
-			<%= f.radio_button :state, 1, :checked => true, class: 'form-check-input' %>
-			<%= f.label :사용감있음, class: 'form-check-label' %>
-		</div>
-		<div class="form-check form-check-inline">
-			<%= f.radio_button :state, 2, :checked => true, class: 'form-check-input' %>
-			<%= f.label :사용감많음, class: 'form-check-label' %>
-		</div>
-		<div class="form-group">
+	  <div class="form-group">
 				<%= f.label '책 사진', for: 'formControlFile', class: 'form-label' %>
 				<%= f.file_field :image, class: 'form-control-file', id: 'formControlFile1' %>
 		</div>
-		<h4 class= 'form-label'>거래 방법</h4>
-		<div class="form-check form-check-inline">
-			<%= f.radio_button :method, 0, :checked => true, class: 'form-check-input' %>
-			<%= f.label :직거래, class: 'form-check-label' %>
-		</div>
-		<div class="form-check form-check-inline">
-			<%= f.radio_button :method, 1, :checked => true, class: 'form-check-input' %>
-			<%= f.label :사물함거래, class: 'form-check-label' %>
-		</div>
-		<div class="form-check form-check-inline">
-			<%= f.radio_button :method, 2, :checked => true, class: 'form-check-input' %>
-			<%= f.label :택배, class: 'form-check-label' %>
-		</div>
 		<div class="form-group">
-			<%= f.text_area :content, class: 'form-control', placeholder: '추가적인 정보를 입력해주세요'%>
+			<%= f.text_area :content, class: 'form-control', placeholder: '추가적인 정보를 입력해주세요(책의 상태 및 거래방법 등)'%>
 		</div>
 		<button type="submit" class="btn">등록하기</button>
 	  </fieldset>

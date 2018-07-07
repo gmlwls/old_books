@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   root 'books#index'
   root to: 'books#index'
   get 'books/find', as: 'books_find'
-  get 'books/trade', as: 'books_trade'
   resources :books do
   	post '/like', to: 'books#like_toggle'
+    post '/sell', to: 'books#sell'
+    resources :comments, only: [:create, :destroy, :edit, :update] do
+      resources :replies, only: [:new, :create, :destroy, :edit, :update]
+    end
   end
   resources :conversations, only: [:create] do
   	member do

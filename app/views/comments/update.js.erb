@@ -1,0 +1,4 @@
+(function($){
+    var html = "<%= escape_javascript(render(partial: 'comments/item', locals: {book: @book, comment: @comment})) %>";
+    $('#edit_comment_<%= @comment.id %>').replaceWith(html);
+})(jQuery)

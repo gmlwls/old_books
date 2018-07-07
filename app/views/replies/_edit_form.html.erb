@@ -1,0 +1,4 @@
+<%= form_for [@reply.comment.book,@reply.comment, @reply], remote: true do |f| %>
+  	 <strong><%= @reply.user.username %></strong> : <%= f.text_field :content %>
+   	 <%= f.submit %>
+<% end %>

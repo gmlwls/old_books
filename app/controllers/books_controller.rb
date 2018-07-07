@@ -12,12 +12,8 @@ class BooksController < ApplicationController
 		book.user_id = current_user.id
 		book.bookname = params[:book][:bookname]
 		book.author = params[:book][:author]
-		book.classname = params[:book][:classname]
 		book.price = params[:book][:price]
-		book.major = params[:book][:major]
-		book.state = params[:book][:state]
 		book.img_url = params[:book][:image]
-		book.method = params[:book][:method]
 		book.content = params[:book][:content]
 		book.save
 		redirect_to root_path
@@ -42,9 +38,13 @@ class BooksController < ApplicationController
 	      @books = Book.where("author LIKE ? OR bookname LIKE ?", "%#{search}%", "%#{search}%")
 	    end
 	end
-	def trade
-		session[:conversations] ||= []
-		@books = current_user.liked_books
-		@conversations = Conversation.all
+	def sell
+		@book = Book.find(params[:book_id])
+		if @book.sell
+			@book.sell = false
+		else
+			@book.sell = true
+		end
+		@book.save
 	end
 end
