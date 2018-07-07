@@ -164,16 +164,13 @@ strong {
 				<ul class="comments">
         			<% @book.comments.each do |comment| %>
         				<%= render partial: "comments/item", locals: { book: @book, comment: comment } %>
-        				<ul class="replies-comment-<%=comment.id%>">
-        					<% comment.replies.each do |reply| %>
-        						<%= render partial: "replies/item", locals: {book: @book, comment: comment, reply: reply } %>
-        					<% end %>
-        				</ul>
         				<div id="comment-<%=comment.id%>-replyform", class="ml-2"></div>
         			<% end %>
     			</ul> 
   			  <%= form_for [@book, @book.comments.new], remote: true do |f| %>
 				  	 <%= f.text_field :content %>
+				  	 <%= label_tag(:secret, "비밀댓글") %>
+				  	 <%= f.check_box(:secret) %>
 				   	 <%= f.submit %>
 				<% end %>
 			</div>

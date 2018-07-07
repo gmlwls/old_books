@@ -1,7 +1,7 @@
 <li>  
 	<div id="reply-<%=reply.id%>" class="ml-2">
     <strong><%= reply.user.username %></strong> : <%= reply.content %>
-    <% if comment.user == current_user %>
+    <% if reply.user == current_user %>
     <%= link_to "수정", edit_book_comment_reply_path(book, comment, reply), remote: true %>
     <%= link_to "삭제", book_comment_reply_path(book, comment, reply), remote: true, method: :delete %>
     <% end %>
