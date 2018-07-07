@@ -2,6 +2,8 @@
   .card {
     border: none;
     align-items: center;
+    margin-bottom: 30px;
+
   }
   .card-image-top{
     margin: auto;
@@ -20,14 +22,15 @@
   }
   .book_contents{
     min-height: 800px;
-    height: auto;
+    /*height: auto;  원래는 이거 */
+    /* for scroll event debugging */
+    height: 200vh;
+    padding-top: 75px;
   }
-  main {
-    background-color: #fbfbfb;
-  }
+
 @media all and (max-width: 576px){
   .card-image-top{
-    width: 200px;
+    width: 250px;
     height: 250px;
   }
 }
@@ -38,7 +41,7 @@
 }
 @media all and (min-width: 992px) {
   .card-image-top{
-    width: 170px;
+    width: 230px;
     height: 230px;
   }
 }

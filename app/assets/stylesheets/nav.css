@@ -1,15 +1,37 @@
+
+* {margin: 0; padding: 0;}
+a {text-decoration: none;}
+
+
 ul.navbar-nav > li.nav-item > a.log{
   color: #ffc107;
 }
+
+/*
 .logo, .logo2 {
   background-image: url(/assets/logo.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .logo {
-  height: 60px;
+  height: 50px;
 }
+*/
+.logo {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+}
+
 .logo2 {
   height: 45px;
 }
@@ -53,7 +75,7 @@ ul.navbar-nav > li.nav-item > a.log{
 }
 @media all and (min-width: 992px) {
   .nav-search .search-form {
-    width: 40%;
+    width: 100%;
   }
   .search-form2 {
     margin-left: 15%;
@@ -69,3 +91,15 @@ ul.navbar-nav > li.nav-item > a.log{
   text-align: center;
   left: -180px;
 }
+
+
+/* ---------------------------
+
+위까지는 언니코드 (혹시몰라서 안지웠어용) 
+아래부터는 내 코드 
+
+----------------------------*/
+
+
+* {margin: 0; padding: 0;}
+a {text-decoration: none;}
