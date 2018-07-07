@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @book = @comment.book
     @comment.update(comment_params)
-     
   end
 
   private
