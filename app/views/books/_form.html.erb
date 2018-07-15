@@ -1,10 +1,12 @@
 <div class="submit-form">
 <%= form_for book, url: path, method: form_method, multipart: true, :html => {class: 'submit-form-content'} do |f| %>
 	<fieldset>
-		<legend class="main-label">내 책 정보 <%= link_to '', class: 'more-book' do %><i class="fas fa-plus"></i><% end %></legend>
+		<legend class="main-label">책 등록하기</legend>
 		<hr>
+
+	
 		<div class="form-group">
-			<%= f.label :도서명, class: 'form-label' %>
+			<%= f.label :도서명, class: 'form-label'%>
 			<%= f.text_field :bookname, class: 'form-control', :required => true%>
 	  </div> 
 	  <div class="form-group">
@@ -15,14 +17,31 @@
 			<%= f.label :가격, class: 'form-label' %>
 			<%= f.text_field :price, class: 'form-control', :required => true%>
 	  </div> 
-	  <div class="form-group">
+		<!-- 
+		<div class="form-group">
 				<%= f.label '책 사진', for: 'formControlFile', class: 'form-label' %>
 				<%= f.file_field :image, class: 'form-control-file', id: 'formControlFile1' %>
 		</div>
+		아래거는 f와 연동을 안했다..그냥 디자인만 했을뿐-->
+		<div class="file-input">
+  		<input type='file'>
+  		<span class='button'>찾아보기</span>
+  		<span class='label' data-js-label>책사진을 업로드해주세요</span>
+		</div>
+
 		<div class="form-group">
 			<%= f.text_area :content, class: 'form-control', placeholder: '추가적인 정보를 입력해주세요(책의 상태 및 거래방법 등)'%>
 		</div>
-		<button type="submit" class="btn">등록하기</button>
+
+		<div class="btn-groups">
+		<button type="submit" class="btn" style="margin-right: 4px;" id="btn1">등록하기</button>
+		<!--<%= link_to '', class: 'more-book' do %><i class="fas fa-plus"></i><% end %>-->
+		<button class="btn" id="btn2"><%= link_to '', class: 'more-book' do %>추가하기<% end %></button>
+		</div>
+
+
+
+
 	  </fieldset>
 <% end %>
 </div>

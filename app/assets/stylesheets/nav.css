@@ -3,9 +3,12 @@
 a {text-decoration: none;}
 
 
-ul.navbar-nav > li.nav-item > a.log{
-  color: #ffc107;
+ul.navbar-nav > li.nav-item {
+  color: black;
+  font-family: 'GyeonggiBatang';
 }
+
+
 
 /*
 .logo, .logo2 {

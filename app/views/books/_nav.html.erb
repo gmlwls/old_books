@@ -67,7 +67,6 @@
 
 @font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
 
-
 /* This class is added on scroll */
 .top-searchbar {
   visibility: hidden;
@@ -210,6 +209,7 @@
 
 /* top buttons */
 
+/* 책 등록하기 버튼 효과 일단 제거 
 li#primary_btn a.nav-link {
   color: white;
   font-size: 0.9rem;
@@ -223,6 +223,7 @@ li#primary_btn a.nav-link {
 ul.navbar-nav li.nav-item {
   margin-left: 5px;
 } 
+*/
 
 /* brush Strokes */
 
@@ -290,6 +291,49 @@ ul.navbar-nav li.nav-item {
   }
 }
 
+.menu__link {
+  display: inline-block;
+  color: #2d6c90;
+  text-decoration: none;
+  position: relative;
+  padding: 10px 0;
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1;
+  /*letter-spacing: 0.040em;*/
+}
+
+.menu__link svg {
+  fill: none;
+  stroke: #ff4c4c;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 338;
+  stroke-dashoffset: 338;
+  stroke-linecap: round;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 16px);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: stroke-dashoffset 0s 0.2s, opacity 0.2s;
+  z-index: -1;
+}
+
+.menu__link--active svg {
+  stroke: #ff4c4c;
+}
+
+.menu__link--active svg,
+.menu__link:hover svg {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  transition: opacity 0s, stroke-dashoffset 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+
 </style>
 
 
@@ -297,7 +341,7 @@ ul.navbar-nav li.nav-item {
 
 <nav class="navbar navbar-expand-lg navbar-light">
   <!--<%= link_to root_path, class: 'logo-link' do%><div class="logo"></div><% end %>-->
-  <%= link_to root_path, class: 'logo-link' do%><div class="logo"><span>Abc</span></div><% end %>
+  <%= link_to root_path, class: 'logo-link logo' do%><span>Abc</span><% end %>
 
   <nav class= "top-searchbar nav-search"> <!-- 내가 만든 검색바라서 언니랑 class 준 게 다름 -->
 	  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
@@ -350,18 +394,45 @@ ul.navbar-nav li.nav-item {
   <!-- 이거는 내 네브바 -->
   <div class="collapse navbar-collapse head-nav" id="navbarNav">
     <ul class="navbar-nav">
-<!--       <li class="nav-item">
+<!--  
+      <li class="nav-item">
         <a class="nav-link" id="mypage" href=<%= new_book_path%>>거래하기</a>
       </li> -->
-      <li class="nav-item" id="primary_btn">
-        <a class="nav-link" href=<%= new_book_path%>>책등록하기</a>
+
+      <li class="nav-item">
+        <a class="nav-link menu__link menu__link--active" href=<%= root_path%>>
+        검색하기
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 152.9 43.4" style="enable-background:new 0 0 152.9 43.4;" xml:space="preserve">
+        <path d="M151.9,13.6c0,0,3.3-9.5-85-8.3c-97,1.3-58.3,29-58.3,29s9.7,8.1,69.7,8.1c68.3,0,69.3-23.1,69.3-23.1 s1.7-10.5-14.7-18.4"/>
+        </svg>
+        </a>
+      </li>
+
+
+
+      <li class="nav-item">
+        <a class="nav-link menu__link" href=<%= new_book_path%>>
+        책등록하기
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 152.9 43.4" style="enable-background:new 0 0 152.9 43.4;" xml:space="preserve">
+        <path d="M151.9,13.6c0,0,3.3-9.5-85-8.3c-97,1.3-58.3,29-58.3,29s9.7,8.1,69.7,8.1c68.3,0,69.3-23.1,69.3-23.1 s1.7-10.5-14.7-18.4"/>
+        </svg>
+        </a>
       </li>
  
-      <!-- 임시로 지움 
+      <!--
       <li class="nav-item">
         <a class="nav-link" id="mypage" href=<%= books_trade_path%>><img src="/assets/mypage_icon_2.png"></a>
       </li>
       -->
+
+      <li class="nav-item">
+        <a class="nav-link menu__link" id="mypage" href=<%= books_trade_path%>>
+        거래하기
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 152.9 43.4" style="enable-background:new 0 0 152.9 43.4;" xml:space="preserve">
+        <path d="M151.9,13.6c0,0,3.3-9.5-85-8.3c-97,1.3-58.3,29-58.3,29s9.7,8.1,69.7,8.1c68.3,0,69.3-23.1,69.3-23.1 s1.7-10.5-14.7-18.4"/>
+        </svg>
+        </a>
+      </li>
 
       <% if user_signed_in? %>
       <li class="nav-item read">
@@ -375,21 +446,44 @@ ul.navbar-nav li.nav-item {
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link log" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
+        <a class="nav-link log menu__link" href=<%=destroy_user_session_path%> data-method= 'delete'>
+        로그아웃
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 152.9 43.4" style="enable-background:new 0 0 152.9 43.4;" xml:space="preserve">
+        <path d="M151.9,13.6c0,0,3.3-9.5-85-8.3c-97,1.3-58.3,29-58.3,29s9.7,8.1,69.7,8.1c68.3,0,69.3-23.1,69.3-23.1 s1.7-10.5-14.7-18.4"/>
+        </svg>
+        </a>
       </li>
 
       <% else %>
       <li class="nav-item">
-        <a class="nav-link log" href=<%=new_user_session_path%>>로그인</a>
+        <a class="nav-link log menu__link" href=<%=new_user_session_path%>>
+        로그인
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 152.9 43.4" style="enable-background:new 0 0 152.9 43.4;" xml:space="preserve">
+        <path d="M151.9,13.6c0,0,3.3-9.5-85-8.3c-97,1.3-58.3,29-58.3,29s9.7,8.1,69.7,8.1c68.3,0,69.3-23.1,69.3-23.1 s1.7-10.5-14.7-18.4"/>
+        </svg>
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link log" href=<%= new_user_registration_path%>>회원가입</a>
+        <a class="nav-link log menu__link" href=<%= new_user_registration_path%>>
+        회원가입
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 152.9 43.4" style="enable-background:new 0 0 152.9 43.4;" xml:space="preserve">
+        <path d="M151.9,13.6c0,0,3.3-9.5-85-8.3c-97,1.3-58.3,29-58.3,29s9.7,8.1,69.7,8.1c68.3,0,69.3-23.1,69.3-23.1 s1.7-10.5-14.7-18.4"/>
+        </svg>        
+        </a>
       </li>
 
       <% end %>
     </ul>
   </div>
 </nav>
+
+
+
+
+
+
+
+
 
 <nav class="bottom-navbar">
 
