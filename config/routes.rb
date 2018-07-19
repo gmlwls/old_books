@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   root to: 'books#index'
   get 'books/find', as: 'books_find'
 
-  # 아래는 양곤이 임시로 추가 
-  get '/books/new', to: 'books#new', as: 'books_trade'
+  get '/mypage', to: 'books#mypage', as: 'mypage'
   
   resources :books do
   	post '/like', to: 'books#like_toggle'

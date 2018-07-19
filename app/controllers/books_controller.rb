@@ -47,4 +47,6 @@ class BooksController < ApplicationController
 		end
 		@book.save
 	end
+	def mypage
+	end
 end
