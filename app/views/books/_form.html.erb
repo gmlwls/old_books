@@ -17,17 +17,20 @@
 			<%= f.label :가격, class: 'form-label' %>
 			<%= f.text_field :price, class: 'form-control', :required => true%>
 	  </div> 
-		<!-- 
-		<div class="form-group">
-				<%= f.label '책 사진', for: 'formControlFile', class: 'form-label' %>
+
+		<div class="file-input">
+				<%= f.button '찾아보기', class: "button"%>
+				<%= f.label '책 사진', for: 'formControlFile', class: 'label' %>
 				<%= f.file_field :image, class: 'form-control-file', id: 'formControlFile1' %>
 		</div>
-		아래거는 f와 연동을 안했다..그냥 디자인만 했을뿐-->
+		<!--
+		 아래거는 f와 연동을 안했다..그냥 디자인만 했을뿐
 		<div class="file-input">
   		<input type='file'>
   		<span class='button'>찾아보기</span>
   		<span class='label' data-js-label>책사진을 업로드해주세요</span>
 		</div>
+		-->
 
 		<div class="form-group">
 			<%= f.text_area :content, class: 'form-control', placeholder: '추가적인 정보를 입력해주세요(책의 상태 및 거래방법 등)'%>

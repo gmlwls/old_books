@@ -11,7 +11,7 @@
 	}
 }
 .new_nav {
-	height: 40px;
+	height: 50px;
 	width: 100%;
 	background-color: #fdd400;
 	display: flex;
@@ -138,6 +138,7 @@ textarea {
 <%= link_to root_path, class: 'new_nav' do%><span>메인으로</span><% end %>
 <%= render 'form', book: @book, path: books_path, form_method: 'post' %>
 </div>
+
 <%= render 'footer' %>
 
 <script>

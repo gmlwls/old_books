@@ -1,1 +1,199 @@
-<p>마이페이지 입니다. 정원양은 여기서 작업 하세요!</p>
+<style>
+  main {
+    background-color: rgb(251,251,251);
+    min-height: 130vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contents {
+    width: 80%;
+    background-color: white;
+  }
+
+  .content_title {
+    height: 30px;
+    padding: 1% 1%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .content_title span {
+    padding-top: 0.7%;
+    color: rgb(115,111,111);
+  }
+
+  section {
+    margin-top: 25px;
+    min-height: 20%;
+    /*border: 1px solid black;*/
+  }
+
+  .box1 {
+    width: 90%;
+    margin: 0 auto;
+    height: 200px;
+    border: 1px solid rgb(217,217,217);
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .box2 {
+    width: 100%;
+    margin: 15px auto;
+    min-height: 200px;
+    /*border: 1px solid rgb(217,217,217);*/
+    padding: 0 10px;
+  }
+
+
+  .books {
+    width: 180px;
+    height: 180px;
+  }
+
+  .books_img {
+    background-color: rgb(217,217,217); 
+    height: 90%;
+    width: 100%;
+  }
+
+
+  .msgs {
+    /*border-bottom: 1px solid gray;*/
+    height: 25%;
+    width: 100%;
+    display: flex;
+  }
+
+  .msgss {
+    /*background-color: yellow;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bell, .book, .time  {
+    align-items: center;
+  }
+
+  .time {
+    font-size: 0.8rem;
+    color: rgb(115,111,111);
+  }
+
+  .books > .last {
+    border: 1px solid rgb(184,184,184);
+    background-color: white;
+  }
+
+</style>
+
+<%= render 'nav2' %>
+
+<main>
+  <div class="contents">
+    <section class="content_msg">
+      <div class="content_title" style="margin-bottom:5px;"><span>거래상황</span></div>
+      <div class="box1">
+        <div class="msg_top" style="height: 10%; padding-top: 3px; display: flex; justify-content: space-between;">
+          <span style="font-size:0.8rem; padding-left: 10px; color: rgb(115,111,111);">총 <strong style="font-weight: 800; color: rgb(115,111,111);">3</strong>개의 읽지 않은 알림이 있습니다</span>
+          <span style="padding-right: 10px;"> > </span>
+        </div>
+        <div class="msg_content" style="height: 90%;">
+
+          <div class="msgs">
+            <div class="msgss bell" style="width: 5%; ">●</div>
+            <div class="msgss book" style="width: 10%; ">경제학원론</div>
+            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
+            <div class="msgss time" style="width: 15%;">2018-08-05</div>
+          </div>
+
+          <div class="msgs">
+            <div class="msgss bell" style="width: 5%; ">●</div>
+            <div class="msgss book" style="width: 10%;">경제학원론</div>
+            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
+            <div class="msgss time" style="width: 15%; ">2018-08-05</div>
+          </div>
+
+          <div class="msgs">
+            <div class="msgss bell" style="width: 5%;">●</div>
+            <div class="msgss book" style="width: 10%;">경제학원론</div>
+            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
+            <div class="msgss time" style="width: 15%; ">2018-08-05</div>
+          </div>
+
+          <div class="msgs">
+            <div class="msgss bell" style="width: 5%;">●</div>
+            <div class="msgss book" style="width: 10%;">경제학원론</div>
+            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
+            <div class="msgss time" style="width: 15%;">2018-08-05</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content_mybook">
+      <div class="content_title">
+      <span>내가 올린 책들</span>
+      <span style="font-size: 0.8rem;">판매 완료 항목 숨기기</span>
+      </div>
+      <hr>
+      <div class="box2 container">
+      <div class="mybook row" style="width: 95%; margin: 0 auto;">
+
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
+          <div class="books_img"></div>
+        </div>
+
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
+          <div class="books_img"></div>
+        </div>
+
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
+          <div class="books_img"></div>
+        </div>
+
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
+          <div class="books_img"></div>
+        </div>
+
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
+          <div class="books_img"></div>
+        </div>
+
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
+          <div class="books_img last" style="display: flex; justify-content: center; align-items: center;">
+            <span style="font-size: 70px; color: rgb(115,111,111); font-weight: 200;">+<span>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="content_zzim">
+      <div class="content_title">
+        <span>내가 찜한 책들</span>
+        <span style="font-size: 0.8rem;">찜 수정하기</span>
+      </div>
+      <hr>
+      <div class="box2 container">
+        <div class="mybook row" style="width: 95%; margin: 0 auto">
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
+        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
+          <div class="books_img last" style="display: flex; justify-content: center; align-items: center;">
+            <span style="font-size: 70px; color: rgb(115,111,111); font-weight: 200;">+<span>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<%= render 'footer' %>
