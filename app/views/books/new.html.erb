@@ -1,5 +1,28 @@
 <style>
 
+@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+li.nav-item a#regist {
+  color: rgb(253,84,0);
+}
+
+#banner {
+  background-color: rgb(253,84,0);
+  height: 280px;
+  width: 100%;
+}
+
+.ment {
+  padding-top: 7%;
+  text-align: center;
+}
+
+.ment h2 {
+  color: white;
+  font-size: 4rem;
+  font-family: 'KCC-eunyoung';
+}
+
 @media all and (max-width: 992px){
 	.submit-form .submit-form-content{
 		width: 70%;
@@ -41,7 +64,7 @@
 
 .form-label {
 	margin-bottom: 0.4rem;
-	font-size: 0.9rem;
+	font-size: 1.1rem;
 	color: gray;
 }
 .main-label {
@@ -54,17 +77,7 @@
 	display: flex;
 	justify-content: flex-end;
 }
-/*
-#btn1 {
-	border : 2px solid #fdd400;
-	background-color: white;
-}
 
-#btn2 {
-	border : 2px solid #002afd;
-	background-color: white;
-}
-*/
 form {
 	margin-top: 2%;
 }
@@ -76,7 +89,6 @@ fieldset {
 	margin: 40px 0;
 }
 
-
 input[type=text],
 textarea {
 	border: 1px solid #cfd9db;
@@ -84,7 +96,6 @@ textarea {
 	box-shadow: inset 0 1px 1px rgba(0,0,0,.08);
 	padding: 12px;
 }
-
 
 .file-input {
   display: inline-block;
@@ -113,12 +124,29 @@ textarea {
   background: #eee;
   padding: 8px 16px;
   border-radius: 2px;
-  margin-right: 8px;
+	margin-right: 8px;
+	border: 1px solid #cfd9db;
+	border-radius: .25em;
+	box-shadow: 0 1px 1px rgba(0,0,0,.08);
+	padding: 12px;
 }
 
 .file-input:hover > .button {
   background: dodgerblue;
-  color: white;
+	color: white;
+	border: 1px solid #cfd9db;
+	border-radius: .25em;
+	box-shadow: 0 1px 1px rgba(0,0,0,.08);
+	padding: 12px;
+}
+
+.btn-groups > #btn1:hover {
+	background-color: rgb(0,42,253);
+	color: white;
+}
+
+.btn-groups > #btn2:hover {
+	background-color: rgb(253,212,0);
 }
 
 .file-input > .label {
@@ -128,14 +156,21 @@ textarea {
 }
 
 .file-input.-chosen > .label {
+	color: rgb(253,84,0);
   opacity: 1;
 }
 
+.more-book:hover {
+	color: black;
+}
 
 </style>
 
+<%= render 'nav2' %>
 <div class="whole">
-<%= link_to root_path, class: 'new_nav' do%><span>메인으로</span><% end %>
+<div id="banner">
+  <div class="ment"><h2>책등록하기</h2></div>
+</div>
 <%= render 'form', book: @book, path: books_path, form_method: 'post' %>
 </div>
 
@@ -172,9 +207,6 @@ function customInput (el) {
   }
 }
 
-
-
-	
 </script>
 
 

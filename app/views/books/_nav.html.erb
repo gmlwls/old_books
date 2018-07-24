@@ -63,9 +63,16 @@
 아래부터는 내 코드 
 
 //////////////////////////////////-->
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 <style>
 
 @font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
+
+a {
+  font-size: 0.9rem;
+}
 
 /* This class is added on scroll */
 .top-searchbar {
@@ -118,6 +125,7 @@
   z-index: 2;
   transition: 0.3s all;
   padding-top: 7px;
+  border-bottom: 1px solid rgba(184,184,184, 0.3);
 }
 
 .navbar-top-line {
@@ -134,7 +142,6 @@
   visibility: hidden;
   transition: 0.07s all;
 }
-
 
 /* 연노랑 아래 헤더 */
 
@@ -291,6 +298,11 @@ ul.navbar-nav li.nav-item {
   }
 }
 
+  .logo2 {
+    font-size: 2.5rem;
+    font-family: 'Abril Fatface', cursive;
+  }
+
 </style>
 
 
@@ -298,7 +310,7 @@ ul.navbar-nav li.nav-item {
 
 <nav class="navbar navbar-expand-lg navbar-light">
   <!--<%= link_to root_path, class: 'logo-link' do%><div class="logo"></div><% end %>-->
-  <%= link_to root_path, class: 'logo-link logo' do%><span>Abc</span><% end %>
+  <%= link_to root_path, class: 'logo-link' do%><div class="logo2">mango</div><% end %>
 
   <nav class= "top-searchbar nav-search"> <!-- 내가 만든 검색바라서 언니랑 class 준 게 다름 -->
 	  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
@@ -357,10 +369,6 @@ ul.navbar-nav li.nav-item {
       </li> -->
 
       <li class="nav-item">
-        <a class="nav-link" href=<%= root_path%>>검색하기</a>
-      </li>
-
-      <li class="nav-item">
         <a class="nav-link" href=<%= new_book_path%>>책등록하기</a>
       </li>
  
@@ -371,7 +379,7 @@ ul.navbar-nav li.nav-item {
       -->
 
       <li class="nav-item">
-        <a class="nav-link" id="mypage" href=<%= mypage_path%>>거래하기</a>
+        <a class="nav-link" id="mypage" href=<%= mypage_path%>>마이페이지</a>
       </li>
 
       <% if user_signed_in? %>

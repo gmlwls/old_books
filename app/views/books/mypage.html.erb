@@ -1,199 +1,229 @@
 <style>
-  main {
-    background-color: rgb(251,251,251);
-    min-height: 130vh;
-    height: auto;
-    display: flex;
-    justify-content: center;
-  }
 
-  .contents {
-    width: 80%;
-    background-color: white;
-  }
+@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
 
-  .content_title {
-    height: 30px;
-    padding: 1% 1%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .content_title span {
-    padding-top: 0.7%;
-    color: rgb(115,111,111);
-  }
-
-  section {
-    margin-top: 25px;
-    min-height: 20%;
-    /*border: 1px solid black;*/
-  }
-
-  .box1 {
-    width: 90%;
-    margin: 0 auto;
-    height: 200px;
-    border: 1px solid rgb(217,217,217);
-    border-radius: 10px;
-    margin-top: 10px;
-  }
-
-  .box2 {
-    width: 100%;
-    margin: 15px auto;
-    min-height: 200px;
-    /*border: 1px solid rgb(217,217,217);*/
-    padding: 0 10px;
-  }
+li.nav-item a#mypage {
+  color: rgb(0,42,253);
+}
 
 
-  .books {
-    width: 180px;
-    height: 180px;
-  }
+#banner {
+  background-color: rgb(0,42,253);
+  height: 280px;
+  width: 100%;
+}
 
-  .books_img {
-    background-color: rgb(217,217,217); 
-    height: 90%;
-    width: 100%;
-  }
+.ment {
+  padding-top: 7%;
+  text-align: center;
+}
 
+.ment h2 {
+  color: white;
+  font-size: 4rem;
+  font-family: 'KCC-eunyoung';
+}
 
-  .msgs {
-    /*border-bottom: 1px solid gray;*/
-    height: 25%;
-    width: 100%;
-    display: flex;
-  }
+main {
+  min-height: 130vh;
+  height: auto;
+}
 
-  .msgss {
-    /*background-color: yellow;*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+.container {
+  line-height: 1.5;
+  font-size: 1rem;
+}
 
-  .bell, .book, .time  {
-    align-items: center;
-  }
+.row {
+  padding: 2rem 0;
+  display: block;
+}
 
-  .time {
-    font-size: 0.8rem;
-    color: rgb(115,111,111);
-  }
+.trade_content {
+  position: relative;
+  margin: 1rem 0;
+  padding: 16px;
+  border: 1px solid #dadfeb;
+  border-radius: .28571429rem;
+}
 
-  .books > .last {
-    border: 1px solid rgb(184,184,184);
-    background-color: white;
-  }
+.msgs {
+  margin: 0 0;
+}
+
+.msgs > .msg:first-child {
+  margin-top: 0 !important;
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+.msgs > .msg:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.msgs > .msg:last-child:hover {
+  padding-bottom: 1em !important;
+  margin-bottom: -1em !important;  
+  transition: none;
+}
+
+.msgs > .msg:first-child:hover {
+  padding-top: 1em !important;
+  margin-top: -1em !important;
+  transition: none;
+}
+
+.msg {
+  width: 100%;
+  padding: 1em 0;
+  border-top: 1px solid #dadfeb;
+  margin: 0;
+  font-size: 1em;
+  display: flex;
+}
+
+.msg_time {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.each_header {
+  margin-bottom: 10px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.grid > .row:before {
+  position:absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: calc(100% - 20px);
+  height: 1px;
+  margin: 0 10px;
+  box-shadow: 0 -1px 0 0 #dadfeb;
+}
+
+.books {
+  display: flex;
+  justify-content: space-around;
+}
+
+.book {
+  height: 230px;
+  width: 180px;
+  border: 1px solid #dadfeb;
+  border-radius: .28571429rem;
+}
+
+.books > .book:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.books > .book:last-child span {
+  color: rgb(115,111,111);
+  font-size: 70px;
+  font-weight: 200;
+}
+
+.books > .book:hover,
+.msgs > .msg:hover {
+  background-color: #dadfeb;
+  transition: 0.3s all ease-in-out;
+}
+
+.books > .book:last-child span:hover{
+  color: white;
+}
 
 </style>
 
 <%= render 'nav2' %>
 
 <main>
-  <div class="contents">
-    <section class="content_msg">
-      <div class="content_title" style="margin-bottom:5px;"><span>거래상황</span></div>
-      <div class="box1">
-        <div class="msg_top" style="height: 10%; padding-top: 3px; display: flex; justify-content: space-between;">
-          <span style="font-size:0.8rem; padding-left: 10px; color: rgb(115,111,111);">총 <strong style="font-weight: 800; color: rgb(115,111,111);">3</strong>개의 읽지 않은 알림이 있습니다</span>
-          <span style="padding-right: 10px;"> > </span>
+
+<div id="banner">
+  <div class="ment"><h2>마이페이지</h2></div>
+</div>
+
+<div id = "wrap" class="vertically divided grid container">
+  <section id="trade" class="row">
+    <h4 class="trade_header each_header">
+    거래내역
+    </h4>
+    <div class="trade_content">
+      <div class="msgs">
+        <div class="msg row">
+          <div class="msg_bell col-md-1">OK</div>
+          <div class="msg_title col-md-3">제목입니다</div>
+          <div class="msg_content col-md-6">내용입니다</div>
+          <div class="msg_time col-md-2">2018-03-28</div>
         </div>
-        <div class="msg_content" style="height: 90%;">
-
-          <div class="msgs">
-            <div class="msgss bell" style="width: 5%; ">●</div>
-            <div class="msgss book" style="width: 10%; ">경제학원론</div>
-            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
-            <div class="msgss time" style="width: 15%;">2018-08-05</div>
-          </div>
-
-          <div class="msgs">
-            <div class="msgss bell" style="width: 5%; ">●</div>
-            <div class="msgss book" style="width: 10%;">경제학원론</div>
-            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
-            <div class="msgss time" style="width: 15%; ">2018-08-05</div>
-          </div>
-
-          <div class="msgs">
-            <div class="msgss bell" style="width: 5%;">●</div>
-            <div class="msgss book" style="width: 10%;">경제학원론</div>
-            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
-            <div class="msgss time" style="width: 15%; ">2018-08-05</div>
-          </div>
-
-          <div class="msgs">
-            <div class="msgss bell" style="width: 5%;">●</div>
-            <div class="msgss book" style="width: 10%;">경제학원론</div>
-            <div class="msgss ment" style="width: 70%;">책 팔렸나요?</div>
-            <div class="msgss time" style="width: 15%;">2018-08-05</div>
-          </div>
-        </div>
+        <div class="msg row">
+          <div class="msg_bell col-md-1">OK</div>
+          <div class="msg_title col-md-3">제목입니다</div>
+          <div class="msg_content col-md-6">내용입니다</div>
+          <div class="msg_time col-md-2">2018-03-28</div>
+        </div>      
+        <div class="msg row">
+          <div class="msg_bell col-md-1">OK</div>
+          <div class="msg_title col-md-3">제목입니다</div>
+          <div class="msg_content col-md-6">내용입니다</div>
+          <div class="msg_time col-md-2">2018-03-28</div>
+        </div>  
+        <div class="msg row">
+          <div class="msg_bell col-md-1">OK</div>
+          <div class="msg_title col-md-3">제목입니다</div>
+          <div class="msg_content col-md-6">내용입니다</div>
+          <div class="msg_time col-md-2">2018-03-28</div>
+        </div>   
+        <div class="msg row">
+          <div class="msg_bell col-md-1">OK</div>
+          <div class="msg_title col-md-3">제목입니다</div>
+          <div class="msg_content col-md-6">내용입니다</div>
+          <div class="msg_time col-md-2">2018-03-28</div>
+        </div>      
       </div>
-    </section>
-
-    <section class="content_mybook">
-      <div class="content_title">
-      <span>내가 올린 책들</span>
-      <span style="font-size: 0.8rem;">판매 완료 항목 숨기기</span>
+    </div>
+  </section>
+  <hr>
+  <section id="mybooks" class="row">
+    <h4 class="mybooks_header each_header">
+    내가 올린 책들
+    </h4>
+    <div class="mybooks_content">
+      <div class="books row">
+        <div class="book"></div>
+        <div class="book"></div>
+        <div class="book"></div>
+        <div class="book"></div>
+        <a class="book" href=<%= new_book_path%>><span>+</span></a>
       </div>
-      <hr>
-      <div class="box2 container">
-      <div class="mybook row" style="width: 95%; margin: 0 auto;">
-
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
-          <div class="books_img"></div>
-        </div>
-
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
-          <div class="books_img"></div>
-        </div>
-
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
-          <div class="books_img"></div>
-        </div>
-
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
-          <div class="books_img"></div>
-        </div>
-
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
-          <div class="books_img"></div>
-        </div>
-
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
-          <div class="books_img last" style="display: flex; justify-content: center; align-items: center;">
-            <span style="font-size: 70px; color: rgb(115,111,111); font-weight: 200;">+<span>
-          </div>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <section class="content_zzim">
-      <div class="content_title">
-        <span>내가 찜한 책들</span>
-        <span style="font-size: 0.8rem;">찜 수정하기</span>
-      </div>
-      <hr>
-      <div class="box2 container">
-        <div class="mybook row" style="width: 95%; margin: 0 auto">
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books"><div class="books_img"></div></div>
-        <div class="col-12 col-lg-2 col-md-3 col-sm-4 books">
-          <div class="books_img last" style="display: flex; justify-content: center; align-items: center;">
-            <span style="font-size: 70px; color: rgb(115,111,111); font-weight: 200;">+<span>
-          </div>
-        </div>
-      </div>
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
+  <hr>
+  <section id="myzzims" class="row">
+    <h4 class="myzzims_header each_header">
+    내가 찜한 책들
+    </h4>  
+    <div class="myzzims_content">
+      <div class="books row">
+        <div class="book"></div>
+        <div class="book"></div>
+        <div class="book"></div>
+        <div class="book"></div>
+        <a class="book" href=<%=root_path %>><span>+</span></a>
+      </div>    
+    </div>
+  </section>
+</div>
 </main>
-
 <%= render 'footer' %>
+
+
+
+
+
