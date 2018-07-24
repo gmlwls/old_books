@@ -1,4 +1,12 @@
 <style>
+.links > a {
+  font-size: 0.8rem;
+}
+
+.link, p {
+  margin-right: 1%;
+}
+
 .footer {
   grid-column-start: 1;
   grid-column-end: 5;
@@ -6,15 +14,14 @@
   clear: both;
   position: relative;
   max-height: 180px;
-  background-color: #303952;
 }
 
 .makers {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 400;
     line-height: 1.3333333;
     margin-top: 5px;
-    color:white;
+    color: black;
 }
 
 .copyright {
@@ -25,6 +32,14 @@
 }
 </style>
 <footer class="footer py-3">
-  <p class="makers px-3 py-2">김희진 김양곤 김정원</p>
-  <p class="copyright">&copy; 2018 <strong style="color:white;">Sogang Likelion</strong>. All Rights Reserved.</p>
+<hr>
+  <p class="makers px-3 py-2">김양곤 김희진 김정원</p>
+  <div class="links px-3 py-2">
+    <a class="link" id="regist" href=<%= new_book_path%>>책 등록하기</a>
+    <a class="link" id="mypage" href=<%= mypage_path%>>마이페이지</a>
+    <a class="link" id="info" href="#">서비스소개</a>
+    <a class="link" id="info" href="#">질의응답</a>
+    <a class="link" id="info" href="#">만든사람들</a>
+  </div>
+  <p class="copyright">&copy; 2018 <strong style="color:black;">Sogang Likelion 5th</strong>. All Rights Reserved.</p>
 </footer> 
