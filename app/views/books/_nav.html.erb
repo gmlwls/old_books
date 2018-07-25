@@ -1,182 +1,51 @@
-<!--
-// 언니 코드 
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <%= link_to root_path, class: 'logo-link' do%><div class="logo"></div><% end %>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse head-nav" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href=<%= new_book_path%>>책 등록하기</a>
-      </li>
-
-      <% if user_signed_in? %>
-      <li class="nav-item read">
-        <div class="dropdown">
-          <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b><i class="far fa-bell"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
-          <div class="dropdown-menu" aria-labelledby="dropdownAlart">
-            <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
-            <div class="dropdown-divider"></div>
-            <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path, class: 'dropdown-item' %>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
-      </li>
-
-      <% else %>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%=new_user_session_path%>>로그인</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%= new_user_registration_path%>>회원가입</a>
-      </li>
-
-      <% end %>
-    </ul>
-  </div>
-</nav>
-<nav class="navbar navbar-light bg-warning nav-search">
-  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
-    <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "전공책 또는 저자로 검색해주세요", type: 'search' %>
-  <% end %>
-</nav>
-<script>
-  $('.search').keypress(function(e){
-      if(e.which == 13){
-           $(this).closest('form').submit();
-       }
-    });
-</script>
-
-
-
-
-
-/////////////////////////////////////
-
-위까지는 언니코드 (혹시몰라서 안지웠어용) 
-아래부터는 내 코드 
-
-//////////////////////////////////-->
-<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 <style>
-
 @font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
-
-a {
-  font-size: 0.9rem;
+/* top-navbar */
+.navbar,
+.navbar.colored {
+  bottom: 0;
+	width: 100%;
+  height: 50px;
+  position: fixed;
+	top: 0;
+  z-index: 2;
+  transition: 0.3s all; 
+  padding: 0.5rem 1rem;
 }
-
-/* This class is added on scroll */
-.top-searchbar {
-  visibility: hidden;
-  margin-left: 18%;
-}
-
-.top-searchbar.shown {
-  width: 32%;
-  margin-left: 18%;
-	color: black;
-  visibility : visible;
-  transition: 0.5s all;
-}
-
-.top-searchbar input#search {
-  width: 100%;
-  visibility: hidden;
-}
-
-.top-searchbar input#search.shown{
-  width: 100%;
-  transition: 0.3s all;
-  visibility: visible;
-}
-
-/* Navigation Settings */
-
 .navbar {
-	bottom: 0;
-	width: 100%;
-	height: 50px;
-  position: fixed; 
   background: rgb(253,212,0);
-	top: 7px;
-  z-index: 2;
-  transition: 0.3s all;
-  padding-top: 7px;
-  padding-right: 10%;
-  padding-left: 10%;
+  border-bottom: none;
 }
-
 .navbar.colored{
-	bottom: 0;
-	width: 100%;
-	height: 45px;
   background: rgba(255,255,255,1);
-	position: fixed; 
-	top: 0; 
-  z-index: 2;
-  transition: 0.3s all;
-  padding-top: 7px;
   border-bottom: 1px solid rgba(184,184,184, 0.3);
 }
 
-.navbar-top-line {
-  background: rgb(253,212,0);
-  width: 100%;
-  height: 7px;
-  transition: 0.3s all;
-  z-index: 2;
-  position: fixed;
-  visibility: visible;
-}
-
-.navbar-top-line.unshown{
-  visibility: hidden;
-  transition: 0.07s all;
-}
-
-/* 연노랑 아래 헤더 */
-
+/* bottom-navbar */
 .bottom-navbar {
   background: rgb(253,212,0);
   height: 450px;
   width: 100%;
   padding-top: 50px; /* navbar 의 height 에 맞춰서 띄워줬음 */
 }
-
 .bottom-mentionArea,
 .bottom-searchArea {
   display: flex;
   justify-content: center;
 }
-
 .bottom-mentionArea {
   margin-top: 8%;
 }
-
 .bottom-searchArea {
   margin-top: 4%;
 }
-
 .bottom-searchbar .form-control{
   width: 30%;
 }
 
-.bottom-searchbar .form-inline {
-  justify-content: center;
-}
-
-
-/* Post-it style main searchbox */
-
+/* main-searchcard */
 .search-card {
   background: #fff;
   border-radius: 1px;
@@ -185,56 +54,28 @@ a {
   margin: 1rem;
   position: relative;
   width: 420px;
-}
-
-.card-1 {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
-
-.card-1:hover {
+.search-card:hover {
   box-shadow: 2px 3px 10px rgba(0,0,0,0.25), 0 5px 10px rgba(0,0,0,0.22);
 }
-
 .form-inline {
   height: 100%;
   width: 100%;
 }
-
 .form-control {
   border-color: white;
   border-radius: 0px;
   width: 100% !important;
   height: 100%;
-  text-align: center;
 }
-
 .form-control:focus {
   border-color: white;
   box-shadow: none;
 }
 
-/* top buttons */
-
-/* 책 등록하기 버튼 효과 일단 제거 
-li#primary_btn a.nav-link {
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 200;
-  border: 1px solid white;
-  border-radius:5px;
-  margin-right: 15px;
-  margin-top: 4px;
-}
-
-ul.navbar-nav li.nav-item {
-  margin-left: 5px;
-} 
-*/
-
 /* brush Strokes */
-
-/*first stroke */
 .stroke#one {
   width: 400px;
   height: 10px;
@@ -244,8 +85,8 @@ ul.navbar-nav li.nav-item {
   /*top: 61%;*/
   left: 51%;
   transform: translate(-50%,-50%);
+  overflow: hidden;
 }
-
 .stroke#one:before {
   content: '';
   position: absolute;
@@ -257,9 +98,8 @@ ul.navbar-nav li.nav-item {
   animation: animate 25s linear infinite;
   /*animation-timing-function: cubic-bezier(.75, .04, .0, .86);*/
   /*transition-delay: 8s;*/
+  overflow: hidden;
 }
-
-/*second stroke */
 .stroke#two {
   width: 400px;
   height: 10px;
@@ -269,8 +109,8 @@ ul.navbar-nav li.nav-item {
   margin-top: 1%;
   left: 49%;
   transform: translate(-50%,-50%);
+  overflow: hidden;
 }
-
 .stroke#two:before {
   content: '';
   position: absolute;
@@ -282,8 +122,8 @@ ul.navbar-nav li.nav-item {
   animation: animate 25s linear infinite;
   animation-timing-function: cubic-bezier(.75, .04, .0, .86);
   transition-delay: 10s;
+  overflow: hidden;
 }
-
 @keyframes animate {
   0% {
     left: 0;
@@ -297,153 +137,27 @@ ul.navbar-nav li.nav-item {
     left: 100%;
   }
 }
-
-  .logo2 {
-    font-size: 2.5rem;
-    font-family: 'Abril Fatface', cursive;
-  }
-
 </style>
 
-
-<div class="navbar-top-line"></div>
-
-<nav class="navbar navbar-expand-lg navbar-light">
-  <!--<%= link_to root_path, class: 'logo-link' do%><div class="logo"></div><% end %>-->
-  <%= link_to root_path, class: 'logo-link' do%><div class="logo2">mango</div><% end %>
-
-  <nav class= "top-searchbar nav-search"> <!-- 내가 만든 검색바라서 언니랑 class 준 게 다름 -->
-	  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
-      <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "전공책 또는 저자로 검색해주세요", type: 'search' %>
-    <% end %>
-  </nav>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-<!-- 언니 네브바 
-  <div class="collapse navbar-collapse head-nav" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href=<%= mypage_path%>>거래하기</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=<%= new_book_path%>>책 등록하기</a>
-      </li>
-
-      <% if user_signed_in? %>
-      <li class="nav-item read">
-        <div class="dropdown">
-          <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b><i class="far fa-bell"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
-          <div class="dropdown-menu" aria-labelledby="dropdownAlart">
-            <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
-            <div class="dropdown-divider"></div>
-            <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path, class: 'dropdown-item' %>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
-      </li>
-
-      <% else %>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%=new_user_session_path%>>로그인</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%= new_user_registration_path%>>회원가입</a>
-      </li>
-
-      <% end %>
-    </ul>
-  </div>
--->
-
-  <!-- 이거는 내 네브바 -->
-  <div class="collapse navbar-collapse head-nav" id="navbarNav">
-    <ul class="navbar-nav">
-<!--  
-      <li class="nav-item">
-        <a class="nav-link" id="mypage" href=<%= new_book_path%>>거래하기</a>
-      </li> -->
-
-      <li class="nav-item">
-        <a class="nav-link" href=<%= new_book_path%>>책등록하기</a>
-      </li>
- 
-      <!--
-      <li class="nav-item">
-        <a class="nav-link" id="mypage" href=<%= mypage_path%>><img src="/assets/mypage_icon_2.png"></a>
-      </li>
-      -->
-
-      <li class="nav-item">
-        <a class="nav-link" id="mypage" href=<%= mypage_path%>>마이페이지</a>
-      </li>
-
-      <% if user_signed_in? %>
-      <li class="nav-item read">
-        <div class="dropdown">
-          <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b><img src="/assets/bell_icon.png"><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
-          <div class="dropdown-menu" aria-labelledby="dropdownAlart">
-            <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
-            <div class="dropdown-divider"></div>
-            <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path, class: 'dropdown-item' %>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%=destroy_user_session_path%> data-method= 'delete'>
-        로그아웃
-        </a>
-      </li>
-
-      <% else %>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%=new_user_session_path%>>
-        로그인
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%= new_user_registration_path%>>
-        회원가입
-        </a>
-      </li>
-
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<%= render 'nav2' %>
 <nav class="bottom-navbar">
-
+  <!-- Main mention -->
   <div class="bottom-mentionArea">
     <span style="font-family: 'KCC-eunyoung'; font-size: 3.7rem;">비싼 전공책을 저렴하게,</span>
   </div>
-
   <!-- Stroke animations -->
   <div class="stroke" id='one'></div>
   <div class="stroke" id='two'></div>
-
+  <!-- Searchbar -->
   <div class="bottom-searchArea">
-    <nav class="search-card card-1"> <!--여기 효과적으로 합치는 방법? -->
+    <nav class="search-card"> <!--여기 효과적으로 합치는 방법? -->
       <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
       <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "", type: 'search' %>
       <% end %>
     </nav>
-    
-  <!-- postit style로 대체
-    <nav class= "bottom-searchbar nav-search"> /내가 만든 검색바라서 언니랑 class 준 게 다름 
-	  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
-      <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "전공책 또는 저자로 검색해주세요", type: 'search' %>
-    <% end %>
-    </nav>
-  -->
   </div>
-
 </nav>
-
 
 <script>
 	$(document).scroll(function() {
@@ -451,14 +165,12 @@ ul.navbar-nav li.nav-item {
 			$('.top-searchbar').addClass('shown');
       $('input#search').addClass('shown');
       $('.navbar').addClass('colored');
-      $('.navbar-top-line').addClass('unshown');
 
 		}
 		else {
 			$('.top-searchbar').removeClass('shown');
       $('input#search').removeClass('shown');
       $('.navbar').removeClass('colored');
-      $('.navbar-top-line').removeClass('unshown');
 		}		
 	});
 

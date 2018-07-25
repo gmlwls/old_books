@@ -1,37 +1,58 @@
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
-  a {
-    font-size: 1rem;
-  }
+nav {
+  height: 50px;
+  border-bottom: 1px solid rgba(184,184,184, 0.3);
+}
 
-  nav {
-    height: 50px;
-    border-bottom: 1px solid rgba(184,184,184, 0.3);
-  }
+#navbarNav {
+  margin-left: 3%;
+  margin-left: -15%;
+}
 
-  .logo-link {
-    margin-left: 11%;
-  }
+#navbarNav.shown {
+  margin-right: 11%;
+  margin-left: -15%;
+}
+  
+.top-searchbar {
+  visibility: hidden;
+}
 
-  .logo2 {
-    font-size: 2.5rem;
-    font-family: 'Abril Fatface', cursive;
-  }
+.top-searchbar.shown {
+  width: 25%;
+	color: black;
+  visibility : visible;
+  transition: 0.4s all;
+}
 
-  .hl {
-    color: #fdd400;
-  }
+.top-searchbar input#search {
+  width: 100%;
+  visibility: hidden;
+}
+
+.top-searchbar input#search.shown{
+  width: 100%;
+  transition: 0.2s all;
+  visibility: visible;
+}
 
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light">
-
-    <%= link_to root_path, class: 'logo-link' do%><div class="logo2"><span class="hl">m</span>ango</div><% end %>
+  <%= link_to root_path, class: 'logo-link', style: 'margin-left: 11%' do%>
+    <div class="logo2"><span class="hl">m</span>ango</div>
+  <% end %>
+  <nav class= "top-searchbar nav-search">
+	  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
+      <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "전공책 또는 저자로 검색해주세요", type: 'search' %>
+    <% end %>
+  </nav>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse head-nav" id="navbarNav" style="margin-right: 11%;">
+  <div class="collapse navbar-collapse head-nav" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href=<%= root_path%>>검색하기</a>

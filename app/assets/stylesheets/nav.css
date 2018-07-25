@@ -1,14 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
-* {margin: 0; padding: 0;}
-a {text-decoration: none;}
-
-
-ul.navbar-nav > li.nav-item {
-  color: black;
-  font-family: 'GyeonggiBatang';
+a {
+  font-size: 1rem;
+  text-decoration: none;
 }
-
-
 
 /*
 .logo, .logo2 {
@@ -17,11 +12,8 @@ ul.navbar-nav > li.nav-item {
   background-repeat: no-repeat;
   background-position: center;
 }
-
-.logo {
-  height: 50px;
-}
 */
+
 .logo {
   height: 50px;
   display: flex;
@@ -36,8 +28,20 @@ ul.navbar-nav > li.nav-item {
 }
 
 .logo2 {
-  height: 45px;
+  font-size: 2.5rem;
+  font-family: 'Abril Fatface', cursive;
+  text-align: start;
 }
+
+.logo-link {
+  margin-left: 11%;
+}
+
+#navbarNav {
+  margin-right: 11%;
+  margin-left: -15%;
+}
+
 @media all and (max-width: 992px){
   .logo, .logo2 {
     width: 144px;
@@ -51,17 +55,16 @@ ul.navbar-nav > li.nav-item {
     justify-content: flex-end;
   }
 }
+
 .nav-search {
   justify-content: center;
 }
 .nav-search .search-form .form-control {
   width: 100%;
-  border-radius: 30px;
 }
 .search-form2 .form-control {
   width: 100%;
   border-color: #ffc107;
-  border-radius: 30px;
 }
 @media all and (max-width: 576px){
   .nav-search .search-form {
@@ -94,15 +97,3 @@ ul.navbar-nav > li.nav-item {
   text-align: center;
   left: -180px;
 }
-
-
-/* ---------------------------
-
-위까지는 언니코드 (혹시몰라서 안지웠어용) 
-아래부터는 내 코드 
-
-----------------------------*/
-
-
-* {margin: 0; padding: 0;}
-a {text-decoration: none;}
