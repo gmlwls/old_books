@@ -48,5 +48,8 @@ class BooksController < ApplicationController
 		@book.save
 	end
 	def mypage
+		@user = current_user
+		@books = @user.books.last(4)
+		@likes = @user.likes.all
 	end
 end
