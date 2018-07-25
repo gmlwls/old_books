@@ -1,8 +1,8 @@
 <style>
 @font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
-
+@font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
 /* top-navbar */
+
 .navbar,
 .navbar.colored {
   bottom: 0;
@@ -14,18 +14,31 @@
   transition: 0.3s all; 
   padding: 0.5rem 1rem;
 }
+
 .navbar {
-  background: rgb(253,212,0);
   border-bottom: none;
 }
 .navbar.colored{
   background: rgba(255,255,255,1);
   border-bottom: 1px solid rgba(184,184,184, 0.3);
+  color: black;
 }
+/*
+.navbar-nav li.nav-item > a.nav-link,
+.navbar-nav li.nav-item > .dropdown,
+.navbar-nav li.nav-item > i.fa-bell 
+.navbar-nav li.nav-item > i.far  {
+  color: white !important;
+}
+*/
+
+#search, #regist, #mypage {
+  color: white;
+}
+
 
 /* bottom-navbar */
 .bottom-navbar {
-  background: rgb(253,212,0);
   height: 450px;
   width: 100%;
   padding-top: 50px; /* navbar 의 height 에 맞춰서 띄워줬음 */
@@ -137,26 +150,37 @@
     left: 100%;
   }
 }
+
+#particles-js {
+  width: 100%;
+  height: 500px;
+  color: white;
+  background-color: #232741;
+  position: absolute;
+}
 </style>
 
-<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<div id="particles-js">
 <%= render 'nav2' %>
+</div>
 <nav class="bottom-navbar">
-  <!-- Main mention -->
+
+<!--
   <div class="bottom-mentionArea">
     <span style="font-family: 'KCC-eunyoung'; font-size: 3.7rem;">비싼 전공책을 저렴하게,</span>
   </div>
-  <!-- Stroke animations -->
+
   <div class="stroke" id='one'></div>
   <div class="stroke" id='two'></div>
-  <!-- Searchbar -->
+
   <div class="bottom-searchArea">
-    <nav class="search-card"> <!--여기 효과적으로 합치는 방법? -->
+    <nav class="search-card">
       <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
       <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "", type: 'search' %>
       <% end %>
     </nav>
   </div>
+-->
 </nav>
 
 <script>
@@ -165,12 +189,14 @@
 			$('.top-searchbar').addClass('shown');
       $('input#search').addClass('shown');
       $('.navbar').addClass('colored');
+      $('#navbarNav').addClass('shown');
 
 		}
 		else {
 			$('.top-searchbar').removeClass('shown');
       $('input#search').removeClass('shown');
       $('.navbar').removeClass('colored');
+      $('#navbarNav').removeClass('shown');
 		}		
 	});
 
@@ -179,4 +205,118 @@
            $(this).closest('form').submit();
        }
     });
+</script>
+<script type="text/javascript" src="particles.js"></script>
+<script type="text/javascript">
+ particlesJS("particles-js",
+ {
+  "particles": {
+    "number": {
+      "value": 160,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 1,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 1,
+        "opacity_min": 0,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 4,
+        "size_min": 0.3,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": false,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 600
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "bubble"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 250,
+        "size": 0,
+        "duration": 2,
+        "opacity": 0,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 400,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
 </script>
