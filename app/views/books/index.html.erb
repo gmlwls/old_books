@@ -37,16 +37,27 @@
     height: 230px;
   }
 }
+.choice > span {
+   margin-right: 3px;
+   cursor: pointer;
+}
+
+.choice span.active {
+  color: #fdd400;
+}
+
 </style>
 <header>
 <%= render 'nav' %>
 </header>
 <main>
   <div class="books_title">
-    <span><strong style="font-weight: 600">"경제학원론"</strong>에 대한 검색 결과입니다</span>
-    <span>이름순 | 가격순 | 인기순</span>
+    <div class="result"><strong style="font-weight: 600">"경제학원론"</strong>에 대한 검색 결과입니다</div>
+    <div class="choice">
+    <span class="active">전체</span> | <span>이름순</span> | <span>가격순</span> | <span>인기순</span>
+    </div>
   </div>
-  <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 1.2rem;">
+  <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 1.2rem; min-height: 80vh;">
 
     <div class="row">
       <% @books.each do |b| %>

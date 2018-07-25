@@ -1,59 +1,70 @@
 <style>
-  .card {
-    border: none;
+  * {
+    text-align: center;
     align-items: center;
   }
-  .card-image-top{
-    margin: auto 0;
-    background-size: 100% 100%;
+  .books_title {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 4% 10%;
+    font-size: 0.9rem;
+  }
+
+  .inner-image {
+    height: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  }
-  .card-body{
-    text-align: center;
-  }
-  .card-title{
-    font-weight: bold;
-  }
-  .title{
-    font-size: 1.2rem;
-  }
-  .book_contents{
-    min-height: 800px;
-    height: 200vh; /* for scroll event debuggin */
   }
 
 @media all and (max-width: 576px){
   .card-image-top{
-    width: 200px;
+    width: 250px;
     height: 250px;
   }
 }
 @media all and (min-width: 576px) and (max-width: 992px){
   .card-image-top{
+    width: 200px;
     height: 200px;
   }
 }
 @media all and (min-width: 992px) {
   .card-image-top{
-    width: 170px;
+    width: 230px;
     height: 230px;
   }
+}
+.choice > span {
+   margin-right: 3px;
+   cursor: pointer;
+}
+.choice span.active {
+  color: #fdd400;
 }
 </style>
 <header>
 <%= render 'nav' %>
 </header>
 <main>
-  <div class="book_contents container">
+  <div class="books_title">
+    <div class="result"><strong style="font-weight: 600">"경제학원론"</strong>에 대한 검색 결과입니다</div>
+    <div class="choice">
+    <span class="active">전체</span> | <span>이름순</span> | <span>가격순</span> | <span>인기순</span>
+    </div>
+  </div>
+  <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 1.2rem; min-height: 80vh;">
     <div class="row">
       <% @books.each do |b| %>
-      <div class="col-12 col-lg-3 col-md-4 col-sm-6 card">
+      <div class="col-12 col-lg-3 col-md-4 col-sm-6 card" style="margin-bottom: 1.9rem; border: none;">
         <%= link_to book_path(b.id)do %>
-        <div class="card-image-top" style="background-image: url(<%=b.img_url%>);"></div>
-        <div class="card-body">
-          <h4 class="card-title title"><%=b.bookname%></h4>
-          <p class="card-text price"><%= b.price%>원</p>
+        <div class="card-image-top">
+          <div class="inner-image" style="background-image: url(<%=b.img_url%>)"></div>
+        </div>
+        <div class="card-body" style="padding: 1rem;">
+          <h4 class="card-title" style="font-weight: bold;"><%=b.bookname%></h4>
+          <p class="card-text"><%= b.price%>원</p>
         </div>
         <% end %>
       </div>

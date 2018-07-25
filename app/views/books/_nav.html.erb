@@ -1,8 +1,12 @@
 <style>
 @font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
-/* top-navbar */
 
+a {
+  font-weight: 200;
+}
+
+/* top-navbar */
 .navbar,
 .navbar.colored {
   bottom: 0;
@@ -11,35 +15,26 @@
   position: fixed;
 	top: 0;
   z-index: 2;
-  transition: 0.3s all; 
   padding: 0.5rem 1rem;
 }
 
 .navbar {
   border-bottom: none;
 }
+
 .navbar.colored{
   background: rgba(255,255,255,1);
   border-bottom: 1px solid rgba(184,184,184, 0.3);
   color: black;
 }
-/*
-.navbar-nav li.nav-item > a.nav-link,
-.navbar-nav li.nav-item > .dropdown,
-.navbar-nav li.nav-item > i.fa-bell 
-.navbar-nav li.nav-item > i.far  {
-  color: white !important;
-}
-*/
 
-#search, #regist, #mypage {
+#search2, #regist, #mypage {
   color: white;
 }
 
-
 /* bottom-navbar */
 .bottom-navbar {
-  height: 450px;
+  height: 500px;
   width: 100%;
   padding-top: 50px; /* navbar 의 height 에 맞춰서 띄워줬음 */
 }
@@ -87,70 +82,6 @@
   border-color: white;
   box-shadow: none;
 }
-
-/* brush Strokes */
-.stroke#one {
-  width: 400px;
-  height: 10px;
-  background: rgba(0,42,253,0.7);
-  position: absolute;
-  margin-top: 0.5%;
-  /*top: 61%;*/
-  left: 51%;
-  transform: translate(-50%,-50%);
-  overflow: hidden;
-}
-.stroke#one:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fdd400;
-  animation: animate 25s linear infinite;
-  /*animation-timing-function: cubic-bezier(.75, .04, .0, .86);*/
-  /*transition-delay: 8s;*/
-  overflow: hidden;
-}
-.stroke#two {
-  width: 400px;
-  height: 10px;
-  background: rgba(253,84,0,0.7);
-  position: absolute;
-  /*top: 60%;*/
-  margin-top: 1%;
-  left: 49%;
-  transform: translate(-50%,-50%);
-  overflow: hidden;
-}
-.stroke#two:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fdd400;
-  animation: animate 25s linear infinite;
-  animation-timing-function: cubic-bezier(.75, .04, .0, .86);
-  transition-delay: 10s;
-  overflow: hidden;
-}
-@keyframes animate {
-  0% {
-    left: 0;
-  }
-
-  5% {
-    left: 100%;
-  }
-
-  100% {
-    left: 100%;
-  }
-}
-
 #particles-js {
   width: 100%;
   height: 500px;
@@ -164,15 +95,9 @@
 <%= render 'nav2' %>
 </div>
 <nav class="bottom-navbar">
-
-<!--
   <div class="bottom-mentionArea">
-    <span style="font-family: 'KCC-eunyoung'; font-size: 3.7rem;">비싼 전공책을 저렴하게,</span>
+    <span style="font-family: 'KCC-eunyoung'; font-size: 3.7rem; color: white; z-index:100;">비싼 전공책을 저렴하게,</span>
   </div>
-
-  <div class="stroke" id='one'></div>
-  <div class="stroke" id='two'></div>
-
   <div class="bottom-searchArea">
     <nav class="search-card">
       <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
@@ -180,7 +105,6 @@
       <% end %>
     </nav>
   </div>
--->
 </nav>
 
 <script>
@@ -205,10 +129,8 @@
            $(this).closest('form').submit();
        }
     });
-</script>
 
-<script type="text/javascript">
- particlesJS("particles-js",
+  particlesJS("particles-js",
  {
   "particles": {
     "number": {
