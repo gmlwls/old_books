@@ -196,10 +196,9 @@ main {
     </h4>
     <div class="mybooks_content">
       <div class="books row">
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="book"></div>
+        <% @books.each do |x| %>
+          <div class="book" style="background-image: url(<%=x.img_url%>)"></div>
+        <% end %>
         <a class="book" href=<%= new_book_path%>><span>+</span></a>
       </div>
     </div>
@@ -211,10 +210,9 @@ main {
     </h4>  
     <div class="myzzims_content">
       <div class="books row">
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="book"></div>
+        <% @likes.each do |y| %>
+         <div class="book" style="background-image: url(<%=y.book.img_url%>)"></div>
+        <% end %>
         <a class="book" href=<%=root_path %>><span>+</span></a>
       </div>    
     </div>

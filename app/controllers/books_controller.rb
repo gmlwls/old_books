@@ -50,6 +50,6 @@ class BooksController < ApplicationController
 	def mypage
 		@user = current_user
 		@books = @user.books.last(4)
-		@likes = @user.likes.all
+		@likes = @user.likes.last(4)
 	end
 end
