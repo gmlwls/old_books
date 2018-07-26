@@ -139,6 +139,13 @@ main {
   color: white;
 }
 
+.inner-image {
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 </style>
 
 <%= render 'nav2' %>
@@ -197,7 +204,10 @@ main {
     <div class="mybooks_content">
       <div class="books row">
         <% @books.each do |x| %>
-          <div class="book" style="background-image: url(<%=x.img_url%>)"></div>
+          <div class="book">
+            <div class="inner-image" style="background-image: url(<%=x.img_url%>); padding-top: 2%;"></div>
+            <h4 class="card-title" style="text-align:center"><%=x.bookname%></h4>
+          </div>
         <% end %>
         <a class="book" href=<%= new_book_path%>><span>+</span></a>
       </div>

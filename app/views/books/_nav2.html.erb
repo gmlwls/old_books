@@ -65,8 +65,8 @@ nav {
       </li>
       <% if user_signed_in? %>
       <li class="nav-item read">
-        <div class="dropdown">
-          <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b><i class="far fa-bell"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
+        <div class="dropdown" id="bell1">
+          <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="bell2"><i class="far fa-bell" style="color: #fdd400"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
           <div class="dropdown-menu" aria-labelledby="dropdownAlart">
             <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
             <div class="dropdown-divider"></div>
@@ -74,17 +74,31 @@ nav {
           </div>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link log" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
+      <li class="nav-item"> 
+        <a class="nav-link log" id = "logs" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
       </li>
       <% else %>
       <li class="nav-item">
-        <a class="nav-link log" href=<%=new_user_session_path%>>로그인</a>
+        <a class="nav-link log" id="logs" href=<%=new_user_session_path%>>로그인</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link log" href=<%= new_user_registration_path%>>회원가입</a>
+        <a class="nav-link log" id = "logs" href=<%= new_user_registration_path%>>회원가입</a>
       </li>
       <% end %>
     </ul>
   </div>
 </nav>
+
+
+<script>
+	$(document).scroll(function() {
+		if ($(window).scrollTop() > 350) {
+      $('a#search2, a#regist, a#mypage, a#logs, .dropdown#bell1, b#bell2').css("color", "black");
+      $('.logo-link').css("margin-top","0%");
+    }
+		else {
+      $('a#search2, a#regist, a#mypage, a#logs, .dropdown#bell1, b#bell2').css("color", "black");
+      $('.logo-link').css("margin-top","0%");
+    }		
+	});
+</script>
