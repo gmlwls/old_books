@@ -1,3 +1,63 @@
+<style>
+  html {
+    height: 100vh;
+  }
+
+  body {
+    height: 100%;
+    /*background-color: #232741;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pwd {
+    width: 25%;
+  }
+
+  .field > #eml_box {
+    width: 100%;
+    height: 2.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #dadfeb;
+    border-radius: .28571429rem;
+    padding: 1rem;
+  }
+
+
+    @media (min-width: 1200px) {
+    .login_form {
+      width: 25%;
+    }
+  }
+  
+  @media (min-width: 993px) and (max-width: 1200px) {
+    .login_form {
+      width: 30%;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 992px) {
+    .login_form {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 768px){
+    .login_form {
+      width: 50%;
+    }
+  } 
+
+  @media (max-width: 575px){
+    .login_form {
+      width: 90%;
+    }   
+
+  } 
+</style>
+
+<div class="pwd">
 <h2><%= t('.forgot_your_password') %></h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -5,7 +65,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"eml_box" %>
   </div>
 
   <div class="actions">
@@ -14,3 +74,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

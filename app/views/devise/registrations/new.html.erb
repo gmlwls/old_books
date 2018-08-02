@@ -1,32 +1,109 @@
 <style>
-  .container{
-    margin: 100px;
+  html {
+    height: 100vh;
   }
-  h2 {
-    font-size: 1.2rem;
+
+  body {
+    height: 100%;
+    /*background-color: #232741;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 3rem;
     font-weight: bold;
-    color: gray;
   }
+
+  .signin_form {
+    width: 50%;
+  }
+
   .field{
     margin: 10px 0;
   }
   label{
     margin-bottom: 3px;
   }
-  .field > input{
+
+  legend {
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+  }
+  .field > input,
+  .sec > input {
     width: 100%;
-    height: 30px;
+    height: 3rem;
+    margin: 0.5rem 0;
+    border: 1px solid #dadfeb;
+    border-radius: .28571429rem;
+    padding: 1rem;
+  }
+
+  .sec {
+    width: 49%;
   }
   .actions{
+    display: flex;
+    justify-content : space-between;
     margin-bottom: 10px;
   }
+
+  .actions > a, 
+  #btn {
+    width: 49%;
+    height: 3rem;
+    background-color: #fdd400;
+    border: none;
+    border-radius: 25px; 
+  }
+
+  .actions > a {
+    background-color: white;
+    border: 1px solid #fdd400;
+    text-align:center;
+    line-height: 3rem;
+  }
+
+    @media (min-width: 1200px) {
+    .signin_form {
+      width: 30%;
+    }
+  }
+  
+  @media (min-width: 993px) and (max-width: 1200px) {
+   .signin_form {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 992px) {
+   .signin_form {
+      width: 45%;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 768px){
+   .signin_form {
+      width: 60%;
+    }
+  } 
+
+  @media (max-width: 575px){
+   .signin_form {
+      width: 90%;
+    }   
+
+  } 
 </style>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8">
-    <h2><%= t('.sign_up') %></h2><hr>
 
 
+<div class="signin_form">
+  <h1 style="margin-bottom: 3%; text-align:center;">반짝</h1>
+  <p style="text-align:center; margin-bottom: 4%;">간단한 가입으로 개이득을 누리세요(가제)</p>
+
+<legend>기본 정보</legend><hr>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
@@ -35,17 +112,18 @@
     <%= f.text_field :username, autofocus: true, autocomplete: "username", required: true %>
   </div>
   
-  <div class="field">
+  <div class="field" style="display: flex; justify-content:space-between;">
+  <div class="sec">
     <%= f.label :학과 %><br />
     <%= f.text_field :school, autofocus: true, autocomplete: "school", required: true, placeholder: "예) 경영학과" %>
-    
   </div>
-
-  <div class="field">
+  <div class="sec">
     <%= f.label :학번 %><br />
-    <%= f.text_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "14학번이시라면 '14'라고 숫자만 기입" %>
+    <%= f.text_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "숫자만 기입 ex.14" %>
+  </div>
   </div>
 
+<legend>계정 정보</legend><hr>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
@@ -65,11 +143,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t('.sign_up') %>
+    <%= render "devise/shared/links"%>
+    <%= f.submit t('.sign_up'), id:"btn" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
-</div>
-  </div>
+
 </div>

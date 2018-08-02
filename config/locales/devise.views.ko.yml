@@ -18,7 +18,7 @@ ko:
         password: "비밀번호"
         password_confirmation: "비밀번호 확인"
         remember_created_at: "로그인 기록된 시간"
-        remember_me: "로그인 정보 기억하기"
+        remember_me: "로그인 상태 유지"
         reset_password_sent_at: "재설정된 암호 발송"
         reset_password_token: "재설정된 암호 토큰"
         sign_in_count: "로그인 수"

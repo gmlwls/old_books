@@ -1,54 +1,214 @@
 <style>
-  .container{
-    margin: 100px;
+  html {
+    height: 100vh;
   }
-  h2 {
-    font-size: 1.2rem;
+
+  body {
+    height: 100%;
+    /*background-color: #232741;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 3rem;
     font-weight: bold;
-    color: gray;
   }
-  .field{
-    margin: 10px 0;
+
+  .login_form {
+    width: 25%;
   }
+
+  .login_ment {
+    margin-bottom: 3%;
+  }
+
   label{
     margin-bottom: 3px;
   }
   .field1 > input{
     width: 100%;
-    height: 30px;
+    height: 3rem;
+    margin: 0.5rem 0;
+    border: 1px solid #dadfeb;
+    border-radius: .28571429rem;
+    padding: 1rem;
   }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
+  }
+
+  h1, p {
+    text-align: center;
+  }
+
   .actions{
     margin-bottom: 10px;
   }
-</style>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8">
-<h2><%= t('.sign_in') %></h2><hr>
 
+  .login_bottom {
+    width: 88%;
+    margin-left: 6%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .login_bottom > a {
+    font-size: 0.9rem;
+  }
+
+  #btn {
+    width: 100%;
+    height: 3rem;
+    background-color: #fdd400;
+    border: none;
+    border-radius: 25px; 
+  }
+
+  @media (min-width: 1200px) {
+    .login_form {
+      width: 25%;
+    }
+  }
+  
+  @media (min-width: 993px) and (max-width: 1200px) {
+    .login_form {
+      width: 30%;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 992px) {
+    .login_form {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 768px){
+    .login_form {
+      width: 50%;
+    }
+  } 
+
+  @media (max-width: 575px){
+    .login_form {
+      width: 90%;
+    }   
+
+  } 
+.cbx {
+  margin: auto;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+.cbx span {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translate3d(0, 0, 0);
+}
+.cbx span:first-child {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  /*border-radius: 3px;*/
+  transform: scale(1);
+  vertical-align: middle;
+  border: 1px solid #dadfeb;
+  transition: all 0.2s ease;
+}
+.cbx span:first-child svg {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16px;
+  stroke-dashoffset: 16px;
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+  transform: translate3d(0, 0, 0);
+}
+.cbx span:first-child:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #506EEC;
+  display: block;
+  transform: scale(0);
+  opacity: 1;
+  border-radius: 50%;
+}
+.cbx span:last-child {
+  padding-left: 8px;
+}
+.cbx:hover span:first-child {
+  border-color: #506EEC;
+}
+
+.inp-cbx:checked + .cbx span:first-child {
+  background: #fdd500;
+  border-color: #fdd400;
+  animation: wave 0.4s ease;
+}
+.inp-cbx:checked + .cbx span:first-child svg {
+  stroke-dashoffset: 0;
+}
+.inp-cbx:checked + .cbx span:first-child:before {
+  transform: scale(3.5);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+@keyframes wave {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+</style>
+
+<div class="login_form">
+<div class="login_ment">
+  <h1 style="margin-bottom: 3%;">반짝</h1>
+  <p>서강대생을 위한 중고책 거래 플랫폼</p>
+</div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field field1">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "세인트 이메일" %>
   </div>
 
-  <div class="field field1">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="field field1" style="margin-top: -2%;">
+    <%= f.password_field :password, autocomplete: "off", placeholder: "패스워드"%>
   </div>
 
+<!-- 이거 맞는 형식인가? 확인하는 게 어렵군 -->
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+    <div class="field" style="margin-bottom: 7%;">
+    <%= f.check_box :remember_me , class: "inp-cbx", id:"cbx", style: "display: none;"%>
+    <label class="cbx" for="cbx">
+    <span>
+      <svg width="12px" height="10px" viewbox="0 0 12 10">
+      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+      </svg>
+    </span>
+    <%= f.label :remember_me %>
+    </label>
+  </div>
+<% end -%>
 
-  <div class="actions">
-    <%= f.submit t('.sign_in') %>
+  <div class="actions" style="margin-bottom: 5%;">
+    <%= f.submit t('.sign_in'), id: "btn"%>
   </div>
 <% end %>
 
+<div class="login_bottom">
+<a href="#">비밀번호 재설정</a>
 <%= render "devise/shared/links" %>
 </div>
 </div>
+

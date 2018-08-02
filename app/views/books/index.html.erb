@@ -51,6 +51,16 @@
   color: #fdd400;
 }
 
+.nav-link#search2 {
+  visibility: hidden;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: column;
+  justify-content : center;
+}
+
 </style>
 
 <%= render 'nav' %>
@@ -70,7 +80,7 @@
           <div class="inner-image" style="background-image: url(<%=b.img_url%>)"></div>
         </div>
         <div class="card-body" style="padding-bottom: 1.5rem;">
-          <h4 class="card-title" style="font-weight: bold;"><%=b.bookname%></h4>
+          <div class="card-title" style="height: 2rem;"><h4 style="font-weight: bold;"><%=b.bookname%></h4></div>
           <p class="card-text"><%= b.price%>원</p>
         </div>
         <% end %>
