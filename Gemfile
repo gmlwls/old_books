@@ -7,6 +7,7 @@ end
 
 #양곤180803
 gem 'figaro'
+gem 'mysql2'
 
 #회원가입
 gem 'devise'
