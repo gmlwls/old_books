@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#양곤180803
+gem 'figaro'
+
 #회원가입
 gem 'devise'
 gem 'devise-i18n'

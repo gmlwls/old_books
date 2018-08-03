@@ -23,3 +23,10 @@
 .byebug_history
 public/uploads/book/img_url/2/1519736390980.jpg
 public/uploads/book/img_url/*
+# Ignore application configuration
+/config/application.yml
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
