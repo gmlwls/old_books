@@ -186,14 +186,14 @@ main {
     내가 올린 책들
     </h4>
     <div class="mybooks_content">
-      <div class="books row">
+      <div class="books upload row">
         <% @books.each do |x| %>
           <div class="book">
             <div class="inner-image" style="background-image: url(<%=x.img_url%>); padding-top: 2%;"></div>
             <h4 class="card-title" style="text-align:center"><%=x.bookname%></h4>
           </div>
         <% end %>
-        <a class="book" href=<%= new_book_path%>><span>+</span></a>
+        
       </div>
     </div>
   </section>
@@ -203,11 +203,10 @@ main {
     내가 찜한 책들
     </h4>  
     <div class="myzzims_content">
-      <div class="books row">
+      <div class="books zzims row">
         <% @likes.each do |y| %>
          <div class="book" style="background-image: url(<%=y.book.img_url%>)"></div>
         <% end %>
-        <a class="book" href=<%=root_path %>><span>+</span></a>
       </div>    
     </div>
   </section>
@@ -215,7 +214,23 @@ main {
 </main>
 <%= render 'footer' %>
 
+<script>
+$(document).ready(function () {
+  <% if @books.size<4 %>
+  <% for i in 1..4-@books.size do %>
+    $('.upload').append("<div class='book' style='background-color: gray'></div>");
+  <% end %>
+  <% end %>
+  $('.upload').append("<a class='book' href=<%= new_book_path%>><span>+</span></a>");
 
+  <% if @likes.size<4 %>
+  <% for i in 1..4-@likes.size do %>
+     $('.zzims').append("<div class='book' style='background-color: gray'></div>");
+  <% end %>
+  <% end %>
+  $('.zzims').append("<a class='book' href=<%=root_path %>><span>+</span></a>")
+});  
+</script>
 
 
 
