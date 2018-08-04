@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180707043327) do
 
   create_table "new_notifications", force: :cascade do |t|
     t.string "content"
+    t.string "content_truncate"
     t.integer "user_id"
     t.string "link"
     t.datetime "created_at", null: false
