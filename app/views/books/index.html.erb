@@ -66,27 +66,40 @@
 <%= render 'nav' %>
 <main>
   <div class="books_title">
-    <div class="result"><strong style="font-weight: 600">"경제학원론"</strong>에 대한 검색 결과입니다</div>
+    <div class="result"><strong style="font-weight: 600">""</strong>에 대한 검색 결과입니다</div>
     <div class="choice">
-    <span class="active">전체</span> | <span>이름순</span> | <span>가격순</span> | <span>인기순</span>
+    <span class="active option" id = "0">전체</span> | <span class="option" id = "1">이름순</span> | <span class="option" id = "2">가격순</span> | <span class="option" id = "3">인기순</span>
     </div>
   </div>
   <div class="book_contents container">
     <div class="row">
-      <% @books.each do |b| %>
-      <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" style="margin-bottom: 3rem; border: none;">
-        <%= link_to book_path(b.id)do %>
-        <div class="card-image-top">
-          <div class="inner-image" style="background-image: url(<%=b.img_url%>)"></div>
-        </div>
-        <div class="card-body" style="padding-bottom: 1.5rem;">
-          <div class="card-title" style="height: 2rem;"><h4 style="font-weight: bold;"><%=b.bookname%></h4></div>
-          <p class="card-text"><%= b.price%>원</p>
-        </div>
-        <% end %>
-      </div>
-      <% end %>
+      <%= render 'book_div', books: @books %>
     </div>
   </div>
 </main>
 <%= render 'footer' %>
+
+<script>
+$(document).ready(function () {
+    $(document).on('click', '.option', function () {
+        $(".active").toggleClass("active");
+        $(this).toggleClass("active");
+        var opt = $(this).attr('id');
+        $(".row").empty();
+        if(opt==0) {
+          var html = "<%= escape_javascript(render(partial: 'book_div', locals: {books: @books.sort_by{ |b| b.id}})) %>";
+        }
+        else if(opt==1){
+          var html = "<%= escape_javascript(render(partial: 'book_div', locals: {books: @books.sort_by{ |b| b.bookname}})) %>";
+        }
+        else if(opt==2){
+          var html = "<%= escape_javascript(render(partial: 'book_div', locals: {books: @books.sort_by{ |b| b.price}})) %>";
+        }
+        else{
+          var html = "<%= escape_javascript(render(partial: 'book_div', locals: {books: @books.sort_by{ |b| b.likes.size*-1}})) %>";
+        }
+        
+        $(".row").append(html);
+    });
+});  
+</script>

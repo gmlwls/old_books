@@ -10,14 +10,12 @@
     padding: 4% 10%;
     font-size: 0.9rem;
   }
-
   .inner-image {
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
   }
-
 @media all and (max-width: 576px){
   .card-image-top{
     width: 250px;
@@ -43,7 +41,6 @@
 .choice span.active {
   color: #fdd400;
 }
-
 .nav-link#search2 {
   visibility: hidden;
 }
@@ -53,26 +50,14 @@
 </header>
 <main>
   <div class="books_title">
-    <div class="result"><strong style="font-weight: 600">"경제학원론"</strong>에 대한 검색 결과입니다</div>
+    <div class="result"><strong style="font-weight: 600">"<%=params[:search]%>"</strong>에 대한 검색 결과입니다</div>
     <div class="choice">
     <span class="active">전체</span> | <span>이름순</span> | <span>가격순</span> | <span>인기순</span>
     </div>
   </div>
   <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 1.2rem; min-height: 80vh;">
     <div class="row">
-      <% @books.each do |b| %>
-      <div class="col-12 col-lg-3 col-md-4 col-sm-6 card" style="margin-bottom: 1.9rem; border: none;">
-        <%= link_to book_path(b.id)do %>
-        <div class="card-image-top">
-          <div class="inner-image" style="background-image: url(<%=b.img_url%>)"></div>
-        </div>
-        <div class="card-body" style="padding: 1rem;">
-          <h4 class="card-title" style="font-weight: bold;"><%=b.bookname%></h4>
-          <p class="card-text"><%= b.price%>원</p>
-        </div>
-        <% end %>
-      </div>
-      <% end %>
+      <%= render 'book_div', books: @books %>
     </div>
   </div>
 </main>
