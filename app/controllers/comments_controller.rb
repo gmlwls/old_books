@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.save
 
-    @new_notification = NewNotification.create! user: @book.user, content: "#{current_user.username}님이 #{@book.bookname}책에 댓글을 달았습니다.", link: book_path(@book)
+    @new_notification = NewNotification.create! user: @book.user, content: "#{current_user.username}님이 #{@book.bookname}책에 댓글을 달았습니다.".truncate(20, omission: '...'), link: book_path(@book)
   end
 
   def destroy
