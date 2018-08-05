@@ -16,19 +16,17 @@ li.nav-item a#regist {
 }
 
 .ment {
-  padding-top: 7%;
+  padding-top: 4%;
   text-align: center;
 }
 
 .ment h2 {
-  color: white;
-  font-size: 4rem;
-  font-family: 'KCC-eunyoung';
+  font-size: 2.5rem;
 }
 
 @media all and (max-width: 992px){
 	.submit-form .submit-form-content{
-		width: 70%;
+		width: 90%;
 	}
 }
 @media all and (min-width: 992px) {
@@ -66,9 +64,8 @@ li.nav-item a#regist {
 }
 
 .form-label {
-	margin-bottom: 0.4rem;
-	font-size: 1.1rem;
-	color: gray;
+	margin-bottom: 0.5rem;
+	font-size: 1rem;
 }
 .main-label {
 	font-size: 1.8rem;
@@ -87,9 +84,6 @@ form {
 
 textarea {
 	height: 200px;
-}
-fieldset {
-	margin: 40px 0;
 }
 
 input[type=text],
@@ -171,9 +165,7 @@ textarea {
 
 <%= render 'nav2' %>
 <div class="whole">
-<div id="banner">
   <div class="ment"><h2>책등록하기</h2></div>
-</div>
 <%= render 'form', book: @book, path: books_path, form_method: 'post' %>
 </div>
 

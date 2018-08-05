@@ -60,7 +60,7 @@ strong {
 	font-size: 1rem;
 	min-height: 400px;
 	border: 1px solid rgb(217,217,217);
-	border-radius: 20px;
+	border-radius: .28571429rem;
 }
 .button {
 	width: 100%;
@@ -97,6 +97,12 @@ strong {
 .button3 .fa-heart {
   color: #ff0000;
 }
+
+#zzim {
+	width: 50%; 
+}
+
+
 </style>
 
 <header>
@@ -138,11 +144,11 @@ strong {
 				</div>
 				<div class="offset-sm-4 col-sm-4 offset-lg-2 col-lg-3 offset-xl-3 col-xl-2">
 					<% if current_user.is_like?(@book) %>
-							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn' do %>
+							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn', id:'zzim' do %>
 								<i class="far fa-heart"></i><%=@book.likes.size %>
 							<% end %>
 							<% else %>
-							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button2 like-btn' do %>
+							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button2 like-btn',id:'zzim' do %>
 								<i class="far fa-heart"></i><%=@book.likes.size %>
 							<% end %>
 							<% end %>
@@ -155,6 +161,7 @@ strong {
 				<p><%= @book.content %></p>
 			</div>
 		</div>
+
 		<div class="book-detail book-detail2">
 			<h3 style="color: gray;">댓글</h3>
 			<div class="content">
@@ -162,6 +169,7 @@ strong {
         			<% @book.comments.each do |comment| %>
         				<%= render partial: "comments/item", locals: { book: @book, comment: comment } %>
         				<div id="comment-<%=comment.id%>-replyform", class="ml-2"></div>
+								<hr>
         			<% end %>
     			</ul> 
   			  <%= form_for [@book, @book.comments.new], remote: true do |f| %>
@@ -172,6 +180,35 @@ strong {
 				<% end %>
 			</div>
 		</div>
+
+<!--
+<table class="data comments">
+  <tr class="comments">
+    <th>Entry Header 1</th>
+    <th>Entry Header 2</th>
+    <th>Entry Header 3</th>
+    <th>Entry Header 4</th>
+  </tr>
+  <tr>
+    <td>Entry First Line 1</td>
+    <td>Entry First Line 2</td>
+    <td>Entry First Line 3</td>
+    <td>Entry First Line 4</td>
+  </tr>
+  <tr>
+    <td>Entry Line 1</td>
+    <td>Entry Line 2</td>
+    <td>Entry Line 3</td>
+    <td>Entry Line 4</td>
+  </tr>
+  <tr>
+    <td>Entry Last Line 1</td>
+    <td>Entry Last Line 2</td>
+    <td>Entry Last Line 3</td>
+    <td>Entry Last Line 4</td>
+  </tr>
+</table>
+-->
 	</div>
 </main>
 <%= render 'footer' %>
