@@ -33,7 +33,7 @@ class BooksController < ApplicationController
 	def find
 		search = params[:search]
 	    if search.nil? || search.empty?
-	      @books=Book.all
+	      @books=Book.where(sell: false)
 	    else
 	      @books = Book.where("author LIKE ? OR bookname LIKE ?", "%#{search}%", "%#{search}%")
 	    end

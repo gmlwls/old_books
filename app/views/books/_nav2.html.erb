@@ -38,6 +38,26 @@ nav {
   visibility: visible;
 }
 
+.btm_menubox {
+  height: 55px;
+  width: 100%;
+  background-color: blue;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+}
+
+.btm_menubox > li {
+  width: 20%;
+  height: 100%;
+  background-color: yellow;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -49,9 +69,7 @@ nav {
       <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "전공책 또는 저자로 검색해주세요", type: 'search' %>
     <% end %>
   </nav>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
   <div class="collapse navbar-collapse head-nav" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -87,6 +105,16 @@ nav {
       <% end %>
     </ul>
   </div>
+</nav>
+
+<nav class="mobile_nav" id="navbarNav2">
+    <ul class="btm_menubox">
+      <li id="btm_main">검색아이콘</li>
+      <li id="btm_my">마이페이지아이콘</li>
+      <li id="btm_new">+아이콘</li>
+      <li id="btm_bell">벨 아이콘</li>
+      <li id="btm_acc">사람 상반신 아이콘</li>    
+    </ul>
 </nav>
 
 

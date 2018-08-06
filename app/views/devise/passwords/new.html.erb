@@ -12,7 +12,20 @@
   }
 
   .pwd {
+    width: 30%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #btn {
     width: 25%;
+    height: 2.2rem;
+    background-color: #fdd400;
+    border: none;
+    font-size: 0.9rem;
+    border-radius: .28571429rem;
   }
 
   .field > #eml_box {
@@ -26,52 +39,54 @@
 
 
     @media (min-width: 1200px) {
-    .login_form {
-      width: 25%;
+    .pwd {
+      width: 30%;
     }
   }
   
   @media (min-width: 993px) and (max-width: 1200px) {
-    .login_form {
-      width: 30%;
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 992px) {
-    .login_form {
+    .pwd {
       width: 40%;
     }
   }
 
+  @media (min-width: 769px) and (max-width: 992px) {
+    .pwd {
+      width: 60%;
+    }
+  }
+
   @media (min-width: 576px) and (max-width: 768px){
-    .login_form {
-      width: 50%;
+    .pwd {
+      width: 65%;
     }
   } 
 
   @media (max-width: 575px){
-    .login_form {
-      width: 90%;
+    .pwd {
+      width: 70%;
     }   
 
   } 
 </style>
 
 <div class="pwd">
-<h2><%= t('.forgot_your_password') %></h2>
+<h1 style="font-size: 2rem;"><%= t('.forgot_your_password') %></h1>
+<p>이메일 주소를 입력하시면 계정에 연결된 이메일 주소로 비밀번호를 재설정 할 수 있도록 도와드립니다.</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
-
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"eml_box" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"eml_box", placeholder: "이메일 주소 입력" %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('.send_me_reset_password_instructions') %>
+    <%= f.submit t('.send_me_reset_password_instructions'), id:"btn" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="menu">
+<a href="/users/sign_in">로그인</a>
+<a href="/users/sign_up">회원 가입</a>
+</div>
 </div>
