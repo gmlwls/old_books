@@ -16,7 +16,9 @@ class RepliesController < ApplicationController
   end
   def destroy
     @reply = Reply.find(params[:id])
+    @id = @reply.comment.book.id
     @reply.destroy
+    redirect_to "/books/#{@id}#comment-box"
   end
   def edit
     @reply = Reply.find(params[:id])
