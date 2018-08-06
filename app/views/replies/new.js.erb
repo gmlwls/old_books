@@ -1,3 +1,4 @@
 (function($){
+	$('#comment-<%=@comment.id %> > a.reply-comment-link').hide();
     $('#comment-<%=@comment.id %>-replyform').append("<%= j render 'form' %>");
 })(jQuery)

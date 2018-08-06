@@ -156,7 +156,7 @@ strong {
 			</div>
 		</div>
 		<div class="book-detail book-detail2">
-			<h3 style="color: gray;">댓글</h3>
+			<h3 style="color: gray;" id="comment-box">댓글</h3>
 			<div class="content">
 				<ul class="comments">
         			<% @book.comments.each do |comment| %>
@@ -165,7 +165,7 @@ strong {
         			<% end %>
     			</ul> 
   			  <%= form_for [@book, @book.comments.new], remote: true do |f| %>
-				  	 <%= f.text_field :content %>
+				  	 <%= f.text_field :content, :autocomplete => :off %>
 				  	 <%= label_tag(:secret, "비밀댓글") %>
 				  	 <%= f.check_box(:secret) %>
 				   	 <%= f.submit %>

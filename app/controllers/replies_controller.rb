@@ -10,6 +10,9 @@ class RepliesController < ApplicationController
     @reply = @comment.replies.build(reply_params)
     @reply.user_id = current_user.id
     @reply.save
+
+    redirect_to "/books/#{@book.id}/#reply-#{@reply.id}"
+
   end
   def destroy
     @reply = Reply.find(params[:id])

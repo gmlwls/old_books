@@ -5,21 +5,25 @@ class CommentsController < ApplicationController
     @comment = @book.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-
     @new_notification = NewNotification.create! user: @book.user, content: "#{current_user.username}님이 #{@book.bookname}책에 댓글을 달았습니다.", link: book_path(@book)
+    redirect_to "/books/#{@book.id}/#comment-#{@comment.id}"
   end
 
   def destroy
     @comment = Comment.find(params[:id])
+    @id = @comment.book.id
     @comment.destroy
+    redirect_to "/books/#{@id}#comment-box"
   end
   def edit
     @comment = Comment.find(params[:id])
+
   end
   def update 
     @comment = Comment.find(params[:id])
     @book = @comment.book
     @comment.update(comment_params)
+    redirect_to "/books/#{@book.id}/#comment-#{@comment.id}"
   end
 
   private
