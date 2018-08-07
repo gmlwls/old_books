@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20180707043327) do
     t.text "bookname"
     t.text "author"
     t.integer "price"
+    t.float "discount", default: 0.0
     t.string "img_url"
     t.text "content"
     t.boolean "sell", default: false

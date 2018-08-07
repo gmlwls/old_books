@@ -20,6 +20,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'carrierwave', '~> 1.0'
 #알림
 gem 'unread'
+gem 'naver-sdk'
 
 
 #프론트 용 잼

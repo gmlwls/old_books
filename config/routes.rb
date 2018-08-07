@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'books#index'
   get 'books/find', as: 'books_find'
-
+  get '/info/:info', to: 'books#info', as: 'find_info'
   get '/mypage', to: 'books#mypage', as: 'mypage'
   
   resources :books do

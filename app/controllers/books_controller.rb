@@ -7,12 +7,18 @@ class BooksController < ApplicationController
 	def new
 		@book = Book.new
 	end
+	def info
+		@search_results = Naver::Search.book(query: params[:info])
+	end
 	def create
 		book = Book.new
 		book.user_id = current_user.id
 		book.bookname = params[:book][:bookname]
 		book.author = params[:book][:author]
 		book.price = params[:book][:price]
+		if params[:book][:cost] != 0
+			book.discount = ((params[:book][:cost].to_f - params[:book][:price].to_f) / params[:book][:cost].to_f * 100).round(2)
+		end
 		book.img_url = params[:book][:image]
 		book.content = params[:book][:content]
 		book.save
