@@ -1,4 +1,4 @@
-<h2><%= t('.title', resource: resource_name.to_s.humanize) %></h2>
+<h2><%= t('회원 정보 수정', resource: resource_name.to_s.humanize) %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= f.label :학번 %><br />
-    <%= f.text_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "14학번이시라면 '14'라고 숫자만 기입" %>
+    <%= f.number_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "숫자만 기입 ex.14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
   </div>
 
   <div class="field">
@@ -29,22 +29,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :password, '새 비밀번호(6자리 이상)' %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+    <%= f.password_field :password, autocomplete: "off", :required => true, :pattern => '.{6,}' %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+      <em><%= t('(6자리 이상으로 해주세요)', count: @minimum_password_length) %></em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation, '새 비밀번호 한번 더 입력' %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true, :pattern => '.{6,}' %>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", :required => true, :pattern => '.{6,}' %>
   </div>
 
   <div class="actions">
@@ -52,7 +52,7 @@
   </div>
 <% end %>
 
-<h3><%= t('.cancel_my_account') %></h3>
+
 
 <p><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %></p>
 
