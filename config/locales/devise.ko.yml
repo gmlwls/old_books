@@ -1,5 +1,17 @@
 ko:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              invalid: "를 바르게 입력해주세요."
+            password:
+              too_short: "6자리 이상의 비밀번호를 지정해주세요."
+            password_confirmation:
+              confirmation: "을 다시 해주세요. 새로 입력한 비밀번호가 일치하지 않습니다."
+            email:
+              taken: "이미 가입된 이메일 입니다."
     attributes:
       user:
         confirmation_sent_at: "확인 메일 전송 시간"

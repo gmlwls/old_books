@@ -106,7 +106,6 @@
 <legend>기본 정보</legend><hr>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  
   <div class="field">
     <%= f.label :이름 %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username", required: true %>
@@ -119,32 +118,31 @@
   </div>
   <div class="sec">
     <%= f.label :학번 %><br />
-    <%= f.text_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "숫자만 기입 ex.14" %>
+    <%= f.number_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "숫자만 기입 ex.14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
   </div>
   </div>
 
 <legend>계정 정보</legend><hr>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :이메일 %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :비밀번호 %>
     <% if @minimum_password_length %>
-    <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+    <em><%= t('(6자리 이상으로 해주세요)', count: @minimum_password_length) %></em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", :required => true, :pattern => '.{6,}'  %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :비밀번호재입력 %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true, :pattern => '.{6,}' %>
   </div>
 
   <div class="actions">
-    <%= render "devise/shared/links"%>
-    <%= f.submit t('.sign_up'), id:"btn" %>
+    <%= f.submit "회원가입", id:"btn" %>
   </div>
 <% end %>
 

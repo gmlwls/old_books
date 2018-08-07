@@ -8,7 +8,6 @@ end
 #양곤180803
 gem 'figaro'
 
-
 #회원가입
 gem 'devise'
 gem 'devise-i18n'
