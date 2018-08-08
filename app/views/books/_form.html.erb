@@ -16,8 +16,13 @@
 	  <div class="form-group">
 			<%= f.label :가격, class: 'form-label' %>(원)
 			<%= f.text_field :price, class: 'form-control price', :required => true%>
-	  </div> 
-	  <div class="form-group">
+		</div>
+		<div class="form-group">
+			<%= f.label :원래가격, class: 'form-label' %>(원)
+			<input class="form-control orgprice" id="disabledInput" type="text" placeholder="" disabled>
+		</div>
+
+		<div class="form-group">
 			<%= f.hidden_field :cost, class: 'form-control cost', value: 0%>
 	  </div> 
 
@@ -49,12 +54,16 @@ $(document).ready(function () {
     	$('.find-info').attr('href', '/info/'+info);
     });
     $(document).on('click', 'li', function () {
+			var title = $(this).data("title");
     	var author = $(this).data("author");
     	var price = $(this).data("price");
+    	console.log(title);			
     	console.log(author);
     	console.log(price);
+			$('.bookname').val(title);
     	$('.author').val(author);
     	$('.cost').val(price);
+    	$('.orgprice').val(price);
     });
 });  
 </script>

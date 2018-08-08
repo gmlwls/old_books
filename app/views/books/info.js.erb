@@ -11,6 +11,6 @@
 		var author = "<%=@search_results.items[i].author%>";
 		author = replaceAll(author, "&lt;b&gt;", "");
 		author = replaceAll(author, "&lt;/b&gt;", "");
-		$('.info').append('<li data-author="'+author+'" data-price = "<%= @search_results.items[i].price%>"><%=image_tag @search_results.items[i].image %><br>' + '제목: ' + title + '<br>저자: '+author+'<br>가격 : <%=@search_results.items[i].price%></li>');
+		$('.info').append('<li data-author="'+author+'" data-title="'+title+'" data-price = "<%= @search_results.items[i].price%>"><%=image_tag @search_results.items[i].image %><br>' + '제목: ' + title + '<br>저자: '+author+'<br>가격 : <%=@search_results.items[i].price%></li>');
 	<% end %>
 })(jQuery)

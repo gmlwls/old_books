@@ -70,6 +70,7 @@
   #logo {
     margin-bottom: 3%;
     font-size: 3rem;
+
   }
 
   @media (min-width: 1200px) {
@@ -218,32 +219,3 @@
 </div>
 </div>
 
-<script>
-swal({
-	title: "Are you sure you want to delete your account?", 
-	text: "If you are sure, type in your password:", 
-	type: "input",
-	inputType: "password",
-	showCancelButton: true,
-	closeOnConfirm: false
-}, function(typedPassword) {
-
-	if (typedPassword === "") {
-		swal.showInputError("You need to type in your password in order to do this!");
-        return false;
-	}
-
-	$.ajax({
-		url: "/api/delete-account",
-        data: { password: typedPassword },
-        type: "POST"
-	})
-	.done(function(data) {
-        swal("Deleted!", "Your account has been deleted!", "success");
-	})
-	.error(function(data) {
-        swal.showInputError("Your password is wrong!");
-	});
-});
-</script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
