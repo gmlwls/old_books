@@ -67,6 +67,11 @@
     border-radius: 25px; 
   }
 
+  #logo {
+    margin-bottom: 3%;
+    font-size: 3rem;
+  }
+
   @media (min-width: 1200px) {
     .login_form {
       width: 25%;
@@ -174,7 +179,7 @@
 
 <div class="login_form">
 <div class="login_ment">
-  <h1 style="margin-bottom: 3%;">반짝</h1>
+  <a href="/"><p id="logo">반짝</p></a>
   <p>서강대생을 위한 중고책 거래 플랫폼</p>
 </div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -213,3 +218,32 @@
 </div>
 </div>
 
+<script>
+swal({
+	title: "Are you sure you want to delete your account?", 
+	text: "If you are sure, type in your password:", 
+	type: "input",
+	inputType: "password",
+	showCancelButton: true,
+	closeOnConfirm: false
+}, function(typedPassword) {
+
+	if (typedPassword === "") {
+		swal.showInputError("You need to type in your password in order to do this!");
+        return false;
+	}
+
+	$.ajax({
+		url: "/api/delete-account",
+        data: { password: typedPassword },
+        type: "POST"
+	})
+	.done(function(data) {
+        swal("Deleted!", "Your account has been deleted!", "success");
+	})
+	.error(function(data) {
+        swal.showInputError("Your password is wrong!");
+	});
+});
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

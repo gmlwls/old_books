@@ -44,13 +44,7 @@
   .sec {
     width: 49%;
   }
-  .actions{
-    display: flex;
-    justify-content : space-between;
-    margin-bottom: 10px;
-  }
 
-  .actions > a, 
   #btn {
     width: 49%;
     height: 3rem;
@@ -59,14 +53,19 @@
     border-radius: 25px; 
   }
 
-  .actions > a {
-    background-color: white;
-    border: 1px solid #fdd400;
-    text-align:center;
-    line-height: 3rem;
+  #action1, 
+  #action2 {
+    display: flex;
+    justify-content:center;
   }
 
-    @media (min-width: 1200px) {
+  #logo {
+    margin-bottom: 3%;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px) {
     .signin_form {
       width: 30%;
     }
@@ -94,13 +93,12 @@
    .signin_form {
       width: 90%;
     }   
-
   } 
 </style>
 
 
 <div class="signin_form">
-  <h1 style="margin-bottom: 3%; text-align:center;">반짝</h1>
+  <a href="/"><p id="logo">반짝</p></a>
   <p style="text-align:center; margin-bottom: 4%;">간단한 가입으로 개이득을 누리세요(가제)</p>
 
 <legend>기본 정보</legend><hr>
@@ -141,8 +139,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", :required => true, :pattern => '.{6,}' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "회원가입", id:"btn" %>
+  <div class="field">
+  <div class="action" id="action1">
+  <%= f.submit "회원가입", id:"btn", style: "font-size: 1.2rem;" %>
+  </div>
+  <div class="action" id="action2" style="margin-top: 2.5%"> 
+  <a href="/users/sign_in">돌아가기</a>
+  </div>   
   </div>
 <% end %>
 

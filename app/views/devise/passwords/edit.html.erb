@@ -1,9 +1,93 @@
-<h2><%= t('.change_your_password') %></h2>
+<style>
+  html {
+    height: 100vh;
+  }
 
+  body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
+  .repwd_form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 1200px) {
+    .repwd_form {
+      width: 30%;
+    }
+  }
+  
+  @media (min-width: 993px) and (max-width: 1200px) {
+   .repwd_form {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 992px) {
+   .repwd_form {
+      width: 45%;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 768px){
+   .repwd_form {
+      width: 60%;
+    }
+  } 
+
+  @media (max-width: 575px){
+   .repwd_form {
+      width: 90%;
+    }   
+  }
+
+  #new_user {
+    width: 100%;
+  } 
+  
+  .field > input {
+    width: 100%;
+    height: 3rem;
+    margin: 0.5rem 0;
+    border: 1px solid #dadfeb;
+    border-radius: .28571429rem;
+    padding: 1rem;
+  }
+
+
+.action1, 
+.action2 {
+  text-align: center;
+}
+
+#btn {
+  width: 49%;
+  height: 3rem;
+  background-color: white;
+  border: 1px solid #fdd400;
+  border-radius: 25px; 
+}
+
+</style>
+
+
+<div class="repwd_form">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
+  <h2>비밀번호 변경하기</h2>
   <div class="field">
     <%= f.label :password, t('.new_password') %><br />
     <% if @minimum_password_length %>
@@ -17,9 +101,16 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit t('.change_my_password') %>
+  <div class="action1" style="margin-bottom: 3%;">
+    <div><%= f.submit t('.change_my_password'), id: "btn", style:"margin-top: 3%; margin-bottom: 3%;" %></div>
+    <a href="/users/confirmation/new">인증 이메일을 못받으셨나요?</a>
   </div>
+  <div class="action2" style="margin-top: 10%;">
+    <a href="/users/sign_in">로그인</a>
+    <a href="/users/sign_up">회원가입</a>
+  </div>
+  
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+

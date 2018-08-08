@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
   }
 
   #btn {
@@ -24,8 +25,8 @@
     height: 2.2rem;
     background-color: #fdd400;
     border: none;
-    font-size: 0.9rem;
     border-radius: .28571429rem;
+    margin-bottom: 3%;
   }
 
   .field > #eml_box {
@@ -35,6 +36,17 @@
     border: 1px solid #dadfeb;
     border-radius: .28571429rem;
     padding: 1rem;
+  }
+
+  #logo {
+    margin-bottom: 3%;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .menu > a {
+    margin-right: 5%;
+    margin-left: 5%;
   }
 
 
@@ -70,9 +82,11 @@
   } 
 </style>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="pwd">
-<h1 style="font-size: 2rem;"><%= t('.forgot_your_password') %></h1>
-<p>이메일 주소를 입력하시면 계정에 연결된 이메일 주소로 비밀번호를 재설정 할 수 있도록 도와드립니다.</p>
+<a href="/"><p id="logo">반짝</p></a>
+<h1 style="font-size: 1.5rem;"><%= t('.forgot_your_password') %></h1>
+<p>이메일 주소를 입력하시면<br> 계정에 연결된 이메일 주소로 비밀번호를 재설정 할 수 있도록 도와드립니다.</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
@@ -90,3 +104,15 @@
 <a href="/users/sign_up">회원 가입</a>
 </div>
 </div>
+<script>
+  $('#btn').click(function() {
+    swal({
+      icon: "success",
+      title : "확인 메일 전송 완료",
+      text: "메일함을 확인해보세요",
+      buttons: false,
+      timer: 2500,
+      closeModal: false
+      });
+    }) 
+  </script>

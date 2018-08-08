@@ -1,16 +1,103 @@
-<h2><%= t('.resend_confirmation_instructions') %></h2>
+<style>
+  html {
+    height: 100vh;
+  }
 
+  body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
+  .resend_form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 1200px) {
+    .resend_form {
+      width: 30%;
+    }
+  }
+  
+  @media (min-width: 993px) and (max-width: 1200px) {
+   .resend_form {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 992px) {
+   .resend_form {
+      width: 45%;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 768px){
+   .resend_form {
+      width: 60%;
+    }
+  } 
+
+  @media (max-width: 575px){
+   .resend_form {
+      width: 90%;
+    }   
+  }
+
+  #new_user {
+    width: 100%;
+  } 
+  
+  .field > input {
+    width: 100%;
+    height: 3rem;
+    margin: 0.5rem 0;
+    border: 1px solid #dadfeb;
+    border-radius: .28571429rem;
+    padding: 1rem;
+  }
+
+
+.action1, 
+.action2 {
+  text-align: center;
+}
+
+#btn {
+  width: 49%;
+  height: 3rem;
+  background-color: white;
+  border: 1px solid #fdd400;
+  border-radius: 25px; 
+}
+
+</style>
+
+
+<div class="resend_form">
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
+  <h2><%= t('.resend_confirmation_instructions') %></h2>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
-  <div class="actions">
-    <%= f.submit t('.resend_confirmation_instructions') %>
+  <div class="action1">
+    <%= f.submit t('.resend_confirmation_instructions'), id: "btn", style:"margin-top: 3%; margin-bottom: 3%;" %>
+  </div>
+  <div class="action2" style="margin-top: 10%;">
+    <a href="/users/sign_in">로그인</a>
+    <a href="/users/sign_up">회원가입</a>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>
