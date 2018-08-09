@@ -44,6 +44,11 @@
 .nav-link#search2 {
   visibility: hidden;
 }
+.no_books {
+  visibility: hidden;
+  margin-top: 5%;
+}
+
 </style>
 <header>
 <%= render 'nav' %>
@@ -56,6 +61,7 @@
     </div>
   </div>
   <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 1.2rem; min-height: 80vh;">
+    <div class="no_books"><p style="font-size: 1.8rem;">책이 없어요ㅠㅠㅠ</p></div>    
     <div class="row">
       <%= render 'book_div', books: @books %>
     </div>
@@ -85,5 +91,13 @@ $(document).ready(function () {
         
         $(".row").append(html);
     });
+
+    var cardnum = $('.card-title').length;
+    if(cardnum==0) {
+      $('.no_books').css('visibility','visible');
+    }
+    else {
+      $('.no_books').css('visibility','hidden');
+    }
 });  
 </script>

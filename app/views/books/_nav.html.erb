@@ -112,7 +112,7 @@ a {
   <div class="bottom-searchArea">
     <nav class="search-card">
       <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
-      <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "", type: 'search' %>
+      <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "저자, 도서명 등을 입력하세요", type: 'search' %>
       <% end %>
     </nav>
   </div>

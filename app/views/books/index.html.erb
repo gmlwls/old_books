@@ -61,16 +61,21 @@
   justify-content : center;
 }
 
+.no_books {
+  visibility: hidden;
+}
+
 </style>
 
 <%= render 'nav' %>
 <main>
   <div class="books_title">
-    <div class="result"><strong style="font-weight: 600">""</strong>에 대한 검색 결과입니다</div>
+    <div class="result"></div>
     <div class="choice">
     <span class="active option" id = "0">전체</span> | <span class="option" id = "1">이름순</span> | <span class="option" id = "2">가격순</span> | <span class="option" id = "3">인기순</span>
     </div>
   </div>
+  <div class="no_books">책이 없습니다</div>
   <div class="book_contents container">
     <div class="row">
       <%= render 'book_div', books: @books %>
@@ -102,4 +107,5 @@ $(document).ready(function () {
         $(".row").append(html);
     });
 });  
+
 </script>
