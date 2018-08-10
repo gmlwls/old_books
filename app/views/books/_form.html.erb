@@ -63,7 +63,7 @@ td:hover {
 
 .find-info {
 	width: 20%;
-	padding: 2% 4%;
+	padding: 2% 2%;
 }
 .table-top, .table-btm {
 	visibility: hidden;
@@ -84,7 +84,7 @@ td:hover {
 		<%= f.label :도서명, class: 'form-label'%>
 		<div class="form-group2">
 			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '직접 입력하기',:required => true%>
-			<%= link_to '찾아보기', '', class: 'find-info', remote: true %>
+			<%= link_to '도서명/저자검색', '', class: 'find-info', remote: true %>
 	  </div>
 
 		<div class="table-top" style="display: flex; justify-content: space-between;">
