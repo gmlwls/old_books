@@ -12,7 +12,7 @@ legend {
 	font-size: 1.3rem;
 	font-weight: 600;
 	margin-top: 5%;
-	margin-bottom: 3%;
+	margin-bottom: 5%;
 }
 
 /*
@@ -53,8 +53,6 @@ td:hover {
 
 .info {
 	width: 100% !important;
-	margin-bottom: 3%;
-	margin-top: 1%;
 }
 
 .form-group3 {
@@ -63,24 +61,50 @@ td:hover {
 
 .find-info {
 	width: 20%;
-	padding: 2% 2%;
+	padding: 3% 1%;
 }
 .table-top, .table-btm {
 	visibility: hidden;
 }
 
-.table-top {
-	margin-top: 3%;
+i {
+	color: #495057 !important;
+	margin-right: 2%;
 }
 
-.table-btm {
-	margin-bottom: 3%;
+.ment {
+	margin-top: 2%;
+	margin-bottom: 8%;
+	
 }
+
+.ment h2 {
+	font-size: 2rem;
+	font-weight: 600;
+	color: #495057;
+}
+
+.sub {
+	font-size: 1rem;
+	font-weight: 400;
+	color: #717171;
+}
+
 </style>
 <div class="submit-form">
 <%= form_for book, url: path, method: form_method, multipart: true, :html => {class: 'submit-form-content'} do |f| %>
+  <div class="ment">
+		<h2 style="margin-bottom: 1%;">책등록하기</h2>
+		<!-- <p>몇 번의 클릭으로 편하게 책을 등록해보세요</p>-->
+	</div>
 	<fieldset>
-		<legend>도서 정보</legend>
+		<legend>
+			<div style="display: flex;">
+				<i class="fas fa-book-open"></i>
+				<div style="width: 80%;"><p style="margin-bottom: 1%;">도서 정보</p><p class="sub">저자나 책 이름을 입력하고 검색을 눌러보세요</p></div>
+			</div>
+		</legend>
+
 		<%= f.label :도서명, class: 'form-label'%>
 		<div class="form-group2">
 			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '직접 입력하기',:required => true%>
@@ -103,8 +127,14 @@ td:hover {
 			<input class="form-control orgprice" id="disabledInput" type="text" placeholder="" disabled>
 		</div>
 		</div>
-
-		<legend>판매 정보</legend>
+		
+		<hr>
+		<legend>
+			<div style="display: flex;">
+				<i class="fas fa-money-bill-wave"></i>
+				<div style="width: 80%;"><p style="margin-bottom: 1%;">판매 정보</p><p class="sub">원하는 가격을 입력하면 자동으로 할인율이 계산됩니다</p></div>
+			</div>
+		</legend>
 
 		<div class="form-group2">
 	  <div class="form-group">
@@ -112,7 +142,7 @@ td:hover {
 			<%= f.text_field :price, class: 'form-control price',:required => true%>
 		</div>
 		<div class="form-group">
-			<%= f.label :할인율, class: 'form-label' %>(원)
+			<%= f.label :할인율, class: 'form-label' %>
 			<p class="dicnt">%</p>
 		</div>
 		</div>
@@ -133,7 +163,9 @@ td:hover {
 		</div>
 
 		<div class="btn-groups">
-		<button type="submit" class="btn" id="btn1" style="margin-right: 4px;" >등록하기</button>
+		<button type="submit" class="btn" id="btn1" style="margin-right: 4px;" >뒤로가기</button>
+		<button type="submit" class="btn" id="btn2" style="margin-right: 4px;" >등록하기</button>
+
 		</div>
 	  </fieldset>
 <% end %>
@@ -162,6 +194,10 @@ $(document).ready(function () {
 
 		$(document).on('click', '.find-info',function() {
 			$('.table-top').css('visibility','visible');
+			$('.table-top').css('margin-top','6%');
+			$('.table-btm').css('margin-bottom','3%');
+			$('.info').css('margin-top','1%');
+			$('.info').css('margin-bottom','3%');
 		});
 });  
 </script>
