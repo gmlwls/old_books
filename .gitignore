@@ -32,3 +32,4 @@ public/uploads/book/img_url/*
 !.elasticbeanstalk/*.global.yml
 public/uploads/book/img_url/1/1.JPG
 *.JPG
+*.JPG

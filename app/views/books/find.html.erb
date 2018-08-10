@@ -92,6 +92,7 @@ $(document).ready(function () {
         $(".row").append(html);
     });
 
+    // 검색 결과 유무에 따라 멘트 등장
     var cardnum = $('.card-title').length;
     if(cardnum==0) {
       $('.no_books').css('visibility','visible');

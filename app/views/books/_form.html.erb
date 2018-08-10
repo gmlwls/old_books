@@ -1,25 +1,120 @@
+<style>
+.form-group2 {
+	display: flex;
+	justify-content : space-between;
+}
+
+.form-group2 > .form-group {
+	width: 48%;
+}
+
+legend {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-top: 5%;
+	margin-bottom: 3%;
+}
+
+/*
+ul {
+	list-style-type: none;
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+	border: 1px solid #cfd9db;
+	border-radius: .25em;
+}
+
+li {
+	display: table-cell;
+	width: 50%;
+}
+*/
+
+}
+table {
+  border-collapse: collapse;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 1em;
+  background: #f3f3f3;
+  border-bottom: 3px solid white;
+	border-right: 1.5px solid white; 
+	text-align: center;
+	vertical-align: middle;
+}
+
+td:hover {
+	background-color: #d9d9d9;
+}
+
+.info {
+	width: 100% !important;
+	margin-bottom: 3%;
+	margin-top: 1%;
+}
+
+.form-group3 {
+	width: 80%;
+}
+
+.find-info {
+	width: 20%;
+	padding: 2% 4%;
+}
+.table-top, .table-btm {
+	visibility: hidden;
+}
+
+.table-top {
+	margin-top: 3%;
+}
+
+.table-btm {
+	margin-bottom: 3%;
+}
+</style>
 <div class="submit-form">
 <%= form_for book, url: path, method: form_method, multipart: true, :html => {class: 'submit-form-content'} do |f| %>
 	<fieldset>
-		<div class="form-group">
-			<%= f.label :도서명, class: 'form-label'%>
-			<%= f.text_field :bookname, class: 'form-control bookname', :required => true%>
+		<legend>도서 정보</legend>
+		<%= f.label :도서명, class: 'form-label'%>
+		<div class="form-group2">
+			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '직접 입력하기',:required => true%>
 			<%= link_to '찾아보기', '', class: 'find-info', remote: true %>
-			<ul class="info">
-				
-			</ul>
-	  </div> 
-	  <div class="form-group">
-			<%= f.label :저자, class: 'form-label' %>(대표)
-			<%= f.text_field :author, class: 'form-control author', :required => true%>
 	  </div>
-	  <div class="form-group">
-			<%= f.label :가격, class: 'form-label' %>(원)
-			<%= f.text_field :price, class: 'form-control price', :required => true%>
+
+		<div class="table-top" style="display: flex; justify-content: space-between;">
+			<span>상위 5개 검색 결과입니다</span>
+			<span>출처 : <a href="https://book.naver.com/" target="_blank" style="color: blue;">네이버 북스</a></span>
 		</div>
+		<table class="info"></table>
+		
+		<div class="form-group2"> 
+	  <div class="form-group">
+			<%= f.label :저자, class: 'form-label'%>(대표)
+			<%= f.text_field :author, class: 'form-control author half', placeholder: '직접 입력하기',:required => true%>
+	  </div>
 		<div class="form-group">
 			<%= f.label :원래가격, class: 'form-label' %>(원)
 			<input class="form-control orgprice" id="disabledInput" type="text" placeholder="" disabled>
+		</div>
+		</div>
+
+		<legend>판매 정보</legend>
+
+		<div class="form-group2">
+	  <div class="form-group">
+			<%= f.label :가격, class: 'form-label' %>(원)
+			<%= f.text_field :price, class: 'form-control price',:required => true%>
+		</div>
+		<div class="form-group">
+			<%= f.label :할인율, class: 'form-label' %>(원)
+			<p class="dicnt">%</p>
+		</div>
 		</div>
 
 		<div class="form-group">
@@ -53,7 +148,8 @@ $(document).ready(function () {
     	var info = $('.bookname').val();
     	$('.find-info').attr('href', '/info/'+info);
     });
-    $(document).on('click', 'li', function () {
+    
+		$(document).on('click', 'tr', function () {
 			var title = $(this).data("title");
     	var author = $(this).data("author");
     	var price = $(this).data("price");
@@ -65,5 +161,9 @@ $(document).ready(function () {
     	$('.cost').val(price);
     	$('.orgprice').val(price);
     });
+
+		$(document).on('click', '.find-info',function() {
+			$('.table-top').css('visibility','visible');
+		});
 });  
 </script>
