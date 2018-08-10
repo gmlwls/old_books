@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.1'
 #사진 업로드
 gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
 #알림
 gem 'unread'
 gem 'naver-sdk'

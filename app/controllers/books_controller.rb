@@ -11,16 +11,11 @@ class BooksController < ApplicationController
 		@search_results = Naver::Search.book(query: params[:info])
 	end
 	def create
-		book = Book.new
+		book = Book.new(book_params)
 		book.user_id = current_user.id
-		book.bookname = params[:book][:bookname]
-		book.author = params[:book][:author]
-		book.price = params[:book][:price]
 		if params[:book][:cost] != 0
 			book.discount = ((params[:book][:cost].to_f - params[:book][:price].to_f) / params[:book][:cost].to_f * 100).round(2)
 		end
-		book.img_url = params[:book][:image]
-		book.content = params[:book][:content]
 		book.save
 		redirect_to root_path
 	end
@@ -58,4 +53,8 @@ class BooksController < ApplicationController
 		@books = @user.books.last(4)
 		@likes = @user.likes.last(4)
 	end
+    private
+    def book_params
+       params.require(:book).permit(:bookname, :author, :price, :content, {img_url: []})
+    end
 end
