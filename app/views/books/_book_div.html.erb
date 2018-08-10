@@ -2,7 +2,7 @@
 <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" style="margin-bottom: 3rem; border: none;">
   <%= link_to book_path(b.id)do %>
   <div class="card-image-top">
-    <div class="inner-image" style="background-image: url(<%=b.img_url%>)"></div>
+    <div class="inner-image" style="background-image: url(<%=b.img_url.first%>)"></div>
   </div>
   <div class="card-body" style="padding-bottom: 1.5rem;">
     <div class="card-title" style="height: 2rem;"><h4 style="font-weight: bold;"><%=b.bookname%></h4></div>
