@@ -185,7 +185,7 @@ main {
       <div class="books upload row">
         <% @books.each do |x| %>
           <div class="book">
-            <div class="inner-image" style="background-image: url(<%=x.img_url%>); padding-top: 2%;"></div>
+            <div class="inner-image" style="background-image: url(<%=x.img_url.first%>); padding-top: 2%;"></div>
             <h4 class="card-title" style="text-align:center"><%=x.bookname%></h4>
           </div>
         <% end %>
@@ -201,7 +201,7 @@ main {
     <div class="myzzims_content">
       <div class="books zzims row">
         <% @likes.each do |y| %>
-         <div class="book" style="background-image: url(<%=y.book.img_url%>)"></div>
+         <div class="book" style="background-image: url(<%=y.book.img_url.first%>)"></div>
         <% end %>
       </div>    
     </div>
