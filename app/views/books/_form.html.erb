@@ -84,7 +84,7 @@ td:hover {
 		<%= f.label :도서명, class: 'form-label'%>
 		<div class="form-group2">
 			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '직접 입력하기',:required => true%>
-			<%= link_to '도서명/저자검색', '', class: 'find-info', remote: true %>
+			<%= link_to '제목/저자검색', '', class: 'find-info', remote: true %>
 	  </div>
 
 		<div class="table-top" style="display: flex; justify-content: space-between;">
@@ -134,8 +134,6 @@ td:hover {
 
 		<div class="btn-groups">
 		<button type="submit" class="btn" id="btn1" style="margin-right: 4px;" >등록하기</button>
-		<!--<%= link_to '', class: 'more-book' do %><i class="fas fa-plus"></i><% end %>-->
-		<button class="btn" id="btn2"><%= link_to '', class: 'more-book' do %>추가하기<% end %></button>
 		</div>
 	  </fieldset>
 <% end %>
