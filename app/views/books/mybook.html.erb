@@ -151,31 +151,7 @@ main {
 <main>
 
 <div class="ment"><h2>마이페이지</h2></div>
-
 <div id = "wrap" class="vertically divided grid container">
-  <section id="trade" class="row">
-    <h4 class="trade_header each_header">
-    거래내역
-    </h4>
-    <div class="trade_content">
-      <div class="msgs">
-        <% current_user.new_notifications.unread_by(current_user).each do |m| %>
-          <%= link_to m, class: 'msg row' do %>
-            <div class="msg_bell col-md-1">읽지 않음</div>
-            <div class="msg_title col-md-9"><%= m.content %></div>
-            <div class="msg_time col-md-2"><%= m.created_at.strftime("%Y-%m-%d") %></div>
-          <% end %>
-        <% end %>
-        <% current_user.new_notifications.read_by(current_user).each do |m| %>
-          <%= link_to m , class: 'msg row' do %>
-            <div class="msg_bell col-md-1">읽음</div>
-            <div class="msg_title col-md-9"><%= m.content %></div>
-            <div class="msg_time col-md-2"><%= m.created_at.strftime("%Y-%m-%d") %></div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </section>
   <hr>
   <section id="mybooks" class="row">
     <h4 class="mybooks_header each_header">
@@ -193,39 +169,12 @@ main {
     </div>
   </section>
   <hr>
-  <section id="myzzims" class="row">
-    <h4 class="myzzims_header each_header">
-    내가 찜한 책들
-    </h4>  
-    <div class="myzzims_content">
-      <div class="books zzims row">
-        <% @likes.each do |y| %>
-         <div class="book" style="background-image: url(<%=y.book.img_url.first%>)"></div>
-        <% end %>
-      </div>    
-    </div>
-  </section>
 </div>
+<!-- 정원아 이거야 -->
+<%= paginate @books %> 
 </main>
 <%= render 'footer' %>
 
-<script>
-$(document).ready(function () {
-  <% if @books.size<4 %>
-  <% for i in 1..4-@books.size do %>
-    $('.upload').append("<div class='book' style='background-color: gray'></div>");
-  <% end %>
-  <% end %>
-  $('.upload').append("<a class='book' href=<%= mybook_path%>><span>+</span></a>");
-
-  <% if @likes.size<4 %>
-  <% for i in 1..4-@likes.size do %>
-     $('.zzims').append("<div class='book' style='background-color: gray'></div>");
-  <% end %>
-  <% end %>
-  $('.zzims').append("<a class='book' href=<%= myzzim_path%>><span>+</span></a>");
-});  
-</script>
 
 
 
