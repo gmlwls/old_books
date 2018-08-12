@@ -123,7 +123,7 @@
 <legend>계정 정보</legend><hr>
   <div class="field">
     <%= f.label :이메일 %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+    <%= f.email_field :email, pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", autofocus: true, autocomplete: "email", required: true %>
   </div>
 
   <div class="field">
