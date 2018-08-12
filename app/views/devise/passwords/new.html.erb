@@ -82,7 +82,6 @@
   } 
 </style>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="pwd">
 <a href="/"><p id="logo">반짝</p></a>
 <h1 style="font-size: 1.5rem;"><%= t('.forgot_your_password') %></h1>
@@ -104,15 +103,3 @@
 <a href="/users/sign_up">회원 가입</a>
 </div>
 </div>
-<script>
-  $('#btn').click(function() {
-    swal({
-      icon: "success",
-      title : "확인 메일 전송 완료",
-      text: "메일함을 확인해보세요",
-      buttons: false,
-      timer: 2500,
-      closeModal: false
-      });
-    }) 
-</script>
