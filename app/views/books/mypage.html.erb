@@ -155,7 +155,7 @@ main {
 <div id = "wrap" class="vertically divided grid container">
   <section id="trade" class="row">
     <h4 class="trade_header each_header">
-    거래내역
+    최근활동
     </h4>
     <div class="trade_content">
       <div class="msgs">
@@ -183,12 +183,13 @@ main {
     </h4>
     <div class="mybooks_content">
       <div class="books upload row">
-        <% @books.each do |x| %>
-          <div class="book">
-            <div class="inner-image" style="background-image: url(<%=x.img_url.first%>); padding-top: 2%;"></div>
-            <h4 class="card-title" style="text-align:center"><%=x.bookname%></h4>
-          </div>
+        <% for i in 0..3 %>
+        <div class='book mybook-<%=i%>'>
+          <div class="inner-image" style="background-color: gray; padding-top: 2%;"></div>
+          <h4 class="card-title" style="text-align:center"></h4>
+        </div>
         <% end %>
+        <a class='book' href=<%= mybook_path%>><span>+</span></a>
       </div>
     </div>
   </section>
@@ -199,9 +200,13 @@ main {
     </h4>  
     <div class="myzzims_content">
       <div class="books zzims row">
-        <% @likes.each do |y| %>
-         <div class="book" style="background-image: url(<%=y.book.img_url.first%>)"></div>
+        <% for i in 0..3 %>
+        <div class='book myzzim-<%=i%>' style='background-color: gray'>
+          <div class="inner-image" style="background-color: gray; padding-top: 2%;"></div>
+          <h4 class="card-title" style="text-align:center"></h4>
+        </div>
         <% end %>
+        <a class='book' href=<%= myzzim_path%>><span>+</span></a>
       </div>    
     </div>
   </section>
@@ -211,19 +216,19 @@ main {
 
 <script>
 $(document).ready(function () {
-  <% if @books.size<4 %>
-  <% for i in 1..4-@books.size do %>
-    $('.upload').append("<div class='book' style='background-color: gray'></div>");
+  <% @books.each_with_index do |b, i| %>
+    var book = $('.mybook-<%=i%>');
+    book.find('.inner-image').css('background-color', '');
+    book.find('.inner-image').css('background-image', 'url(<%=b.img_url.first%>)');
+    book.find('.card-title').text('<%=b.bookname%>');
   <% end %>
-  <% end %>
-  $('.upload').append("<a class='book' href=<%= mybook_path%>><span>+</span></a>");
 
-  <% if @likes.size<4 %>
-  <% for i in 1..4-@likes.size do %>
-     $('.zzims').append("<div class='book' style='background-color: gray'></div>");
+  <% @likes.each_with_index do |l, i| %>
+    var like = $('.myzzim-<%=i%>');
+    like.find('.inner-image').css('background-color', '');
+    like.find('.inner-image').css('background-image', 'url(<%=l.book.img_url.first%>)');
+    like.find('.card-title').text('<%=l.book.bookname%>');
   <% end %>
-  <% end %>
-  $('.zzims').append("<a class='book' href=<%= myzzim_path%>><span>+</span></a>");
 });  
 </script>
 
