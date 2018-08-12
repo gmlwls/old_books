@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'books/find', as: 'books_find'
   get '/info/:info', to: 'books#info', as: 'find_info'
   get '/mypage', to: 'books#mypage', as: 'mypage'
+  get '/mypage/mybook', to: 'books#mybook', as: 'mybook'
+  get '/mypage/myzzim', to: 'books#myzzim', as: 'myzzim'
   
   resources :books do
   	post '/like', to: 'books#like_toggle'
