@@ -1,8 +1,17 @@
 <style>
-  * {
+  
+  .result {
     text-align: center;
-    align-items: center;
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
   }
+
+    #mobilebtn {
+    color: black !important;
+  }
+
+
+  /*
   .books_title {
     height: 50px;
     display: flex;
@@ -15,7 +24,38 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    /*for debugging
+    border: 1px solid gray;
   }
+
+  #eachcard a {
+    display: flex;
+  }
+
+  #eachcard {
+    margin: 0.5rem;
+    border:none;
+    height: 10rem;
+  }
+
+  .card-image-top {
+    height: 10rem;
+    width: 100%;
+  }
+
+  .card-body {
+    width: 70%;
+    right: 0;
+  }
+
+  .card {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  
 @media all and (max-width: 576px){
   .card-image-top{
     width: 250px;
@@ -34,38 +74,35 @@
     height: 230px;
   }
 }
-.choice > span {
-   margin-right: 3px;
-   cursor: pointer;
-}
-.choice span.active {
-  color: #fdd400;
-}
-.nav-link#search2 {
-  visibility: hidden;
-}
-.no_books {
-  visibility: hidden;
-  margin-top: 5%;
-}
+
+
+*/
 
 </style>
+
 <header>
-<%= render 'nav' %>
+<%= render 'nav2' %>
 </header>
+
 <main>
+
   <div class="books_title">
     <div class="result"><strong style="font-weight: 600">"<%=params[:search]%>"</strong>에 대한 검색 결과입니다</div>
     <div class="choice">
     <span class="active option" id = "0">전체</span> | <span class="option" id = "1">이름순</span> | <span class="option" id = "2">가격순</span> | <span class="option" id = "3">인기순</span>
     </div>
   </div>
-  <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 1.2rem; min-height: 80vh;">
-    <div class="no_books"><p style="font-size: 1.8rem;">책이 없어요ㅠㅠㅠ</p></div>    
+
+  <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 0rem; min-height: 80vh;">
+  
+    <div class="no_books"><p style="font-size: 1rem; margin: 0;">책이 없어요ㅠㅠㅠ</p></div>    
+  
     <div class="row">
       <%= render 'book_div', books: @books %>
     </div>
+
   </div>
+
 </main>
 <%= render 'footer' %>
 
@@ -96,9 +133,11 @@ $(document).ready(function () {
     var cardnum = $('.card-title').length;
     if(cardnum==0) {
       $('.no_books').css('visibility','visible');
+      $('.no_books').css('height','1rem');
     }
     else {
       $('.no_books').css('visibility','hidden');
+      $('.no_books').css('height','0');
     }
 });  
 </script>

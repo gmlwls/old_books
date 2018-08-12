@@ -1,15 +1,23 @@
 <style>
-@font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
-
+/*@font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
+*/
 nav {
   height: 50px;
   border-bottom: 1px solid rgba(184,184,184, 0.3);
 }
 
+a, p, span {
+  font-size: 1rem;
+  line-height: 25px;
+  font-weight: 400;
+}
+
+/*
 #navbarNav {
   margin-right: 11%;
   margin-left: -15%;
 }
+*/
 
 #navbarNav.shown {
   margin-right: 11%;
@@ -38,41 +46,103 @@ nav {
   visibility: visible;
 }
 
-.btm_menubox {
-  height: 55px;
-  width: 100%;
-  background-color: blue;
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
-  display: flex;
+/* sidebar */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-.btm_menubox > li {
-  width: 20%;
-  height: 100%;
-  background-color: yellow;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;  
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#mobilebtn {
+  cursor:pointer;
+  color: white;
+  visibility: hidden;
+  font-size: 30px;
+}
+
+nav#mobilesearch {
+  visibility: hidden !important;
+  width: 0px !important;
+}
+
+
+/* 전체 화면 그냥 이렇게 지정한 것임 */
+@media screen and (max-width: 960px) {
+  #mobilebtn {
+    visibility: visible;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* media queries */
+@media all and (min-width: 320px){
+
+}
+@media all and (min-width: 576px) and (max-width: 991px){
+
+}
+@media all and (min-width: 992px) {
+}
+
+@media all and (min-width: 1200px) {
+
+}
+
+
 
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light">
-  <%= link_to root_path, class: 'logo-link', style: 'margin-left: 11%' do%>
-    <div class="logo">반짝</div>
+<nav class="navbar navbar-expand-lg navbar-light" style="border-bottom: none;">
+  <%= link_to root_path, class: 'logo-link' do%>
+    <!-- <div class="logo">반짝</div>-->
+    <i class="fas fa-arrow-left" style="font-size: 30px; margin-right: 8%;" id="arrow"></i>
+    <div class="minititle"><span></span></div>
   <% end %>
-  <nav class= "top-searchbar nav-search">
+  
+
+<!--
+  <nav class= "top-searchbar nav-search" id="mobilesearch">
 	  <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
       <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "전공책 또는 저자로 검색해주세요", type: 'search' %>
-    <% end %>
+    <% end %> 
   </nav>
-
-  <div class="collapse navbar-collapse head-nav" id="navbarNav">
+-->
+  <div id="mobilebtn" onclick="openNav()">&#9776;</div>
+  <div class="collapse navbar-collapse head-nav" id="navbarNav" style="justify-content:flex-end;">
     <ul class="navbar-nav">
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" id="search2" href=<%= root_path%>>검색하기</a>
       </li>
       <li class="nav-item">
@@ -105,28 +175,43 @@ nav {
       <% end %>
     </ul>
   </div>
-</nav>
 
-<nav class="mobile_nav" id="navbarNav2">
-    <ul class="btm_menubox">
-      <li id="btm_main">검색아이콘</li>
-      <li id="btm_my">마이페이지아이콘</li>
-      <li id="btm_new">+아이콘</li>
-      <li id="btm_bell">벨 아이콘</li>
-      <li id="btm_acc">사람 상반신 아이콘</li>    
-    </ul>
-</nav>
 
+<!-- sidebar -->
+  <div id="mySidenav" class="sidenav" style="z-index: 200;">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href=<%= root_path%>>검색하기</a>
+    <a href=<%= new_book_path%>>책등록하기</a>
+    <a  href=<%= mypage_path%>>마이페이지</a>
+    <a href="#">services</a>
+    <a href="#">contact</a>
+    <a href="#">회원가입&로그인 등</a>
+  </div>
+</nav>
 
 <script>
 	$(document).scroll(function() {
 		if ($(window).scrollTop() > 350) {
       $('a#search2, a#regist, a#mypage, a#logs, .dropdown#bell1, b#bell2').css("color", "black");
       $('.logo-link').css("margin-top","0%");
+      $('#mobilesearch').css("visibility","visible");
+      $('#mobilesearch').css("width","100%");
+      $('#mobilebtn').css("color","black");
     }
 		else {
       $('a#search2, a#regist, a#mypage, a#logs, .dropdown#bell1, b#bell2').css("color", "black");
       $('.logo-link').css("margin-top","0%");
+      $('#mobilesearch').css("visibility","hidden");
+      $('#mobilesearch').css("width","0px");
+      $('#mobilebtn').css("color","white");
     }		
 	});
+
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
 </script>

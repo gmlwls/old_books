@@ -1,4 +1,14 @@
 <style>
+
+h4 {
+	font-size: 1rem;
+	font-weight: 600;
+	color: rgb(59,56,56);
+}
+
+.content {
+	background-color: white;
+}
 small {
 	font-size: 1rem;
 }
@@ -10,11 +20,11 @@ strong {
 }
 .book-detail {
 	font-size: 1.2rem;
-	padding: 0 30px;
+	padding: 0 1.5rem;
 }
 .book-detail2 {
-	margin-top: 15px;
-}
+	margin-top: 1.8rem;
+}	
 .title { 
 	margin-bottom: 30px;
 	color: gray; 
@@ -26,14 +36,16 @@ strong {
     background-position: center;
 }
 .book-content {
-	padding: 10px 30px;
+	padding: 1rem 0;
 }
 .book1 > div > h1 {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
 	font-weight: bold;
 	margin-bottom: 5px;
 }
 .book1 > div > p { font-size: 1rem; }
+
+/*
 .book1, .book2, .book3 { 
 	height: 100px;
 	display: flex;
@@ -53,18 +65,17 @@ strong {
 .book2 > p, .book3 > p {
 	margin: 5px 0;
 }
-
+*/
 .content {
 	margin-top: 0.5rem;
 	padding: 15px;
 	font-size: 1rem;
 	min-height: 400px;
-	border: 1px solid rgb(217,217,217);
 	border-radius: .28571429rem;
 }
 .button {
 	width: 100%;
-    background-color: #f7b731;
+    background-color: rgba(164, 164, 164,0.5);
     border: none;
     outline: none;
     color: white;
@@ -77,30 +88,66 @@ strong {
     text-align: center;
 }
 .button1 {
-   border-radius: 30px;
+   border-radius: .28571429rem;
 }
 .button2 {
-  background-color: white; 
+  background-color: rgba(0,0,0,0); 
   color: #A4A4A4; 
   border: 1px solid #A4A4A4;
-  border-radius: 30px;
+  border-radius: .28571429rem;
 }
 .button2 .fa-heart {
   color: #A4A4A4;
 }
 .button3 {
-  background-color: white; 
-  color: #ff0000; 
-  border: 1px solid #ff0000;
-  border-radius: 30px;
+	background-color: rgb(255,220,117); 
+	border: 1px solid rgb(255,220,117);
+  color: rgb(59,56,56); 
+  border-radius: .28571429rem;
 }
 .button3 .fa-heart {
   color: #ff0000;
 }
 
 #zzim {
-	width: 50%; 
+	width: 100%; 
 }
+
+#mobilebtn {
+  color: black !important;
+}
+
+a:hover {
+	color: black;
+}
+
+#btns {
+	padding: 0;
+}
+
+/* media queries */
+@media all and (min-width: 320px){
+
+}
+@media all and (min-width: 576px) and (max-width: 991px){
+	.book-content {
+		padding: 1rem;
+	}
+}
+@media all and (min-width: 992px) {
+	.book-content {
+		padding: 1rem;
+	}
+}
+
+@media all and (min-width: 1200px) {
+	.book-content {
+		padding: 1rem;
+	}
+}
+
+
+
 
 
 </style>
@@ -112,11 +159,11 @@ strong {
 	<div class="container">
 		<div class="book-detail book-detail1">
 			<div class="title">
-				<h3>기본정보</h3>
+				<h4>기본정보</h4>
 				<hr>
 			</div>
 			<div class="row">
-				<div class="col-sm-5 col-lg-4 col-xl-3">
+				<div class="col-sm-5 col-lg-4 col-xl-3" style="padding: 0;">
 					<div class="image" style="background-image: url(<%=@book.img_url.first %>);"></div>
 				</div>
 				<div class="col-sm-7 col-lg-8 col-xl-7 book-content">
@@ -131,19 +178,8 @@ strong {
 						<p><small>판매가 :</small> <strong><%=@book.price %>원</strong></p>
 						<p>판매자명 : <%= @book.user.username %></p> <p>학번 : <%= @book.user.studentid %></p> <p>학과 : <%= @book.user.school %></p>
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 offset-lg-4 col-lg-3 offset-xl-3 col-xl-2">
-					<% if current_user == @book.user %>
-					<% if @book.sell %>
-					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
-					<% else %>
-					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
-					<% end %>
-					<% end %>
-				</div>
-				<div class="offset-sm-4 col-sm-4 offset-lg-2 col-lg-3 offset-xl-3 col-xl-2">
+								<div class="alllbtn">
+				<div id="btns">
 					<% if current_user.is_like?(@book) %>
 							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn', id:'zzim' do %>
 								<i class="far fa-heart"></i><%=@book.likes.size %>
@@ -153,11 +189,50 @@ strong {
 								<i class="far fa-heart"></i><%=@book.likes.size %>
 							<% end %>
 							<% end %>
+				</div>			
+
+				<div id="btns">
+					<% if current_user == @book.user %>
+					<% if @book.sell %>
+					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
+					<% else %>
+					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
+					<% end %>
+					<% end %>
 				</div>
+			</div>
+				</div>
+			</div>
+<!--
+			<div class="alllbtn">
+				<div id="btns">
+					<% if current_user.is_like?(@book) %>
+							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn', id:'zzim' do %>
+								<i class="far fa-heart"></i><%=@book.likes.size %>
+							<% end %>
+							<% else %>
+							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button2 like-btn',id:'zzim' do %>
+								<i class="far fa-heart"></i><%=@book.likes.size %>
+							<% end %>
+							<% end %>
+				</div>			
+
+				<div id="btns">
+					<% if current_user == @book.user %>
+					<% if @book.sell %>
+					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
+					<% else %>
+					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+-->
 			</div>
 		</div>
 		<div class="book-detail book-detail2">
-			<h3 style="color: gray;">상세정보</h3>	
+			<h4>상세정보</h4>
+			<hr>	
 			<div class="content">
 				<!-- 정원아 여기야! -->
 				<% @book.img_url.each do |x| %>
@@ -170,7 +245,8 @@ strong {
 		</div>
 
 		<div class="book-detail book-detail2">
-			<h3 style="color: gray;" id="comment-box">댓글</h3>
+			<h4 id="comment-box">댓글</h4>
+			<hr>
 			<div class="content">
 				<ul class="comments">
         			<% @book.comments.each do |comment| %>
@@ -191,3 +267,9 @@ strong {
 	</div>
 </main>
 <%= render 'footer' %>
+
+<script>
+  $(document).ready(function () {
+		$('.minititle span').text('책상세보기');
+  });
+</script>

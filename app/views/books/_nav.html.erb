@@ -1,8 +1,8 @@
 <style>
-@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
-
+/*@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+*/
 a {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* top-navbar */
@@ -33,21 +33,22 @@ a {
 
 /* bottom-navbar */
 .bottom-navbar {
-  height: 500px;
+  height: 400px;
   width: 100%;
   padding-top: 50px; /* navbar 의 height 에 맞춰서 띄워줬음 */
 }
-.bottom-mentionArea,
 .bottom-searchArea {
   display: flex;
   justify-content: center;
 }
+
 .bottom-mentionArea {
-  margin-top: 8%;
+  justify-content: flex-start;
 }
-.bottom-searchArea {
-  margin-top: 4%;
+.bottom-mentionArea {
+  margin-top: 10%;
 }
+
 .bottom-searchbar .form-control{
   width: 30%;
 }
@@ -84,7 +85,7 @@ a {
 
 #particles-js {
   width: 100%;
-  height: 500px;
+  height: 400px;
   color: white;
   background-color: #232741;
   position: absolute;
@@ -100,6 +101,74 @@ a {
 }
 
 
+/* media queries */
+@media all and (min-width: 320px){
+  .bottom-searchArea {
+    margin-top: 12%;
+  }
+  .bottom-mentionArea {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    margin-top: 10%;
+    margin-bottom: 1%;
+  }
+
+  .bottom-mentionArea span {
+    font-size: 2.3rem;
+    text-align: start;
+    line-height: 52px;
+  }
+  
+  .bigmain {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+}
+@media all and (min-width: 576px) and (max-width: 991px){
+  .bottom-searchArea {
+    margin-top: 5%;
+  }
+  .bottom-mentionArea {
+    margin-top: 10%;
+    margin-bottom: 1%;
+  }
+
+}
+@media all and (min-width: 992px) {
+  .bottom-searchArea {
+    margin-top: 0%;
+  }
+  .bottom-mentionArea {
+    margin-top: 10%;
+    margin-bottom: 1%;
+  }
+
+  .bottom-mentionArea span {
+    font-size: 3.7rem;
+  }
+
+}
+
+@media all and (min-width: 1200px) {
+  .bottom-searchArea {
+    margin-top: 0%;
+  }
+  .bottom-mentionArea {
+    margin-top: 3%;
+    margin-bottom: 1%;
+  }
+
+}
+
+.mainment {
+  font-family: 'KCC-eunyoung', 'NanumSquare';
+  color: white;
+  z-index: 2;
+}
+
 </style>
 
 <div id="particles-js">
@@ -107,8 +176,13 @@ a {
 </div>
 <nav class="bottom-navbar">
   <div class="bottom-mentionArea">
-    <span style="font-family: 'KCC-eunyoung'; font-size: 3.7rem; color: white; z-index:100;">비싼 전공책을 저렴하게,</span>
+    <span class="smallmain mainment">
+    비싼 전공책을<br>
+    쉽게<br>
+    득템하세요<br></span>
+    <span class="bigmain mainment">비싼 전공책을 쉽게 득템하세요</span>
   </div>
+
   <div class="bottom-searchArea">
     <nav class="search-card">
       <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
@@ -124,11 +198,14 @@ a {
 			$('.top-searchbar, input#search, .navbar, #navbarNav').addClass('shown');
       $('a#search2, a#regist, a#mypage, a#logs, .dropdown#bell1, b#bell2').css("color", "black");
       $('.logo-link').css("margin-top","0%");
+      $('#mobilebtn').css('color','black');
+
     }
 		else {
 			$('.top-searchbar, input#search, .navbar, #navbarNav').removeClass('shown');
       $('a#search2, a#regist, a#mypage, a#logs, .dropdown#bell1, b#bell2').css("color", "white");
       $('.logo-link').css("margin-top","1%");		
+      $('#mobilebtn').css('color','white');
     }		
 	});
 
@@ -137,6 +214,14 @@ a {
            $(this).closest('form').submit();
        }
     });
+
+  var ww = $(window).width();
+  if (ww < 575) {
+
+  }
+  else {
+
+  }
 
   particlesJS("particles-js",
  {

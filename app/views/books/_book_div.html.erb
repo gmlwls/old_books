@@ -1,18 +1,112 @@
+<style>
+  body {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 300;
+  }
+
+  .books_title {
+    padding: 1rem;
+    padding-bottom: 0rem;
+  }
+
+  #eachcard {
+    padding: 0 0.5rem;
+    height: 10rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-body {
+    padding: 0rem;
+    width: 80%;
+  }
+
+  #eachcard a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  .card-image-top {
+    height: 100%;
+  }
+
+  .inner-image {
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*for debugging */
+    border: 1px solid gray;
+  }
+
+  .choice > span {
+    margin-right: 3px;
+    cursor: pointer;
+}
+  .choice span.active {
+    color: #fdd400;
+  }
+  .nav-link#search2 {
+    visibility: hidden;
+  }
+  .no_books {
+    visibility: hidden;
+    margin-top: 5%;
+  }
+  .choice {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .choice > span {
+    font-size: 0.9rem;
+  }
+
+  #discnt {
+  color: red;
+  }
+
+/* media queries */
+@media all and (min-width: 320px){
+
+}
+@media all and (min-width: 576px) and (max-width: 991px){
+
+}
+@media all and (min-width: 992px) {
+}
+
+@media all and (min-width: 1200px) {
+
+}
+
+
+
+</style>
+
+
 <% books.each do |b| %>
-<div class="col-12 col-xl-3 col-md-4 col-sm-6 card" style="margin-bottom: 3rem; border: none;">
+<div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
   <%= link_to book_path(b.id)do %>
   <div class="card-image-top">
     <div class="inner-image" style="background-image: url(<%=b.img_url.first%>)"></div>
   </div>
-  <div class="card-body" style="padding-bottom: 1.5rem;">
-    <div class="card-title" style="height: 2rem;"><h4 style="font-weight: bold;"><%=b.bookname%></h4></div>
+  <div class="card-body">
+    <div class="card-title"><h4><%=b.bookname%></h4></div>
     <p class="card-text"><%= b.author%></p>
     <p class="card-text"><%= b.price%>원</p>
-    <p class="card-text"><%= b.discount%>%</p>
+    <p class="card-text" id="discnt"><%= b.discount%>%</p>
   </div>
   <% end %>
 </div>
 <% end %>
 
-<!-- 정원아 이거야 -->
 <%= paginate @books %> 
+
+<script>
+  $(document).ready(function () {
+    var cw = $('.card-image-top').height();
+    $('.card-image-top').css({'width': cw + 'px'});
+  });
+</script>

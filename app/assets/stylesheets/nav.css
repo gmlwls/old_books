@@ -18,8 +18,24 @@ a {
   width: 144px;
 }
 .logo-link {
-  margin-left: 11%;
+  display: flex;
+  justify-content: flex-start;
+  min-width: 200px;
 }
+
+.minititle {
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+}
+
+.minititle span {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+
+
 .nav-search {
   justify-content: center;
 }
@@ -43,11 +59,24 @@ a {
   .nav-search .search-form {
     width: 80%;
   }
+
+  .logo-link {
+    margin-left: 0;
+  }
+
+  .navbar {
+    padding-right: 8%;
+  }
 }
 @media all and (min-width: 577px) and (max-width: 992px){
   .nav-search .search-form {
     width: 60%;
   }
+
+  .logo-link {
+    margin-left: 3%;
+  }
+
 }
 @media all and (min-width: 993px) {
   .nav-search .search-form {

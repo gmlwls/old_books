@@ -4,30 +4,44 @@
     align-items: center;
   }
 
+  a, p, span {
+    font-size: 1rem;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  #mobilebtn {
+    color: white;
+  }
+/*
   .books_title {
     height: 50px;
     display: flex;
     justify-content: space-between;
-    padding: 4% 10%;
+    padding: 5% 2% 0% 2%;
     font-size: 0.9rem;
-  }
-
-  .inner-image {
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    margin-top: 2%;
   }
 
   .book_contents {
-    padding: 1.2rem 0 10rem 0;
+    padding: 0.1rem 0 10rem 0;
     min-height: 80vh;
   }
 
 @media all and (max-width: 576px){
   .card-image-top{
-    width: 250px;
-    height: 250px;
+    width: 100%;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .card-body > p {
+    font-size: 0.9rem;
   }
 }
 @media all and (min-width: 577px) and (max-width: 992px){
@@ -42,23 +56,30 @@
     height: 230px;
   }
 }
-.choice > span {
-   margin-right: 3px;
-   cursor: pointer;
-}
-
-.choice span.active {
-  color: #fdd400;
-}
-
-.nav-link#search2 {
-  visibility: hidden;
-}
 
 .card-title {
   display: flex;
   flex-direction: column;
   justify-content : center;
+}
+
+
+
+  */
+/* media queries */
+@media all and (max-width: 575px){
+
+
+}
+@media all and (min-width: 576px) and (max-width: 991px){
+
+}
+@media all and (min-width: 992px) {
+
+}
+
+@media all and (min-width: 1200px) {
+
 }
 
 </style>
@@ -101,6 +122,5 @@ $(document).ready(function () {
         
         $(".row").append(html);
     });
-});  
-
+});
 </script>

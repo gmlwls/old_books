@@ -1,7 +1,7 @@
 <style>
 
-@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
-
+/*@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+*/
 li.nav-item a#mypage {
   color: rgb(0,42,253);
 }
@@ -142,16 +142,18 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  /*for debugging*/
+  border: 1px solid gray;
 }
+
+  #mobilebtn {
+    color: black !important;
+  }
 
 </style>
 
 <%= render 'nav2' %>
-
 <main>
-
-<div class="ment"><h2>마이페이지</h2></div>
-
 <div id = "wrap" class="vertically divided grid container">
   <section id="trade" class="row">
     <h4 class="trade_header each_header">
@@ -211,6 +213,10 @@ main {
 
 <script>
 $(document).ready(function () {
+		$('.minititle span').text('마이페이지');
+});
+
+$(document).ready(function () {
   <% if @books.size<4 %>
   <% for i in 1..4-@books.size do %>
     $('.upload').append("<div class='book' style='background-color: gray'></div>");
@@ -226,6 +232,7 @@ $(document).ready(function () {
   $('.zzims').append("<a class='book' href=<%= myzzim_path%>><span>+</span></a>");
 });  
 </script>
+
 
 
 

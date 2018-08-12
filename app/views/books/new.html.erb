@@ -3,8 +3,8 @@ html, a, p {
 	color: #1f2d3d;
 }
 
-@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
-
+/*@font-face { font-family: 'KCC-eunyoung'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+*/
 li.nav-item a#regist {
   color: rgb(253,84,0);
 }
@@ -138,17 +138,6 @@ textarea {
 	padding: 12px;
 }
 
-/*
-.btn-groups > #btn1:hover {
-	background-color: rgb(0,42,253);
-	color: white;
-}
-
-.btn-groups > #btn2:hover {
-	background-color: rgb(253,212,0);
-}
-*/
-
 .file-input > .label {
   color: #333;
   white-space: nowrap;
@@ -162,6 +151,28 @@ textarea {
 
 .more-book:hover {
 	color: black;
+}
+
+#mobilebtn {
+  color: black !important;
+}
+
+.sidenav {
+	right: 100px !important;
+}
+
+/* media queries */
+@media all and (min-width: 320px){
+
+}
+@media all and (min-width: 576px) and (max-width: 991px){
+
+}
+@media all and (min-width: 992px) {
+}
+
+@media all and (min-width: 1200px) {
+
 }
 
 </style>
@@ -203,6 +214,9 @@ function customInput (el) {
   }
 }
 
+$(document).ready(function () {
+	$('.minititle span').text('책등록하기');
+});
 </script>
 
 
