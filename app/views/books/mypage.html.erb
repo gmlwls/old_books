@@ -111,8 +111,6 @@ main {
 .book {
   height: 230px;
   width: 180px;
-  border: 1px solid #dadfeb;
-  border-radius: .28571429rem;
 }
 
 .books > .book:last-child {
@@ -142,6 +140,18 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid #dadfeb;
+  border-radius: .28571429rem;
+}
+
+.img-cover {
+  height: 100%;
+  border-radius: .28571429rem;
+  z-index: 1;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  padding-top: 50%;
 }
 
 </style>
@@ -185,7 +195,9 @@ main {
       <div class="books upload row">
         <% for i in 0..3 %>
         <div class='book mybook-<%=i%>'>
-          <div class="inner-image" style="background-color: gray; padding-top: 2%;"></div>
+          <div class="inner-image" style="background-color: gray;">
+            <div class="img-cover text-center"></div>
+          </div>
           <h4 class="card-title" style="text-align:center"></h4>
         </div>
         <% end %>
@@ -201,8 +213,10 @@ main {
     <div class="myzzims_content">
       <div class="books zzims row">
         <% for i in 0..3 %>
-        <div class='book myzzim-<%=i%>' style='background-color: gray'>
-          <div class="inner-image" style="background-color: gray; padding-top: 2%;"></div>
+        <div class='book myzzim-<%=i%>'>
+          <div class="inner-image" style="background-color: gray;">
+            <div class="img-cover text-center"></div>
+          </div>
           <h4 class="card-title" style="text-align:center"></h4>
         </div>
         <% end %>
@@ -218,16 +232,32 @@ main {
 $(document).ready(function () {
   <% @books.each_with_index do |b, i| %>
     var book = $('.mybook-<%=i%>');
-    book.find('.inner-image').css('background-color', '');
-    book.find('.inner-image').css('background-image', 'url(<%=b.img_url.first%>)');
+    book.find('.inner-image').css({
+      'background-color': '',
+      'background-image': 'url(<%=b.img_url.first%>)'
+    });
     book.find('.card-title').text('<%=b.bookname%>');
+    <% if b.sell %>
+      book.find('.img-cover').css({
+        'background-color': 'rgba(0, 0, 0, 0.6)'
+      });
+      book.find('.img-cover').text('판매완료');
+    <% end %>
   <% end %>
 
   <% @likes.each_with_index do |l, i| %>
     var like = $('.myzzim-<%=i%>');
-    like.find('.inner-image').css('background-color', '');
-    like.find('.inner-image').css('background-image', 'url(<%=l.book.img_url.first%>)');
+    like.find('.inner-image').css({
+      'background-color': '',
+      'background-image': 'url(<%=l.book.img_url.first%>)'
+    });
     like.find('.card-title').text('<%=l.book.bookname%>');
+    <% if l.book.sell %>
+      book.find('.img-cover').css({
+        'background-color': 'rgba(0, 0, 0, 0.6)'
+      });
+      book.find('.img-cover').text('판매완료');
+    <% end %>
   <% end %>
 });  
 </script>
