@@ -22,6 +22,7 @@ strong {
 	font-size: 1.2rem;
 	padding: 0 1.5rem;
 }
+
 .book-detail2 {
 	margin-top: 1.8rem;
 }	
@@ -133,6 +134,10 @@ a:hover {
 	.book-content {
 		padding: 1rem;
 	}
+
+	.book-detail {
+
+	}
 }
 @media all and (min-width: 992px) {
 	.book-content {
@@ -146,10 +151,6 @@ a:hover {
 	}
 }
 
-
-
-
-
 </style>
 
 <header>
@@ -158,29 +159,23 @@ a:hover {
 <main>
 	<div class="container">
 		<div class="book-detail book-detail1">
-			<div class="title">
-				<h4>기본정보</h4>
-				<hr>
-			</div>
+			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
 				<div class="col-sm-5 col-lg-4 col-xl-3" style="padding: 0;">
 					<div class="image" style="background-image: url(<%=@book.img_url.first %>);"></div>
 				</div>
 				<div class="col-sm-7 col-lg-8 col-xl-7 book-content">
 					<div class="book1">
-						<div>
-						<h1><%= @book.bookname%></h1>						<p>저자 | <%= @book.author%></p>
-
-						</div>
+						<div><h1><%= @book.bookname%></h1><p>저자 | <%= @book.author%></p></div>
 					</div>
 					<hr>
 					<div class="book2">
 						<p><small>판매가 :</small> <strong><%=@book.price %>원</strong></p>
 						<p>판매자명 : <%= @book.user.username %></p> <p>학번 : <%= @book.user.studentid %></p> <p>학과 : <%= @book.user.school %></p>
 					</div>
-								<div class="alllbtn">
-				<div id="btns">
-					<% if current_user.is_like?(@book) %>
+					<div class="alllbtn">
+						<div id="btns">
+						<% if current_user.is_like?(@book) %>
 							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn', id:'zzim' do %>
 								<i class="far fa-heart"></i><%=@book.likes.size %>
 							<% end %>
@@ -189,48 +184,22 @@ a:hover {
 								<i class="far fa-heart"></i><%=@book.likes.size %>
 							<% end %>
 							<% end %>
-				</div>			
-
-				<div id="btns">
-					<% if current_user == @book.user %>
-					<% if @book.sell %>
-					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
-					<% else %>
-					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
-					<% end %>
-					<% end %>
+						</div>			
+						<div id="btns">
+						  <% if current_user == @book.user %>
+						  <% if @book.sell %>
+						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
+						  <% else %>
+						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
+						  <% end %>
+						  <% end %>
+						</div>
+					</div>
 				</div>
-			</div>
-				</div>
-			</div>
-<!--
-			<div class="alllbtn">
-				<div id="btns">
-					<% if current_user.is_like?(@book) %>
-							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn', id:'zzim' do %>
-								<i class="far fa-heart"></i><%=@book.likes.size %>
-							<% end %>
-							<% else %>
-							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button2 like-btn',id:'zzim' do %>
-								<i class="far fa-heart"></i><%=@book.likes.size %>
-							<% end %>
-							<% end %>
-				</div>			
-
-				<div id="btns">
-					<% if current_user == @book.user %>
-					<% if @book.sell %>
-					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
-					<% else %>
-					<%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
-					<% end %>
-					<% end %>
-				</div>
-			</div>
--->
 			</div>
 		</div>
-		<div class="book-detail book-detail2">
+    
+    <div class="book-detail book-detail2">
 			<h4>상세정보</h4>
 			<hr>	
 			<div class="content">
@@ -238,9 +207,7 @@ a:hover {
 				<% @book.img_url.each do |x| %>
 					<div class="image" style="background-image: url(<%=x.url %>);"></div>
 				<% end %>
-
 				<p><%= @book.content %></p>
-				
 			</div>
 		</div>
 
@@ -263,7 +230,6 @@ a:hover {
 				<% end %>
 			</div>
 		</div>
-
 	</div>
 </main>
 <%= render 'footer' %>

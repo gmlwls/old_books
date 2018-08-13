@@ -18,6 +18,7 @@
 
   .card-body {
     padding: 0rem;
+    padding-top: 3%;
     width: 80%;
   }
 
@@ -65,10 +66,30 @@
 
   #discnt {
   color: red;
+  font-weight: bold;
+  }
+
+  .card-text {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-text p {
+    font-size: 0.85rem;
   }
 
 /* media queries */
-
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .card-text p {
+    font-size: 0.9rem;
+  }
+  .card-body {
+    padding-top: 0;
+  }
+  .card-title {
+    font-size: 0.9rem;
+  }
+}
 @media all and (min-width: 768px) {
   .book_contents {
     padding: 1.2rem 0 10rem 0;
@@ -88,6 +109,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
   }
 
   #eachcard {
@@ -117,10 +140,11 @@
     <div class="inner-image" style="background-image: url(<%=b.img_url.first%>)"></div>
   </div>
   <div class="card-body">
-    <div class="card-title"><h4><%=b.bookname%></h4></div>
-    <p class="card-text"><%= b.author%></p>
-    <p class="card-text"><%= b.price%>원</p>
-    <p class="card-text" id="discnt"><%= b.discount%>%</p>
+    <div class="card-title"><%=b.bookname%> | <%= b.author%></div>
+    <div class="card-text">
+      <p><%= b.price%>원</p>
+      <p id="discnt">[<%= b.discount%>%&darr;]</p>
+    </div>
   </div>
   <% end %>
 </div>
