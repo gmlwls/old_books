@@ -44,6 +44,7 @@ a {
 
 .bottom-mentionArea {
   justify-content: flex-start;
+  height: 40%;
 }
 .bottom-mentionArea {
   margin-top: 10%;
@@ -101,52 +102,64 @@ a {
 }
 
 
+span.mainment {
+  font-family: 'KCC-eunyoung', 'NanumSquare';
+  color: white;
+  z-index: 2;
+}
+
 /* media queries */
-@media all and (min-width: 320px){
+@media all and (min-width: 320px) and (max-width: 575px) {
   .bottom-searchArea {
     margin-top: 12%;
   }
   .bottom-mentionArea {
-    display: flex;
-    justify-content: flex-start;
     padding-left: 1rem;
     margin-top: 10%;
     margin-bottom: 1%;
   }
 
-  .bottom-mentionArea span {
+  span.mainment {
     font-size: 2.3rem;
-    text-align: start;
+    text-align: center;
     line-height: 52px;
-  }
-  
-  .bigmain {
-    width: 0;
-    height: 0;
-    visibility: hidden;
   }
 
 }
+
 @media all and (min-width: 576px) and (max-width: 991px){
   .bottom-searchArea {
     margin-top: 5%;
   }
   .bottom-mentionArea {
-    margin-top: 10%;
+    justify-content: center;
+    margin-top: 8%;
     margin-bottom: 1%;
   }
 
+  .bottom-navbar {
+    padding-top: 5%;
+    padding-bottom: 10%;
+  }
+
+  span.mainment {
+    font-size: 2.3rem;
+    text-align: center;
+    line-height: 52px;
+  }
+
 }
-@media all and (min-width: 992px) {
+@media all and (min-width: 992px) and (max-width: 1199px) {
   .bottom-searchArea {
     margin-top: 0%;
   }
   .bottom-mentionArea {
-    margin-top: 10%;
-    margin-bottom: 1%;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
 
-  .bottom-mentionArea span {
+  span.mainment {
     font-size: 3.7rem;
   }
 
@@ -157,17 +170,19 @@ a {
     margin-top: 0%;
   }
   .bottom-mentionArea {
+    justify-content: center;
     margin-top: 3%;
     margin-bottom: 1%;
   }
 
+  span.mainment {
+    font-size: 2.3rem;
+    text-align: center;
+    line-height: 52px;
+  }
+
 }
 
-.mainment {
-  font-family: 'KCC-eunyoung', 'NanumSquare';
-  color: white;
-  z-index: 2;
-}
 
 </style>
 
@@ -176,11 +191,7 @@ a {
 </div>
 <nav class="bottom-navbar">
   <div class="bottom-mentionArea">
-    <span class="smallmain mainment">
-    비싼 전공책을<br>
-    쉽게<br>
-    득템하세요<br></span>
-    <span class="bigmain mainment">비싼 전공책을 쉽게 득템하세요</span>
+    <span class="mainment">비싼 전공책을 저렴하게</span>
   </div>
 
   <div class="bottom-searchArea">
@@ -214,14 +225,6 @@ a {
            $(this).closest('form').submit();
        }
     });
-
-  var ww = $(window).width();
-  if (ww < 575) {
-
-  }
-  else {
-
-  }
 
   particlesJS("particles-js",
  {
