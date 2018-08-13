@@ -79,6 +79,13 @@ a {
 
 }
 @media all and (min-width: 993px) {
+  .navbar {
+    padding: 1.5rem !important;
+  }
+
+  .books_title {
+    padding: 1.5rem !important;
+  }
   .nav-search .search-form {
     width: 100%;
   }

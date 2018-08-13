@@ -26,6 +26,11 @@ strong {
 .book-detail2 {
 	margin-top: 1.8rem;
 }	
+
+#author {
+	font-size: 0.8rem;
+	color: gray;
+}
 .title { 
 	margin-bottom: 30px;
 	color: gray; 
@@ -46,6 +51,10 @@ strong {
 }
 .book1 > div > p { font-size: 1rem; }
 
+.book2 {
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
 /*
 .book1, .book2, .book3 { 
 	height: 100px;
@@ -89,7 +98,8 @@ strong {
     text-align: center;
 }
 .button1 {
-   border-radius: .28571429rem;
+	 border-radius: .28571429rem;
+	 border: 1px solid rgba(164, 164, 164,0.5);
 }
 .button2 {
   background-color: rgba(0,0,0,0); 
@@ -126,8 +136,45 @@ a:hover {
 	padding: 0;
 }
 
+.inner_content {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	min-height: 400px;
+	height: auto;
+	padding: 2rem 1rem;
+	margin: 0rem 1rem;
+
+}
+
+.mainimg {
+	display: flex;
+	justify-content: center;
+}
+
+.mainimg .image{
+	background-size: 100% 100%;
+  background-repeat: no-repeat;
+	background-position: center;
+	width: 50%;
+}
+}
+
+.maincontent {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
 /* media queries */
 @media all and (min-width: 320px){
+.mainimg .image{
+	width: 90%;
+}
+	.inner_content {
+		margin: 0;
+		padding: 0.5rem;
+	
+	}
+
 
 }
 @media all and (min-width: 576px) and (max-width: 991px){
@@ -138,16 +185,53 @@ a:hover {
 	.book-detail {
 
 	}
+.mainimg .image{
+	width: 80%;
+}
+	.inner_content {
+		margin: 0;
+		padding: 0.5rem;
+	}
 }
 @media all and (min-width: 992px) {
 	.book-content {
-		padding: 1rem;
+		padding: 2rem;
 	}
+
+	.allbtn {
+		display: flex;
+		justify-content:space-between;
+	}
+	#btns {
+		width: 49%;
+	}
+	.row {
+		padding: 0 1.5rem;
+	}
+	.inner_content {
+		margin: 0;
+	}
+.mainimg .image{
+	width: 70%;
+}
 }
 
 @media all and (min-width: 1200px) {
 	.book-content {
-		padding: 1rem;
+		padding: 2rem;
+	}
+	.row {
+		padding: 0 1.5rem;
+	}
+	.allbtn {
+		display: flex;
+		justify-content:space-between;
+	}
+	#btns {
+		width: 49%;
+	}
+	.inner_content {
+		padding: 2rem;
 	}
 }
 
@@ -166,14 +250,26 @@ a:hover {
 				</div>
 				<div class="col-sm-7 col-lg-8 col-xl-7 book-content">
 					<div class="book1">
-						<div><h1><%= @book.bookname%></h1><p>저자 | <%= @book.author%></p></div>
+						<div><h2 style="font-weight: bold;"><%= @book.bookname%></h2><p id="author"><%= @book.author%> 지음</p></div>
 					</div>
 					<hr>
 					<div class="book2">
-						<p><small>판매가 :</small> <strong><%=@book.price %>원</strong></p>
-						<p>판매자명 : <%= @book.user.username %></p> <p>학번 : <%= @book.user.studentid %></p> <p>학과 : <%= @book.user.school %></p>
+						<p><span style="font-size: 0.9rem">정가 : <%=@book.price %>원</span></p>
+						<p><span style="font-size: 0.9rem">판매가 : </span><strong style="color: blue; font-size: 1.2rem;"><%=@book.price %>원</strong> <span style="color: red; font-size: 0.9rem;">[<%= @book.discount%>%&darr;]</span></p>
+						<p><span style="font-size: 0.9rem">판매자 : <%= @book.user.username %> | <%= @book.user.school %>학과 | <%= @book.user.studentid %>학번</span></p>
+						<p><span style="font-size: 0.9rem">등록일 : </span></p>
 					</div>
-					<div class="alllbtn">
+					<hr>
+					<div class="allbtn">
+						<div id="btns">
+						  <% if current_user == @book.user %>
+						  <% if @book.sell %>
+						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
+						  <% else %>
+						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
+						  <% end %>
+						  <% end %>
+						</div>
 						<div id="btns">
 						<% if current_user.is_like?(@book) %>
 							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn', id:'zzim' do %>
@@ -185,15 +281,6 @@ a:hover {
 							<% end %>
 							<% end %>
 						</div>			
-						<div id="btns">
-						  <% if current_user == @book.user %>
-						  <% if @book.sell %>
-						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
-						  <% else %>
-						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
-						  <% end %>
-						  <% end %>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -203,11 +290,17 @@ a:hover {
 			<h4>상세정보</h4>
 			<hr>	
 			<div class="content">
+				<div class="inner_content">
 				<!-- 정원아 여기야! -->
+				<div class="mainimg">
 				<% @book.img_url.each do |x| %>
-					<div class="image" style="background-image: url(<%=x.url %>);"></div>
+					<div class="image" id="mainimg" style="background-image: url(<%=x.url %>);"></div>
 				<% end %>
-				<p><%= @book.content %></p>
+				</div>
+				<div class="maincontent">
+					<p><%= @book.content %></p>
+				</div>
+				</div>
 			</div>
 		</div>
 
@@ -215,19 +308,21 @@ a:hover {
 			<h4 id="comment-box">댓글</h4>
 			<hr>
 			<div class="content">
+			<div class="inner_content">
 				<ul class="comments">
-        			<% @book.comments.each do |comment| %>
-        				<%= render partial: "comments/item", locals: { book: @book, comment: comment } %>
-        				<div id="comment-<%=comment.id%>-replyform", class="ml-2"></div>
-								<hr>
-        			<% end %>
-    			</ul> 
-  			  <%= form_for [@book, @book.comments.new], remote: true do |f| %>
-				  	 <%= f.text_field :content, :autocomplete => :off %>
-				  	 <%= label_tag(:secret, "비밀댓글") %>
-				  	 <%= f.check_box(:secret) %>
-				   	 <%= f.submit %>
+        	<% @book.comments.each do |comment| %>
+        		<%= render partial: "comments/item", locals: { book: @book, comment: comment } %>
+        		<div id="comment-<%=comment.id%>-replyform", class="ml-2"></div>
+						<hr>
+        	<% end %>
+    		</ul> 
+  			<%= form_for [@book, @book.comments.new], remote: true do |f| %>
+				  <%= f.text_field :content, :autocomplete => :off %>
+				  <%= label_tag(:secret, "비밀댓글") %>
+				  <%= f.check_box(:secret) %>
+				  <%= f.submit %>
 				<% end %>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -237,5 +332,8 @@ a:hover {
 <script>
   $(document).ready(function () {
 		$('.minititle span').text('책상세보기');
+
+    var mw = $('#mainimg.image').width();
+    $('#mainimg.image').css({'height': mw + 'px'});
   });
 </script>

@@ -66,7 +66,13 @@
 
   #discnt {
   color: red;
-  font-weight: bold;
+  }
+
+  #won {
+    font-weight: bold;
+  }
+  .card-title {
+    text-align: center;
   }
 
   .card-text {
@@ -91,6 +97,9 @@
   }
 }
 @media all and (min-width: 768px) {
+  .card {
+    border: none;
+  }
   .book_contents {
     padding: 1.2rem 0 10rem 0;
     min-height: 80vh;
@@ -114,7 +123,7 @@
   }
 
   #eachcard {
-    height: 360px;
+    height: 330px;
   }
 
   #eachcard a {
@@ -142,7 +151,7 @@
   <div class="card-body">
     <div class="card-title"><%=b.bookname%> | <%= b.author%></div>
     <div class="card-text">
-      <p><%= b.price%>원</p>
+      <p id="won"><%= b.price%>원</p>
       <p id="discnt">[<%= b.discount%>%&darr;]</p>
     </div>
   </div>

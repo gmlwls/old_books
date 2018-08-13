@@ -230,9 +230,10 @@ main {
 </main>
 <%= render 'footer' %>
 
+
 <script>
+
 $(document).ready(function () {
-<<<<<<< HEAD
 		$('.minititle span').text('마이페이지');
 });
 
@@ -241,7 +242,6 @@ $(document).ready(function () {
   <% for i in 1..4-@books.size do %>
     $('.upload').append("<div class='book' style='background-color: gray'></div>");
   <% end %>
-=======
   <% @books.each_with_index do |b, i| %>
     var book = $('.mybook-<%=i%>');
     book.find('.inner-image').css({
@@ -255,7 +255,6 @@ $(document).ready(function () {
       });
       book.find('.img-cover').text('판매완료');
     <% end %>
->>>>>>> e691fb6609d064d76bd59e2e892381abf5986962
   <% end %>
 
   <% @likes.each_with_index do |l, i| %>
@@ -273,6 +272,7 @@ $(document).ready(function () {
     <% end %>
   <% end %>
 });  
+
 </script>
 
 
