@@ -137,7 +137,7 @@
 <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
   <%= link_to book_path(b.id)do %>
   <div class="card-image-top">
-    <div class="inner-image" style="background-image: url(<%=b.img_url.first%>)"></div>
+    <div class="inner-image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)"></div>
   </div>
   <div class="card-body">
     <div class="card-title"><%=b.bookname%> | <%= b.author%></div>

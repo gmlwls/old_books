@@ -246,7 +246,7 @@ $(document).ready(function () {
     var book = $('.mybook-<%=i%>');
     book.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(<%=b.img_url.first%>)'
+      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
     });
     book.find('.card-title').text('<%=b.bookname%>');
     <% if b.sell %>
@@ -262,7 +262,7 @@ $(document).ready(function () {
     var like = $('.myzzim-<%=i%>');
     like.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(<%=l.book.img_url.first%>)'
+      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
     });
     like.find('.card-title').text('<%=l.book.bookname%>');
     <% if l.book.sell %>

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :redirect_except_owner, only: %i[destroy]
   respond_to :js, :json, :html
   def create
     @book = Book.find(params[:book_id])
@@ -15,7 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    print(@comment)
     @id = @comment.book.id
     @comment.destroy
     redirect_to "/books/#{@id}#comment-box"
@@ -34,5 +36,11 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content, :book_id, :secret)
+  end
+  def redirect_except_owner
+    @comment = Comment.find(params[:id])
+    if @comment.user.id != current_user.id
+      redirect_to root_path
+    end
   end
 end

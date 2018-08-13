@@ -161,7 +161,7 @@ main {
       <div class="books upload row">
         <% @books.each do |x| %>
           <div class="book">
-            <div class="inner-image" style="background-image: url(<%=x.img_url.first%>); padding-top: 2%;"></div>
+            <div class="inner-image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.img_url.first.path%>); padding-top: 2%;"></div>
             <h4 class="card-title" style="text-align:center"><%=x.bookname%></h4>
           </div>
         <% end %>

@@ -163,7 +163,7 @@ main {
     <div class="myzzims_content">
       <div class="books zzims row">
         <% @likes.each do |y| %>
-         <div class="book" style="background-image: url(<%=y.book.img_url.first%>)"></div>
+         <div class="book" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=y.book.img_url.first.path%>)"></div>
         <% end %>
       </div>    
     </div>
