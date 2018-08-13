@@ -162,7 +162,7 @@ a:hover {
 			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
 				<div class="col-sm-5 col-lg-4 col-xl-3" style="padding: 0;">
-					<div class="image" style="background-image: url(<%=@book.img_url.first %>);"></div>
+					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);"></div>
 				</div>
 				<div class="col-sm-7 col-lg-8 col-xl-7 book-content">
 					<div class="book1">
@@ -205,7 +205,7 @@ a:hover {
 			<div class="content">
 				<!-- 정원아 여기야! -->
 				<% @book.img_url.each do |x| %>
-					<div class="image" style="background-image: url(<%=x.url %>);"></div>
+					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
 				<% end %>
 				<p><%= @book.content %></p>
 			</div>
