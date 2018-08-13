@@ -103,7 +103,7 @@
 	      <% @books.each do |b| %>
 	      <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-6 card">
 	      	<%= link_to conversations_path(user_id: b.user), remote: true, method: :post do %>
-	        <div class="card-image-top" style="background-image: url(<%=b.img_url%>);"></div>
+	        <div class="card-image-top" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>);"></div>
 	        <div class="card-body">
 	          <h4 class="card-title"><%=b.bookname%></h4>
 	          <p class="card-text price"><%= b.price%>원</p>

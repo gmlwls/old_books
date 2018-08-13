@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  before_action :authenticate_user!
   def new
   	@comment = Comment.find(params[:comment_id])
   	@book = Book.find(params[:book_id])

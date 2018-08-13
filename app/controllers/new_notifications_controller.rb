@@ -1,4 +1,5 @@
 class NewNotificationsController < ApplicationController
+    before_action :authenticate_user!
 	def index
         @new_notifications = current_user.new_notifications.unread_by(current_user)
     end
