@@ -9,6 +9,18 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  config.action_mailer.default_url_options = { :host => 'http://old-books2-dev.ap-northeast-2.elasticbeanstalk.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  ActionMailer::Base.smtp_settings = {
+    :address              => 'smtp.gmail.com',
+    :domain               => 'mail.google.com',
+    :port                 => 587,
+    :user_name            => "gmlwlssg13@likelion.org",
+    :password             => "ruan29183?",
+    :authentication       => 'login',
+    :enable_starttls_auto => true
+  }
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -28,7 +40,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 

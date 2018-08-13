@@ -68,21 +68,45 @@
   }
 
 /* media queries */
-@media all and (min-width: 320px){
+
+@media all and (min-width: 768px) {
+  .book_contents {
+    padding: 1.2rem 0 10rem 0;
+    min-height: 80vh;
+  }
+
+  .card-image-top {
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .card-body {
+    margin: 0 auto;
+  }
+
+  .card-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #eachcard {
+    height: 360px;
+  }
+
+  #eachcard a {
+    display: block;
+  }
+
+  .card-image-top {
+    width: 100%;
+  }
+
+  .inner-image {
+    height: 100%;
+  }
 
 }
-@media all and (min-width: 576px) and (max-width: 991px){
-
-}
-@media all and (min-width: 992px) {
-}
-
-@media all and (min-width: 1200px) {
-
-}
-
-
-
 </style>
 
 
@@ -105,6 +129,7 @@
 <%= paginate @books %> 
 
 <script>
+/*모바일에서는 사진 사이즈 잘되는데, 큰화면에서는 어떻게?*/
   $(document).ready(function () {
     var cw = $('.card-image-top').height();
     $('.card-image-top').css({'width': cw + 'px'});
