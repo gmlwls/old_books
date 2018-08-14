@@ -294,11 +294,7 @@ a:hover {
 				<!-- 정원아 여기야! -->
 				<div class="mainimg">
 				<% @book.img_url.each do |x| %>
-<<<<<<< HEAD
-					<div class="image" id="mainimg" style="background-image: url(<%=x.url %>);"></div>
-=======
-					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
->>>>>>> f1203c1771159cff5ed740057e47446204ace437
+					<div class="image" id="mainimg" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
 				<% end %>
 				</div>
 				<div class="maincontent">
@@ -307,7 +303,6 @@ a:hover {
 				</div>
 			</div>
 		</div>
-
 		<div class="book-detail book-detail2">
 			<h4 id="comment-box">댓글</h4>
 			<hr>
