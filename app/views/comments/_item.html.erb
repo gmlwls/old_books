@@ -1,12 +1,13 @@
 <li>  
-	<div id="comment-<%=comment.id%>">
+	<div id="comment-<%=comment.id%>" style="color: blue;">
 	<% if (comment.secret == true)  %>
 		<% if (comment.user == current_user || comment.book.user == current_user) %>
-		    <strong><%= comment.user.username %></strong> : <%= comment.content %>
+		    <strong><%= comment.user.username %></strong>  <%= comment.content %><br>
 		    <% if comment.user == current_user %>
 		    <%= link_to "삭제", book_comment_path(book, comment), method: :delete %>
 		    <% end %>
 		    <%= link_to "답글달기", new_book_comment_reply_path(book, comment), class: 'reply-comment-link', remote: true  %>
+			<hr>
 				<ul class="replies-comment-<%=comment.id%>">
 					<% comment.replies.each do |reply| %>
 						<%= render partial: "replies/item", locals: {book: @book, comment: comment, reply: reply } %>
@@ -16,14 +17,15 @@
 		 	<strong>비밀 댓글입니다.</strong>
 		 <% end %>
 	<% else %>
-	    <strong><%= comment.user.username %></strong> : <%= comment.content %>
+	    <strong><%= comment.user.username %></strong>  <%= comment.content %><br>
 	    <% if comment.user == current_user %>
-	    <%= link_to "삭제", book_comment_path(book, comment),method: :delete %>
+	    <%= link_to "삭제", book_comment_path(book, comment), id:'cmt', method: :delete %>
 	    <% end %>
-	    <%= link_to "답글달기", new_book_comment_reply_path(book, comment), class: 'reply-comment-link', remote: true  %>
+	    <%= link_to "답글달기", new_book_comment_reply_path(book, comment), id:'cmt', class: 'reply-comment-link', remote: true  %>
+			<hr>
 			<ul class="replies-comment-<%=comment.id%>">
 				<% comment.replies.each do |reply| %>
-					<%= render partial: "replies/item", locals: {book: @book, comment: comment, reply: reply } %>
+				 <%= render partial: "replies/item", locals: {book: @book, comment: comment, reply: reply } %>
 				<% end %>
 			</ul>
 	<% end %>

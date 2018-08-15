@@ -9,6 +9,9 @@ end
 gem 'figaro'
 gem 'kaminari'
 
+#시간라이브러리
+gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
+
 #회원가입
 gem 'devise'
 gem 'devise-i18n'

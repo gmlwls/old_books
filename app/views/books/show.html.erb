@@ -20,11 +20,11 @@ strong {
 }
 .book-detail {
 	font-size: 1.2rem;
-	padding: 0 1.5rem;
+	padding: 0 3.5rem;
 }
 
 .book-detail2 {
-	margin-top: 1.8rem;
+	margin-top: 2rem;
 }	
 
 #author {
@@ -138,12 +138,15 @@ a:hover {
 
 .inner_content {
 	border: 1px solid rgba(0, 0, 0, 0.1);
+	height: auto;
+	padding: 1rem;
+	margin: 1rem;
+}
+/* 위의 inner_content는 min-height가 있어야 하는데 아래는 없어야 하니까 구분해주기. */
+.inner_content.maincontent {
 	min-height: 400px;
 	height: auto;
-	padding: 2rem 1rem;
-	margin: 0rem 1rem;
-
-}
+} 
 
 .mainimg {
 	display: flex;
@@ -164,6 +167,12 @@ a:hover {
 	text-align: center;
 }
 
+#cmt {
+	font-size: 0.75rem;
+	color: gray;
+	margin-right: 1%;
+}
+
 /* media queries */
 @media all and (min-width: 320px){
 .mainimg .image{
@@ -172,8 +181,29 @@ a:hover {
 	.inner_content {
 		margin: 0;
 		padding: 0.5rem;
-	
+		border-right: none;
+		border-left: none;
+		border-top: none;
 	}
+	.book-detail {
+		padding: 0;
+	}
+	h4 {
+		margin-left: 4%;
+	}
+	.content {
+		padding: 0;
+	}
+	#comment_content {
+		width: 80% !important;
+	}
+	.submitbtn {
+		width: 18% !important;
+	}
+	.cmtcreate {
+		margin: 0.5rem;
+	}
+
 
 
 }
@@ -191,6 +221,12 @@ a:hover {
 	.inner_content {
 		margin: 0;
 		padding: 0.5rem;
+	}
+	#comment_content {
+		width: 90% !important;
+	}
+	.submitbtn {
+		width: 9% !important;
 	}
 }
 @media all and (min-width: 992px) {
@@ -214,6 +250,15 @@ a:hover {
 .mainimg .image{
 	width: 70%;
 }
+	#comment_content {
+		width: 92% !important;
+	}
+	.submitbtn {
+		width: 7.5% !important;
+	}
+	.cmtcreate {
+		margin: 0rem;
+	}
 }
 
 @media all and (min-width: 1200px) {
@@ -233,6 +278,39 @@ a:hover {
 	.inner_content {
 		padding: 2rem;
 	}
+	.book-detail {
+		margin: 0 3rem;
+		margin-top: 2rem;
+	}
+	#comment_content {
+		width: 93% !important;
+	}
+	.submitbtn {
+		width: 6.5% !important;
+	}
+	.cmtcreate {
+		margin: 1rem 2rem;
+	}
+}
+
+.submitbtn {
+	padding: 1.2rem;
+	width: 6.5%;
+	font-size: 0.8rem;
+	border: 1px solid rgb(255,220,117);
+	background-color: rgb(255,220,117);
+	border-radius: .28571429rem;
+}
+
+#comment_content {
+	margin: 0;
+	border: 1px solid gray;
+	padding: 1rem;
+	width: 93%;
+}
+
+ul.comments > hr:last-child {
+	border-top: none;
 }
 
 </style>
@@ -245,10 +323,10 @@ a:hover {
 		<div class="book-detail book-detail1">
 			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
-				<div class="col-sm-5 col-lg-4 col-xl-3" style="padding: 0;">
+				<div class="col-sm-5 col-lg-4 col-xl-4" style="padding: 0;">
 					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);"></div>
 				</div>
-				<div class="col-sm-7 col-lg-8 col-xl-7 book-content">
+				<div class="col-sm-7 col-lg-8 col-xl-8 book-content">
 					<div class="book1">
 						<div><h2 style="font-weight: bold;"><%= @book.bookname%></h2><p id="author"><%= @book.author%> 지음</p></div>
 					</div>
@@ -290,11 +368,11 @@ a:hover {
 			<h4>상세정보</h4>
 			<hr>	
 			<div class="content">
-				<div class="inner_content">
+				<div class="inner_content maincontent">
 				<!-- 정원아 여기야! -->
 				<div class="mainimg">
 				<% @book.img_url.each do |x| %>
-					<div class="image" id="mainimg" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
+					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
 				<% end %>
 				</div>
 				<div class="maincontent">
@@ -303,25 +381,31 @@ a:hover {
 				</div>
 			</div>
 		</div>
+
 		<div class="book-detail book-detail2">
 			<h4 id="comment-box">댓글</h4>
 			<hr>
 			<div class="content">
-			<div class="inner_content">
-				<ul class="comments">
+			<div class="inner_content" style="padding-bottom: 0.1rem; padding-top: 0.1rem;">
+				<ul class="comments" style="margin:0.5rem;">
         	<% @book.comments.each do |comment| %>
         		<%= render partial: "comments/item", locals: { book: @book, comment: comment } %>
         		<div id="comment-<%=comment.id%>-replyform", class="ml-2"></div>
 						<hr>
         	<% end %>
     		</ul> 
-  			<%= form_for [@book, @book.comments.new], remote: true do |f| %>
-				  <%= f.text_field :content, :autocomplete => :off %>
-				  <%= label_tag(:secret, "비밀댓글") %>
-				  <%= f.check_box(:secret) %>
-				  <%= f.submit %>
-				<% end %>
 			</div>
+			  <!-- 댓글생성 -->
+				<div class="cmtcreate">
+				<%= form_for [@book, @book.comments.new], remote: true do |f| %>
+					<!-- <span><strong><%= @book.user.username%></strong></span>-->
+				  <%= f.text_field :content, :autocomplete => :off %>
+				  <%= f.submit value: '작성',class:'submitbtn' %>
+					<br>
+				  <%= f.check_box(:secret) %>
+				  <%= label_tag(:secret, '비밀댓글') %>
+				<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

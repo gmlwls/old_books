@@ -1,8 +1,8 @@
 <li>  
-	<div id="reply-<%=reply.id%>" class="ml-2">
-    <strong><%= reply.user.username %></strong> : <%= reply.content %>
+	<div id="reply-<%=reply.id%>" class="ml-4" style="color: blue;">
+    <span style="margin-right: 1%;"%>ㄴ</span><strong><%= reply.user.username %></strong> <%= reply.content %><br>
     <% if reply.user == current_user %>
-    <%= link_to "삭제", book_comment_reply_path(book, comment, reply),  method: :delete %>
+    <%= link_to "삭제", book_comment_reply_path(book, comment, reply), id: 'cmt',method: :delete %>
     <% end %>
     </div>
 </li>  
