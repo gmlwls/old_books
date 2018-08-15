@@ -157,9 +157,19 @@ textarea {
   color: black !important;
 }
 
+p#discnt {
+	font-size: 1.8rem;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100%;
+}
+/*
+
 .sidenav {
 	right: 100px !important;
 }
+*/
+
 
 /* media queries */
 @media all and (min-width: 320px){
@@ -216,6 +226,10 @@ function customInput (el) {
 
 $(document).ready(function () {
 	$('.minititle span').text('책등록하기');
+  
+	var cw = $('input#book_author').height();
+  $('input#book_bookname').css({'height': cw + 26 + 'px'});
+
 });
 </script>
 

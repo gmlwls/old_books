@@ -51,7 +51,7 @@ a, p, span {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     top: 0;
     right: 0;
     background-color: #111;
@@ -60,14 +60,24 @@ a, p, span {
     padding-top: 60px;
 }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
+.sidenav a,
+.sidenav span {
+    padding: 8px 8px 8px 45px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
     color: #818181;
     display: block;
     transition: 0.3s;
+    margin-bottom: 5%;
+    text-align: start;
 }
+
+span#side_menu {
+  font-size: 20px;
+  font-weight: 700;
+  color: #818181;
+}
+
 
 .sidenav a:hover {
     color: #f1f1f1;
@@ -76,16 +86,31 @@ a, p, span {
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
+    right: 10px;
     font-size: 36px;
-    margin-left: 50px;
+    margin-left: 25px;
+    margin-top: 4%;
+    margin-right: 3%;
+-webkit-transition-duration: 0s;
+-moz-transition-duration: 0s;
+-o-transition-duration: 0s;
+transition-duration: 0s;
 }
 
+#side_menu {
+    position: absolute;
+    top: 0;
+    font-size: 36px;
+    margin-right: 50px;
+    margin-top: 4%;
+}
 #mobilebtn {
   cursor:pointer;
   color: white;
   visibility: hidden;
   font-size: 30px;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
 }
 
 nav#mobilesearch {
@@ -93,24 +118,24 @@ nav#mobilesearch {
   width: 0px !important;
 }
 
-
 /* 전체 화면 그냥 이렇게 지정한 것임 */
 @media screen and (max-width: 960px) {
   #mobilebtn {
     visibility: visible;
   }
 }
-
+/*
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-
-/* media queries 
-@media all and (min-width: 320px){
-
+*/
+/* media queries */ 
+@media all and (min-width: 320px) and (max-width: 576px) {
+  
 }
-@media all and (min-width: 576px) and (max-width: 991px){
+
+@media all and (min-width: 577px) and (max-width: 991px){
 
 }
 @media all and (min-width: 992px) {
@@ -119,7 +144,7 @@ nav#mobilesearch {
 @media all and (min-width: 1200px) {
 
 }
-*/
+
 
 
 </style>
@@ -175,20 +200,18 @@ nav#mobilesearch {
       <% end %>
     </ul>
   </div>
-
-
 <!-- sidebar -->
   <div id="mySidenav" class="sidenav" style="z-index: 200;">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href=<%= root_path%>>검색하기</a>
+    <span id="side_menu">메뉴</span>
+    <a href="javascript:void(0)" class="closebtn eachmenu" id="clsbtn" onclick="closeNav()">&times;</a>
+    <a style="margin-top: 25%;" href=<%= root_path%>>검색하기</a>
     <a href=<%= new_book_path%>>책등록하기</a>
-    <a  href=<%= mypage_path%>>마이페이지</a>
+    <a href=<%= mypage_path%>>마이페이지</a>
     <a href="#">services</a>
     <a href="#">contact</a>
     <a href="#">회원가입&로그인 등</a>
   </div>
 </nav>
-
 <script>
 	$(document).scroll(function() {
 		if ($(window).scrollTop() > 350) {
@@ -208,10 +231,12 @@ nav#mobilesearch {
 	});
 
   function openNav() {
+    document.getElementById("clsbtn").style.visibility = "visible";
     document.getElementById("mySidenav").style.width = "250px";
-  }
+  };
 
   function closeNav() {
+    document.getElementById("clsbtn").style.visibility = "hidden";
     document.getElementById("mySidenav").style.width = "0";
-  }
+  };
 </script>
