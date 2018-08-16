@@ -117,7 +117,7 @@ i {
 
 		<%= f.label :도서명, class: 'form-label'%>
 		<div class="form-group2">
-			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '제목 또는 저자 검색',:required => true%>
+			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '제목 또는 저자 검색',:required => true, :autocomplete => :off%>
 			<%= link_to '<i class="fas fa-search"></i>'.html_safe,  '', class: 'find-info', remote: true %>
 	  </div>
 
