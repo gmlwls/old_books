@@ -346,6 +346,7 @@ ul.comments > hr:last-child {
 						  <% else %>
 						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
 						  <% end %>
+						  <%= link_to '삭제하기', book_path(@book), method: :delete, class: 'button button2' %>
 						  <% end %>
 						</div>
 						<div id="btns">
