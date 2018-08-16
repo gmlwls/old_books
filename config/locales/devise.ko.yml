@@ -58,6 +58,7 @@ ko:
       unconfirmed: "계속하기 전에 이메일 주소를 인증해야 합니다."
       user:
         invalid: "아이디 혹은 비밀번호를 잘못입력했습니다."
+        not_found_in_database: "입력하신 아이디는 존재하지 않습니다. 회원가입 해주세요."
     mailer:
       confirmation_instructions:
         action: "본인 계정 인증"
