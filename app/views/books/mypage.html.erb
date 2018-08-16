@@ -132,10 +132,11 @@ main {
 }
 
 .inner-image {
-  height: 100%;
+  height: 200px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: .28571429rem;
   /*for debugging*/
   border: 1px solid #fbfbfb;
 }
@@ -163,7 +164,6 @@ main {
 }
 
 .book {
-  height: 200px;
   width: 200px;
 }
 .book_btm {
@@ -206,35 +206,76 @@ main {
   <section id="mybooks">
     <h4 class="mybooks_header each_header">최근 올린 책들</h4>
     <div class="mybooks_content">
-      <div class="books upload">
+      <div class="books row">
         <% for i in 0..3 %>
-        <div class='book mybook-<%=i%>'>
-          <div class="inner-image" style="background-color: #dadfeb;"></div>
-          <div class="card-body">
-            <div class="card-title"></div>
+        <%= link_to '' , class: "book mybook-#{i}" do %>
+          <div class="inner-image" style="background-color: #dadfeb;">
+            <div class="img-cover text-center"></div>
           </div>
-        </div>
+          <h4 class="card-title" style="text-align:center"></h4>
         <% end %>
+        <% end %>
+        <div class='book'>
+        <div class="inner-image show-books"><span>+</span></div>
       </div>
-      <!--<div><a href=<%= mybook_path%>><span>모두보기</span></a></div>-->
+      </div>
+    </div>
+    <div class="books-list row" style="display: none;">
+      <h4 class="mybooks_header each_header">
+      전체 보기
+      </h4>
+      <div class="mybooks_content">
+        <div class="btm_books">
+          <% @books.each do |m| %>
+            <div class="book_btm">
+            <%= link_to m, class: 'msg row' do %>
+              <div class="card-name col-md-4"><%= m.bookname%></div>
+              <div class="card-author col-md-2"><%= m.author %></div>
+              <div class="card-price col-md-3"><%= m.price %></div>
+              <div class="card-time col-md-3"><%= m.created_at.strftime("%Y-%m-%d") %></div>
+            <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </section>
-    <section id="mybooks" class="row" style="margin-top: 10%;">
-    <h4 class="mybooks_header each_header">
-    전체 보기
-    </h4>
-    <div class="mybooks_content">
-      <div class="btm_books upload">
-        <% @books.each do |m| %>
-          <div class="book_btm">
-          <%= link_to m, class: 'msg row' do %>
-            <div class="card-name col-md-4"><%= m.bookname%></div>
-            <div class="card-author col-md-2"><%= m.author %></div>
-            <div class="card-price col-md-3"><%= m.price %></div>
-            <div class="card-time col-md-3"><%= m.created_at.strftime("%Y-%m-%d") %></div>
-          <% end %>
+    
+  <hr>
+  <section id="myzzims" class="row">
+    <h4 class="myzzims_header each_header">
+    내가 찜한 책들
+    </h4>  
+    <div class="myzzims_content">
+      <div class="books row">
+        <% for i in 0..3 %>
+        <%= link_to '', class: "book myzzim-#{i}" do %>
+          <div class="inner-image" style="background-color: #dadfeb;">
+            <div class="img-cover text-center"></div>
           </div>
+          <h4 class="card-title" style="text-align:center"></h4>
         <% end %>
+        <% end %>
+        <div class='book show-zzims'><span>+</span></div>
+      </div>    
+    </div>
+    <div class="zzims-list row" style="display: none;">
+      <h4 class="myzzims_header each_header">
+      전체 보기
+      </h4>
+      <div class="myzzims_content">
+        <div class="btm_books">
+          <% @likes.each do |m| %>
+            <div class="book_btm">
+            <%= link_to m.book, class: 'msg row' do %>
+              <div class="card-name col-md-4"><%= m.book.bookname%></div>
+              <div class="card-author col-md-2"><%= m.book.author %></div>
+              <div class="card-price col-md-3"><%= m.book.price %></div>
+              <div class="card-time col-md-3"><%= m.book.created_at.strftime("%Y-%m-%d") %></div>
+            <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </section>
@@ -243,8 +284,45 @@ main {
 <%= render 'footer' %>
 
 <script>
+$(document).ready(function () {
+  $('.books-list').hide();
+  <% @recent_books.each_with_index do |b, i| %>
+    var book = $('.mybook-<%=i%>');
+    book.attr('href', '/books/<%=b.id%>');
+    book.find('.inner-image').css({
+      'background-color': '',
+      'background-image': 'url(<%=b.img_url.first%>)'
+    });
+    book.find('.card-title').text('<%=b.bookname%>');
+    <% if b.sell %>
+      book.find('.img-cover').css({
+        'background-color': 'rgba(0, 0, 0, 0.6)'
+      });
+      book.find('.img-cover').text('판매완료');
+    <% end %>
+  <% end %>
 
+  $(document).on('click', '.show-books', function () {
+    $('.books-list').toggle();
+  });
+
+  <% @recent_likes.each_with_index do |l, i| %>
+    var like = $('.myzzim-<%=i%>');
+    like.find('.inner-image').css({
+      'background-color': '',
+      'background-image': 'url(<%=l.book.img_url.first%>)'
+    });
+    like.find('.card-title').text('<%=l.book.bookname%>');
+    <% if l.book.sell %>
+      book.find('.img-cover').css({
+        'background-color': 'rgba(0, 0, 0, 0.6)'
+      });
+      book.find('.img-cover').text('판매완료');
+    <% end %>
+  <% end %>
+
+  $(document).on('click', '.show-zzims', function () {
+    $('.zzims-list').toggle();
+  });
+});  
 </script>
-
-
-
