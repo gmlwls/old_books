@@ -116,14 +116,14 @@
   </div>
   <div class="sec">
     <%= f.label :학번 %><br />
-    <%= f.number_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "숫자만 기입 ex.14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
+    <%= f.number_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "두자리 숫자 기입 ex.14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
   </div>
   </div>
 
 <legend>계정 정보</legend><hr>
   <div class="field">
-    <%= f.label :이메일 %><br />
-    <%= f.email_field :email, pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", autofocus: true, autocomplete: "email", required: true %>
+    <%= f.label :이메일 %><br/><p>아래에 입력해 주신 서강 메일로 인증메일이 갑니다.</p>
+    <%= f.email_field :email, pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", autofocus: true, autocomplete: "email", required: true, placeholder: "example@sogang.ac.kr" %>
   </div>
 
   <div class="field">
