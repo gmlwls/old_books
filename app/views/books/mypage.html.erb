@@ -232,30 +232,12 @@ main {
 
 
 <script>
-
 $(document).ready(function () {
-<<<<<<< HEAD
-=======
-// <<<<<<< HEAD
->>>>>>> f1203c1771159cff5ed740057e47446204ace437
-		$('.minititle span').text('마이페이지');
-});
-
-$(document).ready(function () {
-  <% if @books.size<4 %>
-  <% for i in 1..4-@books.size do %>
-    $('.upload').append("<div class='book' style='background-color: gray'></div>");
-  <% end %>
-<<<<<<< HEAD
-=======
-  <% end %>
-// =======
->>>>>>> f1203c1771159cff5ed740057e47446204ace437
   <% @books.each_with_index do |b, i| %>
     var book = $('.mybook-<%=i%>');
     book.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
+      'background-image': 'url(<%=b.img_url.first%>)'
     });
     book.find('.card-title').text('<%=b.bookname%>');
     <% if b.sell %>
@@ -264,17 +246,13 @@ $(document).ready(function () {
       });
       book.find('.img-cover').text('판매완료');
     <% end %>
-<<<<<<< HEAD
-=======
-// >>>>>>> e691fb6609d064d76bd59e2e892381abf5986962
->>>>>>> f1203c1771159cff5ed740057e47446204ace437
   <% end %>
 
   <% @likes.each_with_index do |l, i| %>
     var like = $('.myzzim-<%=i%>');
     like.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
+      'background-image': 'url(<%=l.book.img_url.first%>)'
     });
     like.find('.card-title').text('<%=l.book.bookname%>');
     <% if l.book.sell %>
@@ -285,7 +263,6 @@ $(document).ready(function () {
     <% end %>
   <% end %>
 });  
-
 </script>
 
 
