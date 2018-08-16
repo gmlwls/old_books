@@ -313,6 +313,15 @@ ul.comments > hr:last-child {
 	border-top: none;
 }
 
+.img-cover {
+	height: 100%;
+	z-index: 1;
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bolder;
+	padding-top: 50%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
 </style>
 
 <header>
@@ -324,7 +333,11 @@ ul.comments > hr:last-child {
 			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
 				<div class="col-sm-5 col-lg-4 col-xl-4" style="padding: 0;">
-					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);"></div>
+					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);">
+						<% if @book.sell %>
+					    <div class="img-cover text-center">판매완료</div>
+					    <% end %>
+					</div>
 				</div>
 				<div class="col-sm-7 col-lg-8 col-xl-8 book-content">
 					<div class="book1">
@@ -332,7 +345,6 @@ ul.comments > hr:last-child {
 					</div>
 					<hr>
 					<div class="book2">
-						<p><span style="font-size: 0.9rem">정가 : <%=@book.price %>원</span></p>
 						<p><span style="font-size: 0.9rem">판매가 : </span><strong style="color: blue; font-size: 1.2rem;"><%=@book.price %>원</strong> <span style="color: red; font-size: 0.9rem;">[<%= @book.discount%>%&darr;]</span></p>
 						<p><span style="font-size: 0.9rem">판매자 : <%= @book.user.username %> | <%= @book.user.school %>학과 | <%= @book.user.studentid %>학번</span></p>
 						<p><span style="font-size: 0.9rem">등록일 : <%= @book.user.created_at.strftime("%Y-%m-%d") %></span></p>
@@ -346,6 +358,7 @@ ul.comments > hr:last-child {
 						  <% else %>
 						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
 						  <% end %>
+						  <%= link_to '삭제하기', book_path(@book), method: :delete, class: 'button button2' %>
 						  <% end %>
 						</div>
 						<div id="btns">
@@ -399,7 +412,7 @@ ul.comments > hr:last-child {
 				<div class="cmtcreate">
 				<%= form_for [@book, @book.comments.new], remote: true do |f| %>
 					<!-- <span><strong><%= @book.user.username%></strong></span>-->
-				  <%= f.text_field :content, :autocomplete => :off %>
+				  <%= f.text_field :content, :autocomplete => :off,:required => true %>
 				  <%= f.submit value: '작성',class:'submitbtn' %>
 					<br>
 				  <%= f.check_box(:secret) %>

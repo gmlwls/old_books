@@ -291,7 +291,7 @@ $(document).ready(function () {
     book.attr('href', '/books/<%=b.id%>');
     book.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(<%=b.img_url.first%>)'
+      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
     });
     book.find('.card-title').text('<%=b.bookname%>');
     <% if b.sell %>
@@ -303,26 +303,27 @@ $(document).ready(function () {
   <% end %>
 
   $(document).on('click', '.show-books', function () {
-    $('.books-list').toggle();
+    $('.books-list').show();
   });
 
   <% @recent_likes.each_with_index do |l, i| %>
     var like = $('.myzzim-<%=i%>');
+    like.attr('href', '/books/<%=l.book.id%>');
     like.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(<%=l.book.img_url.first%>)'
+      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
     });
     like.find('.card-title').text('<%=l.book.bookname%>');
     <% if l.book.sell %>
-      book.find('.img-cover').css({
+      like.find('.img-cover').css({
         'background-color': 'rgba(0, 0, 0, 0.6)'
       });
-      book.find('.img-cover').text('판매완료');
+      like.find('.img-cover').text('판매완료');
     <% end %>
   <% end %>
 
   $(document).on('click', '.show-zzims', function () {
-    $('.zzims-list').toggle();
+    $('.zzims-list').show();
   });
 });  
 </script>
