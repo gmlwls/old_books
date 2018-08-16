@@ -308,6 +308,7 @@ $(document).ready(function () {
 
   <% @recent_likes.each_with_index do |l, i| %>
     var like = $('.myzzim-<%=i%>');
+    like.attr('href', '/books/<%=l.book.id%>');
     like.find('.inner-image').css({
       'background-color': '',
       'background-image': 'url(<%=l.book.img_url.first%>)'
