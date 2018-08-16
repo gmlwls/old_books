@@ -182,7 +182,14 @@
 <div class="login_ment">
   <a href="/"><p id="logo">반짝</p></a>
   <p>서강대생을 위한 중고책 거래 플랫폼</p>
-</div>
+  <% if flash.alert %>
+   <div id="error_explanation">
+    <ul>
+     <li style="color:red;"><%= flash.alert %></li>
+    </ul>
+   </div>
+  <% end %>
+  </div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field field1">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "세인트 이메일" %>
