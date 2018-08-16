@@ -268,7 +268,7 @@ main {
           <% @likes.each do |m| %>
             <div class="book_btm">
             <%= link_to m.book, class: 'msg row' do %>
-              <div class="card-name col-md-4"><%= m.book.bookname%></div>
+              <!--<div class="card-name col-md-4"><%= m.book.bookname%></div>-->
               <div class="card-author col-md-2"><%= m.book.author %></div>
               <div class="card-price col-md-3"><%= m.book.price %></div>
               <div class="card-time col-md-3"><%= m.book.created_at.strftime("%Y-%m-%d") %></div>
