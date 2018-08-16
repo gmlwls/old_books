@@ -303,7 +303,7 @@ $(document).ready(function () {
   <% end %>
 
   $(document).on('click', '.show-books', function () {
-    $('.books-list').toggle();
+    $('.books-list').show();
   });
 
   <% @recent_likes.each_with_index do |l, i| %>
@@ -323,7 +323,7 @@ $(document).ready(function () {
   <% end %>
 
   $(document).on('click', '.show-zzims', function () {
-    $('.zzims-list').toggle();
+    $('.zzims-list').show();
   });
 });  
 </script>
