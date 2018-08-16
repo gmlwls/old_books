@@ -315,10 +315,10 @@ $(document).ready(function () {
     });
     like.find('.card-title').text('<%=l.book.bookname%>');
     <% if l.book.sell %>
-      book.find('.img-cover').css({
+      like.find('.img-cover').css({
         'background-color': 'rgba(0, 0, 0, 0.6)'
       });
-      book.find('.img-cover').text('판매완료');
+      like.find('.img-cover').text('판매완료');
     <% end %>
   <% end %>
 
