@@ -4,8 +4,6 @@
   }
 
   body {
-    height: 100%;
-    /*background-color: #232741;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,11 +23,13 @@
   }
   label{
     margin-bottom: 3px;
+    font-size: 0.95rem;
   }
 
   legend {
-    font-size: 1.2rem;
+    margin-top: 5%;
     margin-bottom: 2%;
+    font-weight: 600;
   }
   .field > input,
   .sec > input {
@@ -65,17 +65,17 @@
     text-align: center;
   }
 
-  @media (min-width: 1200px) {
-    .signin_form {
-      width: 30%;
+  @media (max-width: 575px){
+   .signin_form {
+      width: 90%;
     }
   }
   
-  @media (min-width: 993px) and (max-width: 1200px) {
+  @media (min-width: 576px) and (max-width: 768px){
    .signin_form {
-      width: 40%;
+      width: 60%;
     }
-  }
+  } 
 
   @media (min-width: 769px) and (max-width: 992px) {
    .signin_form {
@@ -83,23 +83,51 @@
     }
   }
 
-  @media (min-width: 576px) and (max-width: 768px){
+  
+  @media (min-width: 993px) and (max-width: 1200px) {
    .signin_form {
-      width: 60%;
+      width: 40%;
     }
-  } 
+  }
 
-  @media (max-width: 575px){
-   .signin_form {
-      width: 90%;
-    }   
-  } 
+  @media (min-width: 1200px) {
+    .signin_form {
+      margin-top: 2%;
+      width: 30%;
+    }
+  }
+
+
+#logo {
+  font-family: 'ThecircleM';
+  font-size: 3.5rem;
+  text-align: center;
+  color: #fdd400;
+  width: auto;
+}
+
+label, legend, p, span, html {
+  color: rgb(72,72,72);
+}
+
+#btn {
+  width: 100%;
+  height: 3rem;
+  background-color: #fdd400;
+  border: none;
+  border-radius: .28571429rem; 
+  padding: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: -1%;
+  margin-bottom: 1%;
+}
 </style>
 
 
 <div class="signin_form">
   <a href="/"><p id="logo">반짝</p></a>
-  <p style="text-align:center; margin-bottom: 4%;">간단한 가입으로 개이득을 누리세요(가제)</p>
+  <p style="text-align:center; margin-bottom: 7%;">* 간단한 가입으로 개이득을 누리세요 * </p>
 
 <legend>기본 정보</legend><hr>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -112,7 +140,7 @@
   <div class="field" style="display: flex; justify-content:space-between;">
   <div class="sec">
     <%= f.label :학과 %><br />
-    <%= f.text_field :school, autofocus: true, autocomplete: "school", required: true, placeholder: "예) 경영학과" %>
+    <%= f.text_field :school, autofocus: true, autocomplete: "school", required: true, placeholder: "예) 서강학과" %>
   </div>
   <div class="sec">
     <%= f.label :학번 %><br />
@@ -122,14 +150,14 @@
 
 <legend>계정 정보</legend><hr>
   <div class="field">
-    <%= f.label :이메일 %><br/><p style="color:blue;">아래에 입력해 주신 서강 메일로 인증메일이 갑니다.</p>
+    <%= f.label :이메일 %><span style="color:blue; font-size: 0.95rem; margin-left: 2%;">(세인트 이메일로 인증 메일이 전송됩니다)</span>
     <%= f.email_field :email, pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", autofocus: true, autocomplete: "email", required: true, placeholder: "example@sogang.ac.kr" %>
   </div>
 
   <div class="field">
     <%= f.label :비밀번호 %>
     <% if @minimum_password_length %>
-    <em><%= t('(6자리 이상으로 해주세요)', count: @minimum_password_length) %></em>
+    <em style="font-size: 0.95rem;"><%= t('(6글자 이상 입력해주세요)', count: @minimum_password_length) %></em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off", :required => true, :pattern => '.{6,}'  %>
   </div>
@@ -141,11 +169,13 @@
 
   <div class="field">
   <div class="action" id="action1">
-  <%= f.submit "회원가입", id:"btn", style: "font-size: 1.2rem;" %>
-  </div>
-  <div class="action" id="action2" style="margin-top: 2.5%"> 
-  <a href="/users/sign_in">돌아가기</a>
-  </div>   
+    <%= f.submit "회원가입", id:"btn" %>
+  </div> 
+  <hr>
+  <div style="text-align:center;">
+    <span style="margin-right: 2%; line-height: 2; color: rgb(72,72,72)">이미 반짝 계정이 있나요?</span>
+    <a href="/users/sign_in" style="color: blue;">로그인</a>
+  </div>  
   </div>
 <% end %>
 

@@ -20,18 +20,9 @@
     text-align: center;
   }
 
-  #btn {
-    width: 25%;
-    height: 2.2rem;
-    background-color: #fdd400;
-    border: none;
-    border-radius: .28571429rem;
-    margin-bottom: 3%;
-  }
-
   .field > #eml_box {
     width: 100%;
-    height: 2.5rem;
+    height: 3rem;
     margin: 0.5rem 0;
     border: 1px solid #dadfeb;
     border-radius: .28571429rem;
@@ -53,6 +44,7 @@
     @media (min-width: 1200px) {
     .pwd {
       width: 30%;
+      margin-top: -6%;
     }
   }
   
@@ -80,26 +72,50 @@
     }   
 
   } 
+
+#logo {
+  font-family: 'ThecircleM';
+  font-size: 3.5rem;
+  text-align: center;
+  color: #fdd400;
+  width: auto;
+}
+
+label, legend, p, span, html, h1, a{
+  color: rgb(72,72,72);
+}
+
+#btn {
+  width: 100%;
+  height: 3rem;
+  background-color: #fdd400;
+  border: none;
+  border-radius: .28571429rem; 
+  padding: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: -1%;
+  margin-bottom: 1%;
+}
 </style>
 
 <div class="pwd">
 <a href="/"><p id="logo">반짝</p></a>
-<h1 style="font-size: 1.5rem;"><%= t('.forgot_your_password') %></h1>
-<p>이메일 주소를 입력하시면<br> 계정에 연결된 이메일 주소로 비밀번호를 재설정 할 수 있도록 도와드립니다.</p>
+<h1 style="font-size: 1.2rem; line-height:1.5; font-weight: 600;"><%= t('.forgot_your_password') %></h1>
+<p style="line-height: 1.5">계정으로 사용하는 이메일 주소를 입력하시면, <br>비밀번호 재설정 링크를 전송해 드립니다.</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
-  <div class="field">
+  <div class="field" style="margin-top: 3%;">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"eml_box", placeholder: "이메일 주소 입력" %>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="margin-top: 1%;">
     <%= f.submit t('.send_me_reset_password_instructions'), id:"btn" %>
   </div>
 <% end %>
 
-<div class="menu">
-<a href="/users/sign_in">로그인</a>
-<a href="/users/sign_up">회원 가입</a>
+<div class="menu" style="text-align: start; margin-left: -2%; margin-top: 2%;">
+<a href="/users/sign_in"><i class="fas fa-arrow-left" style="margin-right: 2%;"></i>로그인으로 돌아가기</a>
 </div>
 </div>

@@ -1,3 +1,4 @@
+@font-face { font-family: 'ThecircleM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/ThecircleM.woff') format('woff'); font-weight: normal; font-style: normal; }
 a {
   font-size: 1rem;
   text-decoration: none;
@@ -11,11 +12,12 @@ a {
 }
 */
 .logo {
-  font-family: 'Binggrae-Bold';
-  font-size: 2rem;
+  font-family: 'ThecircleM';
+  font-size: 2.5rem;
   text-align: start;
   color: #fdd400;
-  width: 144px;
+  width: auto;
+  margin-right: 10%;
 }
 .logo-link {
   display: flex;
@@ -26,12 +28,13 @@ a {
 .minititle {
   display: flex;
   align-items: center;
-  min-width: 200px;
+  min-width: 
 }
 
 .minititle span {
   font-weight: 600;
   font-size: 1.5rem;
+  color: #1f2d3d;
 }
 
 

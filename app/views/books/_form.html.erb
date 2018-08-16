@@ -96,6 +96,12 @@ i {
 	color: #717171;
 }
 
+button.btn {
+	width: 100%;
+	padding: 0.8rem;
+	background-color: rgb(255,220,117);
+}
+
 
 
 @media all and (min-width: 320px) and (max-width: 575px) {
@@ -164,7 +170,7 @@ i {
 		<div class="file-input">
 				<%= f.button '찾아보기', class: 'button' %>
 				<%= f.label '사진이 선택됐습니다', for: 'formControlFile', class: 'label' %>
-				<%= f.file_field :img_url, multiple: true, class: 'form-control-file', id: 'formControlFile1' %>
+				<%= f.file_field :img_url, multiple: true, class: 'form-control-file', id: 'formControlFile1', :required => true %>
 		</div>
 
 		<div class="form-group">
@@ -176,9 +182,7 @@ i {
 		</div>
 
 		<div class="btn-groups">
-		<!--<button type="submit" class="btn" id="btn1" style="margin-right: 4px;" >뒤로가기</button>-->
-		<button type="submit" class="btn" id="btn2" style="margin-right: 4px;" >등록하기</button>
-
+			<button type="submit" class="btn">등록하기</button>
 		</div>
 	  </fieldset>
 <% end %>

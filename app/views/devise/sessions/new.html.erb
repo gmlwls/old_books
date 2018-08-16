@@ -1,11 +1,13 @@
 <style>
+@font-face { font-family: 'ThecircleM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/ThecircleM.woff') format('woff'); font-weight: normal; font-style: normal; }
+
   html {
     height: 100vh;
   }
 
   body {
     height: 100%;
-    /*background-color: #232741;*/
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,10 +20,11 @@
 
   .login_form {
     width: 25%;
+    margin-top: 3%;
   }
 
   .login_ment {
-    margin-bottom: 3%;
+    margin-bottom: 7%;
   }
 
   label{
@@ -48,23 +51,15 @@
     margin-bottom: 10px;
   }
 
-  .login_bottom {
-    width: 88%;
-    margin-left: 6%;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .login_bottom > a {
-    font-size: 0.9rem;
-  }
-
   #btn {
     width: 100%;
     height: 3rem;
+    margin: 0.5rem 0;
     background-color: #fdd400;
     border: none;
-    border-radius: 25px; 
+    border-radius: .28571429rem; 
+    padding: 1rem;
+    font-weight: 600;
   }
 
   #logo {
@@ -176,53 +171,83 @@
   }
 }
 
+#error_explanation {
+  text-align: center;
+  padding: 2rem;
+  padding-top: 0;
+}
+
+#logo {
+  font-family: 'ThecircleM';
+  font-size: 3.5rem;
+  text-align: center;
+  color: #fdd400;
+  width: auto;
+}
+#checkfield {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
 
 <div class="login_form">
 <div class="login_ment">
   <a href="/"><p id="logo">반짝</p></a>
-  <p>서강대생을 위한 중고책 거래 플랫폼</p>
-  <% if flash.alert %>
-   <div id="error_explanation">
-    <ul>
-     <li style="color:red;"><%= flash.alert %></li>
-    </ul>
-   </div>
-  <% end %>
-  </div>
+  <p style="color:rgb(72,72,72); font-weight: 600;">서강대생을 위한 중고책 거래 플랫폼</p>
+</div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field field1">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "세인트 이메일" , pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", placeholder: "your_email@sogang.ac.kr"%>
   </div>
 
   <div class="field field1" style="margin-top: -2%;">
-    <%= f.password_field :password, autocomplete: "off", placeholder: "패스워드"%>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "패스워드", id: 'myInput'%>
   </div>
 
 <!-- 이거 맞는 형식인가? 확인하는 게 어렵군 -->
   <% if devise_mapping.rememberable? -%>
-    <div class="field" style="margin-bottom: 7%;">
+    <div class="field" id="checkfield" style="margin-bottom: 7%; text-align: left;">
     <%= f.check_box :remember_me , class: "inp-cbx", id:"cbx", style: "display: none;"%>
-    <label class="cbx" for="cbx">
+    <label class="cbx" for="cbx" style="font-size: 0.9rem; color: white; margin-left: 0;">
     <span>
       <svg width="12px" height="10px" viewbox="0 0 12 10">
       <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
       </svg>
     </span>
-    <%= f.label :remember_me %>
+    <%= f.label :remember_me , style: "color:rgb(72,72,72)" %>
     </label>
+    <a href="/users/password/new" style="color: blue; font-size: 0.9rem; line-height: 1.4">비밀번호가 생각나지 않으세요?</a>
+
   </div>
 <% end -%>
-
+<!-- <input type="checkbox" onclick="myFunction()"><i class="far fa-eye"></i>-->
+  <% if flash.alert %>
+   <div id="error_explanation">
+    <ul><li style="color:red;"><%= flash.alert %></li></ul>
+   </div>
+  <% end %>
+  
   <div class="actions" style="margin-bottom: 5%;">
     <%= f.submit t('.sign_in'), id: "btn"%>
   </div>
 <% end %>
 
 <div class="login_bottom">
-<a href="/users/sign_up">회원 가입</a>
-<a href="/users/password/new">비밀번호를 잊으셨나요?</a>
-<!--<%= render "devise/shared/links" %>-->
+
+
 </div>
+<hr>
+<div style="text-align:center;"><span style="margin-right: 2%; line-height: 2; color: rgb(72,72,72)">아직 반짝 계정이 없으세요?</span><a href="/users/sign_up" style="color: blue;">회원 가입</a></div>
 </div>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
 
