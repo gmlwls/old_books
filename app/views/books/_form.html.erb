@@ -169,11 +169,14 @@ i {
 
 		<div class="form-group">
 			<%= f.label :상세정보, class: 'form-label' %>
+			<!--
 			<%= f.text_area :content, class: 'form-control', placeholder: '추가적인 정보를 입력해주세요(책의 상태 및 거래방법 등)'%>
+			-->
+			<%= f.text_field :content, label: 'Title', type: 'text', class: 'quill_container form-control' %>
 		</div>
 
 		<div class="btn-groups">
-		<button type="submit" class="btn" id="btn1" style="margin-right: 4px;" >뒤로가기</button>
+		<!--<button type="submit" class="btn" id="btn1" style="margin-right: 4px;" >뒤로가기</button>-->
 		<button type="submit" class="btn" id="btn2" style="margin-right: 4px;" >등록하기</button>
 
 		</div>

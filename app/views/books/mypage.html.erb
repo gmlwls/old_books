@@ -108,17 +108,13 @@ main {
   justify-content: space-around;
 }
 
-.book {
-  height: 230px;
-  width: 180px;
-}
-
+/*
 .books > .book:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+*/
 .books > .book:last-child span {
   color: rgb(115,111,111);
   font-size: 70px;
@@ -141,9 +137,7 @@ main {
   background-repeat: no-repeat;
   background-position: center;
   /*for debugging*/
-  border: 1px solid gray;
-  border: 1px solid #dadfeb;
-  border-radius: .28571429rem;
+  border: 1px solid #fbfbfb;
 }
 
 .img-cover {
@@ -160,8 +154,27 @@ main {
     color: black !important;
   }
 
-</style>
+.card-body {
+  padding: 0.25rem;
+  text-align: center;
+}
+.card-title {
+  text-align: center;
+}
 
+.book {
+  height: 200px;
+  width: 200px;
+}
+.book_btm {
+  display: flex;
+  cursor: pointer;
+}
+.book_btm:hover {
+  background-color: rgb(218, 223, 235);
+}
+
+</style>
 <%= render 'nav2' %>
 <main>
 <div id = "wrap" class="vertically divided grid container">
@@ -189,105 +202,67 @@ main {
     </div>
   </section>
   <hr>
-  <section id="mybooks" class="row">
-    <h4 class="mybooks_header each_header">
-    내가 올린 책들
-    </h4>
+
+  <section id="mybooks">
+    <h4 class="mybooks_header each_header">최근 올린 책들</h4>
     <div class="mybooks_content">
-      <div class="books upload row">
+      <div class="books upload">
         <% for i in 0..3 %>
         <div class='book mybook-<%=i%>'>
-          <div class="inner-image" style="background-color: gray;">
-            <div class="img-cover text-center"></div>
+          <div class="inner-image" style="background-color: #dadfeb;"></div>
+          <div class="card-body">
+            <div class="card-title"></div>
           </div>
-          <h4 class="card-title" style="text-align:center"></h4>
         </div>
         <% end %>
-        <a class='book' href=<%= mybook_path%>><span>+</span></a>
       </div>
+      <!--<div><a href=<%= mybook_path%>><span>모두보기</span></a></div>-->
     </div>
   </section>
-  <hr>
-  <section id="myzzims" class="row">
-    <h4 class="myzzims_header each_header">
-    내가 찜한 책들
-    </h4>  
-    <div class="myzzims_content">
-      <div class="books zzims row">
-        <% for i in 0..3 %>
-        <div class='book myzzim-<%=i%>'>
-          <div class="inner-image" style="background-color: gray;">
-            <div class="img-cover text-center"></div>
+    <section id="mybooks" class="row" style="margin-top: 10%;">
+    <h4 class="mybooks_header each_header">
+    전체 보기
+    </h4>
+    <div class="mybooks_content">
+      <div class="btm_books upload">
+        <% @books.each do |m| %>
+          <div class="book_btm">
+          <%= link_to m, class: 'msg row' do %>
+            <div class="card-name col-md-4"><%= m.bookname%></div>
+            <div class="card-author col-md-2"><%= m.author %></div>
+            <div class="card-price col-md-3"><%= m.price %></div>
+            <div class="card-time col-md-3"><%= m.created_at.strftime("%Y-%m-%d") %></div>
+          <% end %>
           </div>
-          <h4 class="card-title" style="text-align:center"></h4>
-        </div>
         <% end %>
-        <a class='book' href=<%= myzzim_path%>><span>+</span></a>
-      </div>    
+      </div>
     </div>
   </section>
 </div>
 </main>
 <%= render 'footer' %>
 
-
 <script>
-
 $(document).ready(function () {
-<<<<<<< HEAD
-=======
-// <<<<<<< HEAD
->>>>>>> f1203c1771159cff5ed740057e47446204ace437
-		$('.minititle span').text('마이페이지');
-});
+  var cw = $('.inner-image').height();
+   $('.inner-image').css({'width': cw + 'px'});
 
-$(document).ready(function () {
-  <% if @books.size<4 %>
-  <% for i in 1..4-@books.size do %>
-    $('.upload').append("<div class='book' style='background-color: gray'></div>");
-  <% end %>
-<<<<<<< HEAD
-=======
-  <% end %>
-// =======
->>>>>>> f1203c1771159cff5ed740057e47446204ace437
+  var bw = $('.book').height();
+   $('.book').css({'width': bw + 'px'});
+
   <% @books.each_with_index do |b, i| %>
     var book = $('.mybook-<%=i%>');
+    console.log(book);
     book.find('.inner-image').css({
       'background-color': '',
       'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
     });
-    book.find('.card-title').text('<%=b.bookname%>');
-    <% if b.sell %>
-      book.find('.img-cover').css({
-        'background-color': 'rgba(0, 0, 0, 0.6)'
-      });
-      book.find('.img-cover').text('판매완료');
-    <% end %>
-<<<<<<< HEAD
-=======
-// >>>>>>> e691fb6609d064d76bd59e2e892381abf5986962
->>>>>>> f1203c1771159cff5ed740057e47446204ace437
+    book.find('.card-title').text('<%=b.bookname%> | <%= b.author%>');
   <% end %>
 
-  <% @likes.each_with_index do |l, i| %>
-    var like = $('.myzzim-<%=i%>');
-    like.find('.inner-image').css({
-      'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
-    });
-    like.find('.card-title').text('<%=l.book.bookname%>');
-    <% if l.book.sell %>
-      book.find('.img-cover').css({
-        'background-color': 'rgba(0, 0, 0, 0.6)'
-      });
-      book.find('.img-cover').text('판매완료');
-    <% end %>
-  <% end %>
-});  
 
+});
 </script>
-
 
 
 

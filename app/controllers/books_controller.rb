@@ -50,9 +50,8 @@ class BooksController < ApplicationController
 	end
 	def mypage
 		@user = current_user
-		@books = @user.books.last(4)
-		@likes = @user.likes.last(4)
-	end
+		@books = @user.books.all
+ end
 	def mybook
 		@user = current_user
 		@books = @user.books.page params[:page]

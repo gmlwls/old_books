@@ -169,6 +169,7 @@ GEM
     popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.4)
+    quilljs-rails (0.0.4)
     rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -277,6 +278,7 @@ DEPENDENCIES
   naver-sdk
   particles-js-rails (~> 2.0)
   puma (~> 3.7)
+  quilljs-rails
   rails (~> 5.1.6)
   sass-rails (~> 5.0)
   selenium-webdriver
