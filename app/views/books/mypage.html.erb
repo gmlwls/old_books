@@ -243,25 +243,7 @@ main {
 <%= render 'footer' %>
 
 <script>
-$(document).ready(function () {
-  var cw = $('.inner-image').height();
-   $('.inner-image').css({'width': cw + 'px'});
 
-  var bw = $('.book').height();
-   $('.book').css({'width': bw + 'px'});
-
-  <% @books.each_with_index do |b, i| %>
-    var book = $('.mybook-<%=i%>');
-    console.log(book);
-    book.find('.inner-image').css({
-      'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
-    });
-    book.find('.card-title').text('<%=b.bookname%> | <%= b.author%>');
-  <% end %>
-
-
-});
 </script>
 
 
