@@ -313,6 +313,15 @@ ul.comments > hr:last-child {
 	border-top: none;
 }
 
+.img-cover {
+	height: 100%;
+	z-index: 1;
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bolder;
+	padding-top: 50%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
 </style>
 
 <header>
@@ -324,7 +333,11 @@ ul.comments > hr:last-child {
 			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
 				<div class="col-sm-5 col-lg-4 col-xl-4" style="padding: 0;">
-					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);"></div>
+					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);">
+						<% if @book.sell %>
+					    <div class="img-cover text-center">판매완료</div>
+					    <% end %>
+					</div>
 				</div>
 				<div class="col-sm-7 col-lg-8 col-xl-8 book-content">
 					<div class="book1">
