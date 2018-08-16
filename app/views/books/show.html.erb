@@ -345,7 +345,6 @@ ul.comments > hr:last-child {
 					</div>
 					<hr>
 					<div class="book2">
-						<p><span style="font-size: 0.9rem">정가 : <%=@book.price %>원</span></p>
 						<p><span style="font-size: 0.9rem">판매가 : </span><strong style="color: blue; font-size: 1.2rem;"><%=@book.price %>원</strong> <span style="color: red; font-size: 0.9rem;">[<%= @book.discount%>%&darr;]</span></p>
 						<p><span style="font-size: 0.9rem">판매자 : <%= @book.user.username %> | <%= @book.user.school %>학과 | <%= @book.user.studentid %>학번</span></p>
 						<p><span style="font-size: 0.9rem">등록일 : <%= @book.user.created_at.strftime("%Y-%m-%d") %></span></p>
