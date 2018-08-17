@@ -361,21 +361,22 @@ ul.comments > hr:last-child {
 					        [할인율 정보 없음]
 					        <% end %>
 						</span></p>
-						<p><span style="font-size: 0.9rem">판매자 : <%= @book.user.username %> | <%= @book.user.school %>학과 | <%= @book.user.studentid %>학번</span></p>
+						<p><span style="font-size: 0.9rem">판매자 : <%= @book.user.username %> | <%= @book.user.school %> | <%= @book.user.studentid %>학번</span></p>
 						<p><span style="font-size: 0.9rem">등록일 : <%= @book.user.created_at.strftime("%Y-%m-%d") %></span></p>
 					</div>
 					<hr>
 					<div class="allbtn">
+						<% if current_user == @book.user %>
 						<div id="btns">
-						  <% if current_user == @book.user %>
 						  <% if @book.sell %>
 						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button1 sell' %>
 						  <% else %>
 						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
 						  <% end %>
-						  <% end %>
 						</div>
 						<div id="btns">
+							<%= link_to '삭제하기', book_path(@book), method: :delete, class: 'button button5' %>
+							<% else %>
 						<% if current_user.is_like?(@book) %>
 							<%= link_to book_like_path(@book), method: :post, remote: true, class: 'button button3 like-btn', id:'zzim' do %>
 								<i class="far fa-heart"></i><%=@book.likes.size %>
@@ -385,9 +386,9 @@ ul.comments > hr:last-child {
 								<i class="far fa-heart"></i><%=@book.likes.size %>
 							<% end %>
 							<% end %>
-						</div>			
+						</div>	
+						<% end %>		
 					</div>
-					<%= link_to '삭제하기', book_path(@book), method: :delete, class: 'button button5' %>
 				</div>
 			</div>
 		</div>
