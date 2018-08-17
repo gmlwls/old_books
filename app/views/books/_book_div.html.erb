@@ -180,7 +180,13 @@
     <div class="card-title"><%=b.bookname%> | <%= b.author%></div>
     <div class="card-text">
       <p id="won"><%= b.price%>원</p>
-      <p id="discnt">[<%= b.discount%>%&darr;]</p>
+      <p id="discnt">
+        <% if b.discount>=0 %>
+        [<%= b.discount%>%&darr;]
+        <% else %>
+        [할인율 정보 없음]
+        <% end %>
+      </p>
     </div>
   </div>
   <% end %>

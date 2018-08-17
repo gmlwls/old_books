@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180707043327) do
+ActiveRecord::Schema.define(version: 20180817111539) do
 
   create_table "books", force: :cascade do |t|
     t.integer "user_id"
     t.text "bookname"
     t.text "author"
     t.integer "price"
-    t.float "discount", default: 0.0
+    t.float "discount", default: -1.0
     t.string "img_url"
     t.text "content"
     t.boolean "sell", default: false

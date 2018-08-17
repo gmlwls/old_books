@@ -176,18 +176,18 @@ nav#mobilesearch {
         <a class="nav-link" id="mypage" href=<%= mypage_path%>>마이페이지</a>
       </li>
       <% if user_signed_in? %>
-      <li class="nav-item read">
-        <div class="dropdown" id="bell1">
-          <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="bell2"><i class="far fa-bell" style="color: #fdd400"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
-          <div class="dropdown-menu" aria-labelledby="dropdownAlart">
-            <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
-            <div class="dropdown-divider"></div>
-            <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path, class: 'dropdown-item' %>
+        <li class="nav-item read">
+          <div class="dropdown" id="bell1">
+            <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="bell2"><i class="far fa-bell" style="color: #fdd400"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownAlart">
+              <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
+              <div class="dropdown-divider"></div>
+              <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path, class: 'dropdown-item' %>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
       <li class="nav-item"> 
-        <a class="nav-link log" id = "logs" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
+        <a class="nav-link log" id = "logs" data-method="delete" href=<%=destroy_user_session_path%> data-method= 'delete'>로그아웃</a>
       </li>
       <% else %>
       <li class="nav-item">
@@ -206,9 +206,13 @@ nav#mobilesearch {
     <a style="margin-top: 25%;" href=<%= root_path%>>검색하기</a>
     <a href=<%= new_book_path%>>책등록하기</a>
     <a href=<%= mypage_path%>>마이페이지</a>
-    <a href="#">services</a>
-    <a href="#">contact</a>
-    <a href="#">회원가입&로그인 등</a>
+    <% if user_signed_in? %>
+      <a data-method="delete" href=<%=destroy_user_session_path%>>로그아웃</a>
+    <% else %>
+      <a href=<%=new_user_session_path%>>로그인</a> 
+      <a href=<%= new_user_registration_path%>>회원가입</a>
+    <% end %>
+    <a href=<%= intro_path %>>반짝!</a>
   </div>
 </nav>
 <script>
