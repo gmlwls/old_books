@@ -10,7 +10,7 @@
     font-weight: 400;
   }
 
-  #mobilebtn {
+  #mobilebtn .fas{
     color: white;
   }
 /*
@@ -108,4 +108,13 @@ $(document).ready(function () {
         $(".row").append(html);
     });
 });
+
+	$(document).scroll(function() {
+		if ($(window).scrollTop() > 350) {
+      $('#bar').css("color","black");
+    }
+		else {
+      $('#bar').css("color","white");
+    }		
+	});
 </script>

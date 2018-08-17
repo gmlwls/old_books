@@ -9,12 +9,6 @@ end
 gem 'figaro'
 gem 'kaminari'
 
-#시간라이브러리
-gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
-
-#텍스트에디터 quill라이브러리
-gem 'quilljs-rails'
-
 #회원가입
 gem 'devise'
 gem 'devise-i18n'

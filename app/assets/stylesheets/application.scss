@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require quill.snow
  */
 @import "bootstrap";
 
@@ -96,6 +95,7 @@ a:hover {color: gray;}
     max-width: 650px;
     }
 }
+
 hr {
     margin: 0.5rem 0;
 }

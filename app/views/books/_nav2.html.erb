@@ -119,11 +119,6 @@ nav#mobilesearch {
 }
 
 /* 전체 화면 그냥 이렇게 지정한 것임 */
-@media screen and (max-width: 960px) {
-  #mobilebtn {
-    visibility: visible;
-  }
-}
 /*
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -132,13 +127,18 @@ nav#mobilesearch {
 */
 /* media queries */ 
 @media all and (min-width: 320px) and (max-width: 576px) {
-  
+  #mobilebtn {
+    visibility: visible;
+    margin-top: 0rem;
+  }
 }
 
-@media all and (min-width: 577px) and (max-width: 991px){
-
+@media all and (min-width: 577px) and (max-width: 960px){
+  #mobilebtn {
+    visibility: visible;
+  }
 }
-@media all and (min-width: 992px) {
+@media all and (min-width: 961px) {
 }
 
 @media all and (min-width: 1200px) {
@@ -163,7 +163,7 @@ nav#mobilesearch {
     <% end %> 
   </nav>
 -->
-  <div id="mobilebtn" onclick="openNav()">&#9776;</div>
+  <div id="mobilebtn" onclick="openNav()"><i class="fas fa-bars" id="bar"></i></div>
   <div class="collapse navbar-collapse head-nav" id="navbarNav" style="justify-content:flex-end;">
     <ul class="navbar-nav">
       <li class="nav-item active">
@@ -218,14 +218,12 @@ nav#mobilesearch {
       $('.logo-link').css("margin-top","0%");
       $('#mobilesearch').css("visibility","visible");
       $('#mobilesearch').css("width","100%");
-      $('#mobilebtn').css("color","black");
     }
 		else {
       $('a#search2, a#regist, a#mypage, a#logs, .dropdown#bell1, b#bell2').css("color", "black");
       $('.logo-link').css("margin-top","0%");
       $('#mobilesearch').css("visibility","hidden");
       $('#mobilesearch').css("width","0px");
-      $('#mobilebtn').css("color","white");
     }		
 	});
 
