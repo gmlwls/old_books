@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 	before_action :authenticate_user!, :except => [:index, :introduction, :sgmail]
 	respond_to :js, :json, :html
 	def index
-		@books = Book.page params[:page]
+		@books = Book.order('created_at DESC').page params[:page]
 	end
 	def new
 		@book = Book.new
@@ -39,9 +39,9 @@ class BooksController < ApplicationController
 	def find
 		search = params[:search]
 	    if search.nil? || search.empty?
-	      @books=Book.where(sell: false).page params[:page]
+	      @books=Book.where(sell: false).order('created_at DESC').page params[:page]
 	    else
-	      @books = Book.where("author LIKE ? OR bookname LIKE ?", "%#{search}%", "%#{search}%").page params[:page]
+	      @books = Book.where("author LIKE ? OR bookname LIKE ?", "%#{search}%", "%#{search}%").order('created_at DESC').page params[:page]
 	    end
 	end
 	def sell
