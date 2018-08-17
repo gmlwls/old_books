@@ -122,9 +122,24 @@ label, legend, p, span, html {
   margin-top: -1%;
   margin-bottom: 1%;
 }
+.btmment {
+  padding: 1rem;
+}
+.btmment > .mnt > a {
+  color: blue;
+}
+.btmment > .mnt {
+  text-align: center;
+  line-height: 1.5;
+}
+.btmment > span {
+  margin-right: 2%;
+  line-height: 2;
+  color: rgb(72,72,72);
+}
 </style>
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="signin_form">
   <a href="/"><p id="logo">반짝</p></a>
   <p style="text-align:center; margin-bottom: 7%;">* 간단한 가입으로 개이득을 누리세요 * </p>
@@ -151,7 +166,6 @@ label, legend, p, span, html {
 <legend>계정 정보</legend><hr>
   <div class="field">
     <%= f.label :이메일 %><span style="color:blue; font-size: 0.95rem; margin-left: 2%;">(세인트 이메일로 인증 메일이 전송됩니다)</span><br>
-    <p>아직 세인트 이메일이 없으세요?<a href=<%= sgmail_path%>>세인트 메일 만드는 법</a></p>
     <%= f.email_field :email, pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", autofocus: true, autocomplete: "email", required: true, placeholder: "example@sogang.ac.kr" %>
   </div>
 
@@ -173,12 +187,25 @@ label, legend, p, span, html {
     <%= f.submit "회원가입", id:"btn" %>
   </div> 
   <hr>
-  <div style="text-align:center;">
-    <span style="margin-right: 2%; line-height: 2; color: rgb(72,72,72)">이미 반짝 계정이 있나요?</span>
-    <a href="/users/sign_in" style="color: blue;">로그인</a>
-  </div>  
+  <div class="btmment">
+    <div class="mnt"><span style="margin-right: 2%;">이미 반짝 계정이 있나요?</span><a href="/users/sign_in">로그인</a></div>
+    <!--<div class="mnt"><span style="margin-right: 2%;">아직 세인트 이메일이 없으세요?</span><a href=<%= sgmail_path%>>세인트메일 생성</a></div>-->
+    <div class="mnt"><span style="margin-right: 2%;">아직 세인트 이메일이 없으세요?</span><span id="mm" style="color:blue;">세인트메일 생성</span></div>  
   </div>
 <% end %>
 
 
+
 </div>
+
+<script>
+
+  $(document).ready(function () {
+    document.getElementById('mm').onclick = function(){
+      swal({
+        content: "text",
+        title: "세인트 메일 만드는 방법", 
+        text: "1. saint에 로그인을 합니다. ( http://saint.sogang.ac.kr )\n\n2. 로그인 화면 중앙의 연계 서비스란의 E-Mail 항목 클릭\n\n3. 회원가입을 클릭한 후에 가입 절차를 밟으세요!\n\n4. 가입 승인이 완료 되면 사용 가능합니다.\n( http://mail.sogang.ac.kr )\n\n5. 이렇게 만든 메일 주소로 반짝에서 회원가입 하시고 인증 메일 받으시면 됩니다."
+      })
+  }});
+</script>
