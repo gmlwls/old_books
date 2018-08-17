@@ -119,6 +119,15 @@ strong {
 .button3 .fa-heart {
   color: #ff0000;
 }
+.button5 {
+	color: red !important;
+	border: 1px solid red;
+	border-radius: .28571429rem;
+	background-color: white;
+}
+.button5 > a:link {
+	color: red !important;
+}
 
 #zzim {
 	width: 100%; 
@@ -364,7 +373,6 @@ ul.comments > hr:last-child {
 						  <% else %>
 						  <%= link_to '판매완료', book_sell_path(@book), method: :post, remote: true, class: 'button button2 sell' %>
 						  <% end %>
-						  <%= link_to '삭제하기', book_path(@book), method: :delete, class: 'button button2' %>
 						  <% end %>
 						</div>
 						<div id="btns">
@@ -379,6 +387,7 @@ ul.comments > hr:last-child {
 							<% end %>
 						</div>			
 					</div>
+					<%= link_to '삭제하기', book_path(@book), method: :delete, class: 'button button5' %>
 				</div>
 			</div>
 		</div>
