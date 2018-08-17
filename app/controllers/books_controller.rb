@@ -13,7 +13,7 @@ class BooksController < ApplicationController
 	def create
 		book = Book.new(book_params)
 		book.user_id = current_user.id
-		if params[:book][:cost] != 0
+		if params[:book][:cost].to_f != 0.0
 			book.discount = ((params[:book][:cost].to_f - params[:book][:price].to_f) / params[:book][:cost].to_f * 100).round(2)
 		end
 		book.save
