@@ -25,6 +25,7 @@ gem 'bootstrap', '~> 4.1.1'
 #사진 업로드
 gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
+gem 'mini_magick'
 #알림
 gem 'unread'
 gem 'naver-sdk'
