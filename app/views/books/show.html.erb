@@ -157,11 +157,6 @@ a:hover {
 	height: auto;
 } 
 
-.mainimg {
-	display: flex;
-	justify-content: center;
-}
-
 .mainimg .image{
 	background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -212,6 +207,13 @@ a:hover {
 	.cmtcreate {
 		margin: 0.5rem;
 	}
+	.maincontent {
+		margin: 0 !important;
+	}
+	.mainimg > .image {
+	margin: 1rem auto;
+	width: 100%;
+}
 
 
 
@@ -300,6 +302,10 @@ a:hover {
 	.cmtcreate {
 		margin: 1rem 2rem;
 	}
+	.image {
+	margin: 1rem auto;
+	width: 40% !important;
+}
 }
 
 .submitbtn {
@@ -330,6 +336,10 @@ ul.comments > hr:last-child {
 	font-weight: bolder;
 	padding-top: 50%;
 	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.maincontent2 {
+	margin: 2rem 2rem 5rem 2rem;
 }
 </style>
 
@@ -401,10 +411,10 @@ ul.comments > hr:last-child {
 				<!-- 정원아 여기야! -->
 				<div class="mainimg">
 				<% @book.img_url.each do |x| %>
-					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
+					<div class="image eachimg" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
 				<% end %>
 				</div>
-				<div class="maincontent">
+				<div class="maincontent2">
 					<p><%= @book.content %></p>
 				</div>
 				</div>
@@ -445,7 +455,7 @@ ul.comments > hr:last-child {
   $(document).ready(function () {
 		$('.minititle span').text('책상세보기');
 
-    var mw = $('#mainimg.image').width();
-    $('#mainimg.image').css({'height': mw + 'px'});
+    var mw = $('.eachimg').width();
+    $('.eachimg').css({'height': mw + 'px'});
   });
 </script>
