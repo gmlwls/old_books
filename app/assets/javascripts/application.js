@@ -17,5 +17,3 @@
 //= require turbolinks
 //= require_tree .
 //= require particles.js
-//= require quill.min
-//= require quill.global
