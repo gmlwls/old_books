@@ -69,9 +69,6 @@ td:hover {
 	font-size: 1.5rem;
 	color: #495057 !important
 }
-.table-top, .table-btm {
-	visibility: hidden;
-}
 
 i {
 	color: #495057 !important;
@@ -146,7 +143,9 @@ p, span, a, html, legend {
 	box-shadow: inset 0 1px 1px rgba(0,0,0,.08);
 	border-radius: 0.25rem;
 }
-
+.show-info {
+	display: none;
+}
 </style>
 <div class="submit-form">
 <%= form_for book, url: path, method: form_method, multipart: true, :html => {class: 'submit-form-content'} do |f| %>
@@ -155,17 +154,14 @@ p, span, a, html, legend {
 			<div id="legendbar" style="display: flex;">
 				<i class="fas fa-book-open"></i>
 				<div style="width: 80%;"><p id="title">도서 정보</p>
-					<p class="sub">저자나 책 이름을 입력하고 검색해보세요</p>
+					<div class="row">
+					<input type="text" class="sub search col-10" placeholder="저자나 책 이름을 입력하고 검색해보세요" style="height: 40px; margin-top: 3%; width: 100%">
+					<%= link_to '<i class="fas fa-search" style = "margin: 0;"></i>'.html_safe,  '', class: 'find-info col-2', remote: true %>
+					</div>
 				</div>
 			</div>
 		</legend>
-
-		<%= f.label :도서명, class: 'form-label'%>
-		<div class="form-group2">
-			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '제목 또는 저자 검색',:required => true, :autocomplete => :off%>
-			<%= link_to '<i class="fas fa-search"></i>'.html_safe,  '', class: 'find-info', remote: true %>
-	  </div>
-
+		<div class="show-info">
 		<div class="table-top" style="display: flex; justify-content: space-between;">
 			<span style="font-size: 0.9rem;">상위 5개 검색 결과입니다</span>
 			<span>출처 : <a href="https://book.naver.com/" target="_blank" style="color: blue;">네이버 북스</a></span>
@@ -174,8 +170,14 @@ p, span, a, html, legend {
 		<table class="info"></table>
 
 		<div class="table-btm" style="display: flex; justify-content: flex-end;">
-			<button class="next-info">다음 5개 결과보기</button>
+			<span class="next-info">다음 5개 결과보기</span>
 		</div>
+		</div>
+
+		<%= f.label :도서명, class: 'form-label'%>
+		<div class="form-group2">
+			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '제목 입력하기',:required => true, :autocomplete => :off%>
+	  </div>
 		
 		<div class="form-group2"> 
 	  <div class="form-group">
@@ -187,7 +189,7 @@ p, span, a, html, legend {
 			<input class="form-control orgprice" id="disabledInput" type="text" placeholder="" disabled>
 		</div>
 		</div>
-		<hr>
+		<!-- <hr>
 		<legend>
 			<div id="legendbar" style="display: flex;">
 				<i class="fas fa-money-bill-wave"></i>
@@ -195,7 +197,7 @@ p, span, a, html, legend {
 					<p class="sub">판매가를 입력하면 할인율이 계산됩니다</p>
 				</div>
 			</div>
-		</legend>
+		</legend> -->
 
 		<div class="form-group2">
 	  <div class="form-group">
@@ -234,27 +236,25 @@ p, span, a, html, legend {
 <script>
 $(document).ready(function () {
     $(document).on('click', '.find-info', function () {
-    	var info = $('.bookname').val();
+    	var info = $('.search').val();
     	$('.find-info').attr('href', '/info/'+info);
+    	$('.next-info').html("다음 5개 결과보기");
     });
     
 	$(document).on('click', 'tr', function () {
-			var title = $(this).data("title");
+		var title = $(this).data("title");
     	var author = $(this).data("author");
     	var price = $(this).data("price");
-    	console.log(title);			
-    	console.log(author);
-    	console.log(price);
-			$('.bookname').val(title);
+		$('.bookname').val(title);
     	$('.author').val(author);
     	$('.cost').val(price);
     	$('.orgprice').val(price);
+    	$('.show-info').css('display', 'none');
     });
 
 	$(document).on('click', '.find-info',function() {
-		$('.table-top').css('visibility','visible');
+		$('.show-info').css('display', 'block');
 		$('.table-top').css('margin-top','4%');
-		$('.table-btm').css('visibility','visible');
 		$('.table-btm').css('margin-bottom','3%');
 		$('.info').css('margin-top','1%');
 		$('.info').css('margin-bottom','3%');
