@@ -13,4 +13,13 @@
 		author = replaceAll(author, "&lt;/b&gt;", "");
 		$('.info').append('<tr data-author="'+author+'" data-title="'+title+'" data-price = "<%= @search_results.items[i].price%>"><td><%=image_tag @search_results.items[i].image %></td>' + '<td><p>'+ title+ '</p></td><td><p>'+author+'</p></td><td><%=@search_results.items[i].price%></td></tr>');
 	<% end %>
+	<% for i in 5..9 %>
+		var title = "<%= @search_results.items[i].title %>";
+		title = replaceAll(title, "&lt;b&gt;", "");
+		title = replaceAll(title, "&lt;/b&gt;", "");
+		var author = "<%=@search_results.items[i].author%>";
+		author = replaceAll(author, "&lt;b&gt;", "");
+		author = replaceAll(author, "&lt;/b&gt;", "");
+		$('.info').append('<tr style="display: none;" data-author="'+author+'" data-title="'+title+'" data-price = "<%= @search_results.items[i].price%>"><td><%=image_tag @search_results.items[i].image %></td>' + '<td><p>'+ title+ '</p></td><td><p>'+author+'</p></td><td><%=@search_results.items[i].price%></td></tr>');
+	<% end %>
 })(jQuery)
