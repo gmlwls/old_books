@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/mypage', to: 'books#mypage', as: 'mypage'
   get '/mypage/mybook', to: 'books#mybook', as: 'mybook'
   get '/mypage/myzzim', to: 'books#myzzim', as: 'myzzim'
-  
+  get '/hello', to: 'books#introduction', as: 'intro'
+  get '/sgmail', to: 'books#sgmail', as: 'sgmail'
+
   resources :books do
   	post '/like', to: 'books#like_toggle'
     post '/sell', to: 'books#sell'
