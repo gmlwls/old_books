@@ -13,59 +13,6 @@
   #mobilebtn .fas{
     color: white;
   }
-/*
-  .books_title {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    padding: 5% 2% 0% 2%;
-    font-size: 0.9rem;
-    margin-top: 2%;
-  }
-
-  .book_contents {
-    padding: 0.1rem 0 10rem 0;
-    min-height: 80vh;
-  }
-
-@media all and (max-width: 576px){
-  .card-image-top{
-    width: 100%;
-  }
-
-  .card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 5%;
-    margin-bottom: 5%;
-  }
-
-  .card-body > p {
-    font-size: 0.9rem;
-  }
-}
-@media all and (min-width: 577px) and (max-width: 992px){
-  .card-image-top{
-    width: 200px;
-    height: 200px;
-  }
-}
-@media all and (min-width: 993px) {
-  .card-image-top{
-    width: 230px;
-    height: 230px;
-  }
-}
-
-.card-title {
-  display: flex;
-  flex-direction: column;
-  justify-content : center;
-}
-
-
-
-  */
 
 nav.pagination {
   display: flex;
@@ -78,6 +25,8 @@ span.page.current {
 }
 span.prev {
   order: 1;
+  visibility: hidden;
+  width: 0;
 }
 span.first {
   order: 0;
@@ -88,6 +37,8 @@ span.page {
 }
 span.next {
   order: 3;
+  visibility: hidden;
+  width: 0;
 }
 span.last {
   order: 4;
@@ -111,7 +62,7 @@ span.last {
       <%= render 'book_div', books: @books %>
     </div>
   </div>
-   <div class="page"><%= paginate @books, :window => 10, :outer_window => -1 %></div> 
+   <div class="page"><%= paginate @books %></div> 
 </main>
 <%= render 'footer' %>
 
