@@ -91,9 +91,10 @@ i {
 }
 
 .sub {
-	font-size: 1rem;
-	font-weight: 400;
+	font-size: 0.9rem;
+	font-weight: 500;
 	color: #717171;
+	margin-top: 1%;
 }
 
 button.btn {
@@ -108,6 +109,42 @@ button.btn {
 	table, thead, tbody, th, td, tr { 
 		display: block;
 } 
+	fieldset {
+		margin-top:4%;
+	}
+
+	#legendbar {
+		margin-right: -10%;
+		margin-left: -10%;
+	}
+	 i {
+		 margin-left: 1rem;
+	 }
+}
+
+p, span, a, html, legend {
+	color: rgb(72,72,72);
+}
+#title {
+	font-weight: 600;
+	font-size: 1.3rem;
+}
+
+.form-label {
+	font-size: 0.95rem;
+}
+
+#legendbar {
+	background-color: rgb(242,244,241);
+	padding: 1rem;
+	border: 1px solid lightgray;
+}
+.discnt {
+	height:68%;
+	background-color: #e9ecef;
+	border: 1px solid #cfd9db;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.08);
+	border-radius: 0.25rem;
 }
 
 </style>
@@ -115,9 +152,11 @@ button.btn {
 <%= form_for book, url: path, method: form_method, multipart: true, :html => {class: 'submit-form-content'} do |f| %>
 	<fieldset>
 		<legend>
-			<div style="display: flex;">
+			<div id="legendbar" style="display: flex;">
 				<i class="fas fa-book-open"></i>
-				<div style="width: 80%;"><p style="margin-bottom: 1%;">도서 정보</p><p class="sub">저자나 책 이름을 입력하고 검색을 눌러보세요</p></div>
+				<div style="width: 80%;"><p id="title">도서 정보</p>
+					<p class="sub">저자나 책 이름을 입력하고 검색해보세요</p>
+				</div>
 			</div>
 		</legend>
 
@@ -136,19 +175,21 @@ button.btn {
 		
 		<div class="form-group2"> 
 	  <div class="form-group">
-			<%= f.label :저자, class: 'form-label'%>(대표)
+			<%= f.label :저자, class: 'form-label', style: "font-size: 0.95rem;"%>
 			<%= f.text_field :author, class: 'form-control author half', placeholder: '직접 입력하기',:required => true%>
 	  </div>
 		<div class="form-group">
-			<%= f.label :원래가격, class: 'form-label' %>(원)
+			<%= f.label :원래가격, class: 'form-label' %>
 			<input class="form-control orgprice" id="disabledInput" type="text" placeholder="" disabled>
 		</div>
 		</div>
 		<hr>
 		<legend>
-			<div style="display: flex;">
+			<div id="legendbar" style="display: flex;">
 				<i class="fas fa-money-bill-wave"></i>
-				<div style="width: 80%;"><p style="margin-bottom: 1%;">판매 정보</p><p class="sub">원하는 가격을 입력하면 자동으로 할인율이 계산됩니다</p></div>
+				<div style="width: 80%;"><p id="title">판매 정보</p>
+					<p class="sub">판매가를 입력하면 할인율이 계산됩니다</p>
+				</div>
 			</div>
 		</legend>
 
@@ -157,14 +198,14 @@ button.btn {
 			<%= f.label :가격, class: 'form-label' %>(원)
 			<%= f.text_field :price, class: 'form-control price',:required => true%>
 		</div>
-		<div class="form-group" style="border-bottom: 1px solid gray;">
+		<div class="form-group">
 			<%= f.label :할인율, class: 'form-label' %>
-			<p class="discnt" style="font-size: 1.8rem; text-align: center; line-height: 100%; margin-top: 10px; font-weight: 600; color: red;">%</p>
+			<div class="discnt disabled" style="color: red; line-height: 2.95; font-weight: 600; color: red; padding-left: 1rem;"></div>
 		</div>
 		</div>
 
 		<div class="form-group">
-			<%= f.hidden_field :cost, class: 'form-control cost', value: 0%>
+			<%= f.hidden_field :cost, class: 'form-control cost', value: 0 %>
 	  </div> 
 
 		<div class="file-input">
