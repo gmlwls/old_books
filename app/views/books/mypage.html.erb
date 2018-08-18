@@ -165,7 +165,10 @@ main {
   display: flex;
   cursor: pointer;
 }
-
+.show {
+  padding-top: 40%;
+  padding-left: 40%;
+}
 
 </style>
 <%= render 'nav2' %>
@@ -179,8 +182,8 @@ main {
       <div class="msgs">
         <% current_user.new_notifications.unread_by(current_user).each do |m| %>
           <%= link_to m, class: 'msg row' do %>
-            <div class="msg_bell col-md-1">읽지 않음</div>
-            <div class="msg_title col-md-9"><%= m.content %></div>
+            <div class="msg_bell col-md-2">읽지 않음</div>
+            <div class="msg_title col-md-8"><%= m.content %></div>
             <div class="msg_time col-md-2"><%= m.created_at.strftime("%Y-%m-%d") %></div>
           <% end %>
         <% end %>
@@ -209,7 +212,7 @@ main {
         <% end %>
         <% end %>
         <div class='book'>
-        <div class="inner-image show-books"><span>+</span></div>
+        <div class="inner-image show show-books"><span>+</span></div>
       </div>
       </div>
     </div>
@@ -249,7 +252,9 @@ main {
           <h4 class="card-title" style="text-align:center"></h4>
         <% end %>
         <% end %>
-        <div class='book show-zzims'><span>+</span></div>
+        <div class='book'>
+          <div class="inner-image show show-zzims"><span>+</span></div>
+        </div>
       </div>    
     </div>
     <div class="zzims-list row" style="display: none;">
@@ -287,7 +292,7 @@ $(document).ready(function () {
     book.attr('href', '/books/<%=b.id%>');
     book.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
+      'background-image': 'url(https://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
     });
     book.find('.card-title').text('<%=b.bookname%>');
     <% if b.sell %>
@@ -307,7 +312,7 @@ $(document).ready(function () {
     like.attr('href', '/books/<%=l.book.id%>');
     like.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
+      'background-image': 'url(https://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
     });
     like.find('.card-title').text('<%=l.book.bookname%>');
     <% if l.book.sell %>

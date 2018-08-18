@@ -6,7 +6,7 @@
   }
 
   .books_title {
-    padding: 1rem;
+    padding: 1rem !important;
     padding-bottom: 0rem;
   }
 
@@ -179,7 +179,7 @@
 <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
   <%= link_to book_path(b.id)do %>
   <div class="card-image-top">
-    <div class="inner-image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)">
+    <div class="inner-image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)">
       <% if b.sell %>
       <div class="img-cover text-center">판매완료</div>
       <% end %>
