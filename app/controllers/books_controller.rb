@@ -22,8 +22,8 @@ class BooksController < ApplicationController
 	def destroy
 		book = Book.find(params[:id])
 		book.destroy
-		notification = NewNotification.where(link: book_path(params[:id]))
-		notification.destroy
+		notification = NewNotification.where(link: "/books/#{params[:id]}")
+		notification.destroy_all
 		redirect_to root_path
 	end
 	def show
