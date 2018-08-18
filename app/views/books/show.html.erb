@@ -1,5 +1,7 @@
 <style>
-
+html {
+	font-family: 'Nanum Gothic', sans-serif;
+}
 h4 {
 	font-size: 1rem;
 	font-weight: 600;
@@ -35,7 +37,8 @@ strong {
 	margin-bottom: 30px;
 	color: gray; 
 }
-.image{
+.image,
+.image2{
 	height: 300px;
 	background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -222,11 +225,7 @@ a:hover {
 @media all and (min-width: 576px) and (max-width: 991px){
 	.book-content {
 		padding: 1rem;
-	}
-
-	.book-detail {
-
-	}
+}
 .mainimg .image{
 	width: 80%;
 }
@@ -301,26 +300,23 @@ a:hover {
 		width: 6.5% !important;
 	}
 	.cmtcreate {
-		margin: 1rem 2rem;
+		margin: 1rem;
 	}
 	.image {
 	margin: 1rem auto;
 	width: 40% !important;
-	}
-	.image.main-image{
-		width: 80% !important;
-	}
-	.maincontent2 {
-		margin: 2rem 2rem 5rem 2rem;
-	}
+}
+.maincontent2 {
+	margin: 2rem 2rem 5rem 2rem;
+}
 }
 
 .submitbtn {
-	padding: 1.2rem;
+	padding: 1.2rem 0;
 	width: 6.5%;
-	font-size: 0.8rem;
-	border: 1px solid rgb(255,220,117);
-	background-color: rgb(255,220,117);
+	font-size: 1rem;
+	border: 1px solid #fdd400;
+	background-color: #fdd400;
 	border-radius: .28571429rem;
 }
 
@@ -345,6 +341,21 @@ ul.comments > hr:last-child {
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
+form.new_reply .repl {
+	padding: 1.2rem 0;
+	width: 6.5%;
+	font-size: 1rem;
+	border: 1px solid #fdd400;
+	background-color: #fdd400;
+	border-radius: .28571429rem;
+}
+
+.repl_content {
+	border: 1px solid gray;
+	padding: 1rem;
+	margin: 0;
+}
+
 
 </style>
 
@@ -357,7 +368,7 @@ ul.comments > hr:last-child {
 			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
 				<div class="col-sm-5 col-lg-4 col-xl-4" style="padding: 0;">
-					<div class="image main-image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);">
+					<div class="image2" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);">
 						<% if @book.sell %>
 					    <div class="img-cover text-center">판매완료</div>
 					    <% end %>
@@ -416,7 +427,7 @@ ul.comments > hr:last-child {
 				<!-- 정원아 여기야! -->
 				<div class="mainimg">
 				<% @book.img_url.each do |x| %>
-					<div class="image eachimg" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
+					<div class="image eachimg" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
 				<% end %>
 				</div>
 				<div class="maincontent2">
@@ -428,7 +439,6 @@ ul.comments > hr:last-child {
 
 		<div class="book-detail book-detail2">
 			<h4 id="comment-box">댓글</h4>
-			<hr>
 			<div class="content">
 			<div class="inner_content" style="padding-bottom: 0.1rem; padding-top: 0.1rem;">
 				<ul class="comments" style="margin:0.5rem;">
@@ -442,12 +452,14 @@ ul.comments > hr:last-child {
 			  <!-- 댓글생성 -->
 				<div class="cmtcreate">
 				<%= form_for [@book, @book.comments.new], remote: true do |f| %>
-					<!-- <span><strong><%= @book.user.username%></strong></span>-->
+				<div class="top">
 				  <%= f.text_field :content, :autocomplete => :off,:required => true %>
 				  <%= f.submit value: '작성',class:'submitbtn' %>
-					<br>
+				</div>
+				<div class="bottom" style="text-align: right; margin: 0.5rem 0">
 				  <%= f.check_box(:secret) %>
 				  <%= label_tag(:secret, '비밀댓글') %>
+				</div>
 				<% end %>
 				</div>
 			</div>

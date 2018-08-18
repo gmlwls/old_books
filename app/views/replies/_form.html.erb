@@ -1,5 +1,5 @@
 <%= form_for [@book, @comment, @comment.replies.new] do |f| %>
 	<% comment_id = @comment.id%>
-	<%= f.text_field :content, id: "reply_content-#{comment_id}", :autocomplete => :off %>
-	<%= f.submit "작성" %>
+	<%= f.text_field :content, class: "repl_content", id: "reply_content-#{comment_id}", :autocomplete => :off %>
+	<%= f.submit "작성", class:"repl" %>
 <% end %>
