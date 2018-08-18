@@ -37,25 +37,13 @@ a {
   width: 100%;
   padding-top: 50px; /* navbar 의 height 에 맞춰서 띄워줬음 */
 }
-.bottom-searchArea {
-  display: flex;
-  justify-content: center;
-}
-
-.bottom-mentionArea {
-  justify-content: flex-start;
-  height: 40%;
-}
-.bottom-mentionArea {
-  margin-top: 10%;
-}
 
 .bottom-searchbar .form-control{
   width: 30%;
 }
 
 /* main-searchcard */
-.search-card {
+.search-card  {
   background: #fff;
   border-radius: 1px;
   display: inline-block;
@@ -68,6 +56,17 @@ a {
 }
 .search-card:hover {
   box-shadow: 2px 3px 10px rgba(0,0,0,0.25), 0 5px 10px rgba(0,0,0,0.22);
+}
+
+#ment {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  color: white;
+  box-shadow: none;
+  transition: none;
+}
+#ment:hover {
+  box-shadow: none;
 }
 .form-inline {
   height: 100%;
@@ -103,49 +102,71 @@ a {
 
 
 span.mainment {
-  font-family: 'KCC-eunyoung', 'NanumSquare';
+  font-family: 'KCC-eunyoung', 'Nanum Gothic', sans-serif;
   color: white;
-  z-index: 2;
+
 }
 
 /* media queries */
-@media all and (min-width: 320px) and (max-width: 575px) {
+@media all and (min-width: 320px) and (max-width: 359px) {
   .bottom-searchArea {
     margin-top: 12%;
   }
-  .bottom-mentionArea {
-    padding-left: 1rem;
-    margin-top: 10%;
-    margin-bottom: 1%;
-  }
-
   span.mainment {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     text-align: center;
     line-height: 52px;
   }
+.search-card  {
+  width: 90%;
+  margin-top: 12%;
+}
+
+#main {
+  margin-bottom: 10% !important;
+}
+
+}
+@media all and (min-width: 360px) and (max-width: 575px) {
+  .bottom-searchArea {
+    margin-top: 12%;
+  }
+  span.mainment {
+    font-size: 3rem;
+    text-align: center;
+    line-height: 52px;
+  }
+.search-card  {
+  width: 90%;
+  margin-top: 12%;
+}
+.bottom-navbar {
+  height:
+}
+#main {
+  margin-bottom: 12% !important;
+}
 
 }
 
 @media all and (min-width: 576px) and (max-width: 991px){
   .bottom-searchArea {
-    margin-top: 5%;
+    margin-top: 10%;
   }
-  .bottom-mentionArea {
-    justify-content: center;
-    margin-top: 8%;
-    margin-bottom: 1%;
-  }
-
   .bottom-navbar {
     padding-top: 5%;
     padding-bottom: 10%;
   }
-
   span.mainment {
-    font-size: 2.3rem;
+    font-size: 3.4rem;
     text-align: center;
     line-height: 52px;
+  }
+  #main {
+    margin-bottom: 8% !important;
+  }
+  .search-div {
+    margin-top: 5%;
   }
 
 }
@@ -153,12 +174,6 @@ span.mainment {
   .bottom-searchArea {
     margin-top: 0%;
   }
-  .bottom-mentionArea {
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
-  }
-
   span.mainment {
     font-size: 3.7rem;
   }
@@ -167,19 +182,16 @@ span.mainment {
 
 @media all and (min-width: 1200px) {
   .bottom-searchArea {
-    margin-top: 0%;
+    margin-top: 4%;
   }
-  .bottom-mentionArea {
-    justify-content: center;
-    margin-top: 3%;
-    margin-bottom: 1%;
-  }
-
   span.mainment {
-    font-size: 2.3rem;
+    font-size: 3.8rem;
     text-align: center;
     line-height: 52px;
     color: white;
+  }
+  .search-div {
+    margin-top: 3% !important;
   }
 
 }
@@ -191,16 +203,17 @@ span.mainment {
 <%= render 'nav2' %>
 </div>
 <nav class="bottom-navbar">
-  <div class="bottom-mentionArea">
-    <span class="mainment">비싼 전공책을 저렴하게</span>
-  </div>
-
   <div class="bottom-searchArea">
-    <nav class="search-card">
+    <div class="search-card" id="ment">
+      <span class="mainment">비싼 전공책을 저렴하게</span>
+    </div>
+      <div class="search-div" style="margin-top: 5%;">
+      <div class="search-card">
       <%= form_tag(books_find_path, method: :get, class: 'form-inline search-form') do %>
       <%= text_field_tag "search", nil, class: "form-control mr-sm-2 search", placeholder: "저자, 도서명 등을 입력하세요", type: 'search' %>
       <% end %>
-    </nav>
+      </div>
+      </div>
   </div>
 </nav>
 
