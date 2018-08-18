@@ -218,8 +218,6 @@ a:hover {
 	margin: 2rem 0rem 4rem 0rem;
 }
 
-
-
 }
 @media all and (min-width: 576px) and (max-width: 991px){
 	.book-content {
@@ -309,6 +307,9 @@ a:hover {
 	margin: 1rem auto;
 	width: 40% !important;
 }
+.maincontent2 {
+	margin: 2rem 2rem 5rem 2rem;
+}
 }
 
 .submitbtn {
@@ -341,9 +342,7 @@ ul.comments > hr:last-child {
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
-.maincontent2 {
-	margin: 2rem 2rem 5rem 2rem;
-}
+
 </style>
 
 <header>
@@ -355,7 +354,7 @@ ul.comments > hr:last-child {
 			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
 				<div class="col-sm-5 col-lg-4 col-xl-4" style="padding: 0;">
-					<div class="image" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);">
+					<div class="image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);">
 						<% if @book.sell %>
 					    <div class="img-cover text-center">판매완료</div>
 					    <% end %>
@@ -414,7 +413,7 @@ ul.comments > hr:last-child {
 				<!-- 정원아 여기야! -->
 				<div class="mainimg">
 				<% @book.img_url.each do |x| %>
-					<div class="image eachimg" style="background-image: url(http://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
+					<div class="image eachimg" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
 				<% end %>
 				</div>
 				<div class="maincontent2">

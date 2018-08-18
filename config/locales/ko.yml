@@ -1,8 +1,8 @@
 ko:
   views:
     pagination:
-      first: "&laquo; 처음"
-      last: "끝 &raquo;"
+      first: "&laquo;"
+      last: "&raquo;"
       previous: "&lsaquo; 이전"
       next: "다음 &rsaquo;"
       truncate: "&hellip;"

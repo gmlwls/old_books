@@ -39,10 +39,11 @@ main {
 
 .trade_content {
   position: relative;
-  margin: 1rem 0;
-  padding: 16px;
+  margin: 1rem;
+  padding: 1rem;
   border: 1px solid #dadfeb;
   border-radius: .28571429rem;
+  min-height: 25vh;
 }
 
 .msgs {
@@ -89,7 +90,9 @@ main {
 .each_header {
   margin-bottom: 10px;
   display: inline-block;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: rgb(72,72,72);
 }
 
 .grid > .row:before {
@@ -119,16 +122,6 @@ main {
   color: rgb(115,111,111);
   font-size: 70px;
   font-weight: 200;
-}
-
-.books > .book:hover,
-.msgs > .msg:hover {
-  background-color: #dadfeb;
-  transition: 0.3s all ease-in-out;
-}
-
-.books > .book:last-child span:hover{
-  color: white;
 }
 
 .inner-image {
@@ -161,6 +154,8 @@ main {
 }
 .card-title {
   text-align: center;
+  margin: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .book {
@@ -170,9 +165,7 @@ main {
   display: flex;
   cursor: pointer;
 }
-.book_btm:hover {
-  background-color: rgb(218, 223, 235);
-}
+
 
 </style>
 <%= render 'nav2' %>
@@ -280,6 +273,7 @@ main {
     </div>
   </section>
 </div>
+
 </main>
 <%= render 'footer' %>
 
@@ -293,7 +287,7 @@ $(document).ready(function () {
     book.attr('href', '/books/<%=b.id%>');
     book.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
+      'background-image': 'url(https://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)'
     });
     book.find('.card-title').text('<%=b.bookname%>');
     <% if b.sell %>
@@ -313,7 +307,7 @@ $(document).ready(function () {
     like.attr('href', '/books/<%=l.book.id%>');
     like.find('.inner-image').css({
       'background-color': '',
-      'background-image': 'url(http://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
+      'background-image': 'url(https://dsgut53a1wh4g.cloudfront.net/<%=l.book.img_url.first.path%>)'
     });
     like.find('.card-title').text('<%=l.book.bookname%>');
     <% if l.book.sell %>
@@ -329,3 +323,6 @@ $(document).ready(function () {
   });
 });  
 </script>
+
+
+
