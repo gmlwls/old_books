@@ -1,4 +1,8 @@
 <style>
+    * {
+    text-align: center;
+    align-items: center;
+  }
   
   .result {
     text-align: center;
@@ -9,6 +13,41 @@
     #mobilebtn {
     color: black !important;
   }
+
+  /* pagination */
+  nav.pagination {
+  display: flex;
+  justify-content : center;
+  border-bottom: none;
+}
+span.page.current {
+  color: rgb(72,72,72);
+  font-weight: 800;
+}
+span.prev {
+  order: 1;
+  visibility: hidden;
+  width: 0;
+}
+span.first {
+  order: 0;
+}
+span.page {
+  order: 2;
+  margin: 0 1rem;
+}
+span.next {
+  order: 3;
+  visibility: hidden;
+  width: 0;
+}
+span.last {
+  order: 4;
+  margin: 0 1rem;
+}
+.page {
+  margin: 1rem 0;
+}
 
 </style>
 
@@ -31,7 +70,7 @@
       <%= render 'book_div', books: @books %>
     </div>
   </div>
-
+   <div class="page"><%= paginate @books %></div>
 </main>
 <%= render 'footer' %>
 
