@@ -170,6 +170,16 @@ main {
   padding-top: 40%;
   padding-left: 40%;
 } 
+.show-books:hover,
+.show-zzims:hover {
+  background-color: black;
+}
+@media (min-width: 992px) {
+  .show-books,
+  .show-zzims {
+    margin-top: 4.5rem !important;
+  }
+}
 
 </style>
 <%= render 'nav2' %>
@@ -213,7 +223,7 @@ main {
         <% end %>
         <% end %>
         <div class='book'>
-        <div class="inner-image show show-books"><span>+</span></div>
+        <div class="show-books" style="text-align: center; padding: 0.8rem; margin: 1rem; border: 1px solid gray; border-radius: .28571429rem;"><span style="font-size: 1rem;">전체보기</span></div>
       </div>
       </div>
     </div>
@@ -253,9 +263,9 @@ main {
           <h4 class="card-title" style="text-align:center"></h4>
         <% end %>
         <% end %>
-        <div class='book'>
-          <div class="inner-image show show-zzims"><span>+</span></div>
-        </div>
+       <div class='book'>
+        <div class="show-zzims" style="text-align: center; padding: 0.8rem; margin: 1rem; border: 1px solid gray; border-radius: .28571429rem;"><span style="font-size: 1rem;">전체보기</span></div>
+      </div>
       </div>    
     </div>
     <div class="zzims-list row" style="display: none;">
