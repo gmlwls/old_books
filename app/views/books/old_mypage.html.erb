@@ -176,6 +176,11 @@ main {
     margin-top: 4.5rem !important;
   }
 }
+@media all and (min-width: 320px) and (max-width: 570px) {
+  .trade_content {
+    margin: 0 !important;
+  }
+}
 
 </style>
 <%= render 'nav2' %>
@@ -319,7 +324,7 @@ $(document).ready(function () {
     <% end %>
   <% end %>
 
-  $(document).on('click', '.show-books', function () {
+  $(document).on('touchstart click', '.show-books', function () {
     $('.books-list').show();
   });
 
