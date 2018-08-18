@@ -274,7 +274,7 @@ $(document).ready(function () {
 		}
 	});
 
-	$(document).on('click', '.next-info', function(){
+	$(document).on('touchstart click', '.next-info', function(){
 		$('tr').toggle();
 		if($('.next-info').html() == "다음 5개 결과보기"){
 			$('.next-info').html("이전 5개 결과보기");

@@ -95,6 +95,14 @@ span.last {
 <%= render 'footer' %>
 
 <script>
+$(document).scroll(function() {
+  if ($(window).scrollTop() > 350) {
+  $('#mobilebtn').css('color','black');
+}
+  else {   
+  $('#mobilebtn').css('color','black');
+}      
+});
 $(document).ready(function () {
     $(document).on('click', '.option', function () {
         $(".active").toggleClass("active");
