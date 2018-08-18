@@ -469,6 +469,14 @@ form.new_reply .repl {
 <%= render 'footer' %>
 
 <script>
+$(document).scroll(function() {
+  if ($(window).scrollTop() > 350) {
+  $('#mobilebtn').css('color','black');
+}
+  else {   
+  $('#mobilebtn').css('color','black');
+}      
+});
   $(document).ready(function () {
 		$('.minititle span').text('상세보기');
 
