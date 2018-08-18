@@ -4,19 +4,132 @@ ul li {
   cursor:pointer;
 }
 </style>
+<!-- style tag 끝나는 곳에 nav2가 있길래 -->
+<%= render 'nav2' %>
+<main>
+  <!-- tap -->
+  <ul class="tabs">
+    <li style="color:blue;" >내가 올린 책</li>
+    <li style="color:red;" >내가 찜한 책</li>
+    <li style="color:green;" >내 최근 소식</li>
+  </ul>
+  <!-- //tap -->
 
-<ul class="tabs">
-  <li>Menu 1 </li>
-  <li>Menu 2</li>
-  <li>Menu 3</li>
-</ul>
-<div class="tabsct">
-  <div class="tab"><h1>Test 1</h1>this is content 1</div>
-  <div class="tab"><h1>Test 2</h1>this is content 2</div>
-  <div class="tab"><h1>Test 3</h1>this is content 3</div>
-</div>
+  <!-- 내용 시작 -->
+  <div class="tabsct">
+    <!-- 첫째 tab -->
+    <div class="tab">
+      <h1>내가 올린 책</h1>
+        <div>
+          <!-- tab1 내용 시작  -->
+          <!-- each 문 시작 _book_div.html.erb에서 그대로 따옴. -->
+          <% @books.each do |b| %>
+          <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
+            <%= link_to book_path(b.id)do %>
+            <div class="card-image-top">
+              <div class="inner-image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)">
+                <% if b.sell %>
+                <div class="img-cover text-center">판매완료</div>
+                <% end %>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-title"><%=b.bookname%> | <%= b.author%></div>
+              <div class="card-text">
+                <p id="won"><%= b.price%>원</p>
+                <p id="discnt">
+                  <% if b.discount>=0 %>
+                  [<%= b.discount%>%&darr;]
+                  <% else %>
+                  [할인율 정보 없음]
+                  <% end %>
+                </p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
 
+          <!-- book에 대한 paginate -->
+          <div class="page"><%= paginate @books %></div> 
+          <!-- each 문 끝  -->
+          <!-- tab1 내용 끝  -->
+        </div>
+    </div>
+    <!-- 첫재 tab 끝 -->
+    <!-- 둘째 tab  -->
+    <div class="tab">
+      <h1>내가 찜한 책</h1>
+        <div>
+          <!-- tab2 내용 시작  -->
+          <!-- each문 시작 위의 내가 올린 책의 class 구조를 그대로 따랐음.  -->
+          <% @likes.each do |b| %>
+          <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
+            <%= link_to book_path(b.book.id)do %>
+            <div class="card-image-top">
+              <div class="inner-image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=b.book.img_url.first.path%>)">
+                <% if b.book.sell %>
+                <div class="img-cover text-center">판매완료</div>
+                <% end %>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-title"><%=b.book.bookname%> | <%= b.book.author%></div>
+              <div class="card-text">
+                <p id="won"><%= b.book.price%>원</p>
+                <p id="discnt">
+                  <% if b.book.discount>=0 %>
+                  [<%= b.book.discount%>%&darr;]
+                  <% else %>
+                  [할인율 정보 없음]
+                  <% end %>
+                </p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+          <!-- like에 대한 paginate -->
+          <div class="page"><%= paginate @likes %></div> 
+          <!-- each 문 끝 -->
+          <!-- tab2 내용 끝  -->
+        </div>
+    </div>
+    <!-- 둘째 tab 끝 -->
+    <!-- 셋째 tab -->
+    <div class="tab">
+      <h1>내 최근 소식</h1>
+        <div>
+          <!-- tab3 내용시작  -->
+          <!-- old_mypage.html.erb의 구조를 복붙했음 -->
+          <div class="trade_content">
+            <div class="msgs">
+              <% @noti.unread_by(current_user).each do |m| %>
+                <%= link_to m, class: 'msg row' do %>
+                  <div class="msg_bell col-md-2">읽지 않음</div>
+                  <div class="msg_title col-md-8"><%= m.content %></div>
+                  <div class="msg_time col-md-2"><%= m.created_at.strftime("%Y-%m-%d") %></div>
+                <% end %>
+              <% end %>
+              <% @noti.read_by(current_user).each do |m| %>
+                <%= link_to m , class: 'msg row' do %>
+                  <div class="msg_bell col-md-1">읽음</div>
+                  <div class="msg_title col-md-9"><%= m.content %></div>
+                  <div class="msg_time col-md-2"><%= m.created_at.strftime("%Y-%m-%d") %></div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <!-- tab3 내용씉 -->
+        </div>
+    </div>
+    <!-- 셋째 tab 끝 -->
+  </div>
+</main>
+<!-- main tag가 끝나는 곳에 footer가 있길래 -->
+<%= render 'footer' %>
 <script>
+// tap관련js
 jQuery().ready(function(){
   
   jQuery('.tab').hide();
@@ -25,6 +138,6 @@ jQuery().ready(function(){
     jQuery('.tab').hide();
     jQuery(jQuery('.tab')[jQuery(this).index()]).show();
   }).first().trigger('click');
-  
 });
+// tap관련js끝
 </script>

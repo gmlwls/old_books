@@ -57,19 +57,17 @@ class BooksController < ApplicationController
 	end
 	def mypage
 		@user = current_user
+		@books = @user.books.page params[:page]
+		@likes = @user.likes.page params[:page]
+		@noti = @user.new_notifications.order('created_at DESC').all
+ 	end
+	def old_mypage
+		@user = current_user
 		@books = @user.books.all
 		@recent_books = @books.last(4)
 		@likes = @user.likes.all
 		@recent_likes = @likes.last(4)
  	end
-	def mybook
-		@user = current_user
-		@books = @user.books.page params[:page]
-	end
-	def myzzim
-		@user = current_user
-		@likes = @user.likes.page params[:page]
-	end
     private
     def book_params
        params.require(:book).permit(:bookname, :author, :price, :content, {img_url: []})

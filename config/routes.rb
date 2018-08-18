@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   root to: 'books#index'
   get 'books/find', as: 'books_find'
   get '/info/:info', to: 'books#info', as: 'find_info'
+  get '/omypage', to: 'books#old_mypage', as: 'old_mypage'
   get '/mypage', to: 'books#mypage', as: 'mypage'
-  get '/mypage/mybook', to: 'books#mybook', as: 'mybook'
-  get '/mypage/myzzim', to: 'books#myzzim', as: 'myzzim'
   get '/hello', to: 'books#introduction', as: 'intro'
   get '/sgmail', to: 'books#sgmail', as: 'sgmail'
 
