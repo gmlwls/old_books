@@ -454,7 +454,7 @@ form.new_reply .repl {
 				<%= form_for [@book, @book.comments.new], remote: true do |f| %>
 				<div class="top">
 				  <%= f.text_field :content, :autocomplete => :off,:required => true %>
-				  <%= f.submit value: '작성',class:'submitbtn' %>
+				  <%= f.submit "작성",class:'submitbtn' %>
 				</div>
 				<div class="bottom" style="text-align: right; margin: 0.5rem 0">
 				  <%= f.check_box(:secret) %>
