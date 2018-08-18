@@ -158,7 +158,7 @@ p, span, a, html, legend {
 				<i class="fas fa-book-open"></i>
 				<div style="width: 80%;"><p id="title">도서 정보</p>
 					<div class="row">
-					<input type="text" class="sub search col-10" placeholder="저자나 책 이름을 입력하고 검색해보세요" style="height: 40px; margin-top: 3%; width: 100%">
+					<input type="text" class="sub search col-10" placeholder="저자나 책 이름 검색" style="height: 40px; margin-top: 3%; width: 100%">
 					<%= link_to '<i class="fas fa-search" style = "margin: 0;"></i>'.html_safe,  '', class: 'find-info col-2', remote: true %>
 					</div>
 				</div>
@@ -179,13 +179,13 @@ p, span, a, html, legend {
 
 		<%= f.label :도서명, class: 'form-label'%>
 		<div class="form-group2">
-			<%= f.text_field :bookname, class: 'form-control bookname',placeholder: '제목 입력하기',:required => true, :autocomplete => :off%>
+			<%= f.text_field :bookname, class: 'form-control bookname', :required => true, :autocomplete => :off%>
 	  </div>
 		
 		<div class="form-group2"> 
 	  <div class="form-group">
 			<%= f.label :저자, class: 'form-label', style: "font-size: 0.95rem;"%>
-			<%= f.text_field :author, class: 'form-control author half', placeholder: '직접 입력하기',:required => true%>
+			<%= f.text_field :author, class: 'form-control author half', :required => true%>
 	  </div>
 		<div class="form-group">
 			<%= f.label :원래가격, class: 'form-label' %>
@@ -225,7 +225,7 @@ p, span, a, html, legend {
 
 		<div class="form-group">
 			<%= f.label :상세정보, class: 'form-label' %>			
-			<%= f.text_area :content, class: 'form-control', placeholder: '추가적인 정보를 입력해주세요(책의 상태 및 거래방법 등)'%>
+			<%= f.text_area :content, class: 'form-control', placeholder: '책의 상태, 에디션, 거래 방법, 연락 방법 등의 추가 정보를 입력해 주세요'%>
 		</div>
 
 		<div class="btn-groups">
