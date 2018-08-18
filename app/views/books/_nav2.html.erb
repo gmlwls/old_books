@@ -169,7 +169,7 @@ nav#mobilesearch {
         <a class="nav-link" id="regist" href=<%= new_book_path%>>책 등록하기</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="mypage" href=<%= mypage_path%>>마이페이지</a>
+        <a class="nav-link" id="mypage" href=<%= old_mypage_path%>>마이페이지</a>
       </li>
       <% if user_signed_in? %>
         <li class="nav-item read">
@@ -201,14 +201,14 @@ nav#mobilesearch {
     <a href="javascript:void(0)" class="closebtn eachmenu" id="clsbtn" onclick="closeNav()">&times;</a>
     <a style="margin-top: 25%;" href=<%= root_path%>>검색하기</a>
     <a href=<%= new_book_path%>>책등록하기</a>
-    <a href=<%= mypage_path%>>마이페이지</a>
+    <a href=<%= old_mypage_path%>>마이페이지</a>
     <% if user_signed_in? %>
       <a data-method="delete" href=<%=destroy_user_session_path%>>로그아웃</a>
     <% else %>
       <a href=<%=new_user_session_path%>>로그인</a> 
       <a href=<%= new_user_registration_path%>>회원가입</a>
     <% end %>
-    <a href=<%= intro_path %>>반짝!</a>
+    <!-- <a href=<%= intro_path %>>반짝!</a> -->
   </div>
 </nav>
 <script>
