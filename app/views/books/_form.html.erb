@@ -1,6 +1,6 @@
 <style>
 html {
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Nanum Square','Nanum Gothic', sans-serif;
 }
 .form-group2 {
 	display: flex;
@@ -43,14 +43,19 @@ table {
 
 th, td {
   padding: 1em;
-  background: #f3f3f3;
-  border-bottom: 3px solid white;
-	border-right: 1.5px solid white; 
+  background: white;
 	text-align: center;
 	vertical-align: middle;
 }
 
-td:hover {
+td {
+	border-bottom: 1px solid lightgray;
+}
+tr:nth-child(1) {
+	border-top: 1px solid lightgray;
+}
+
+tr:hover {
 	background-color: #d9d9d9;
 }
 
@@ -101,6 +106,8 @@ button.btn {
 	width: 100%;
 	padding: 0.8rem;
 	background-color: #fdd400;
+	font-weight: 800;
+	color: rgb(72,72,72);
 }
 
 
@@ -108,22 +115,48 @@ button.btn {
 @media all and (min-width: 320px) and (max-width: 575px) {
 	table, thead, tbody, th, td, tr { 
 		display: block;
-} 
+	} 
+	p {
+		font-size: 0.95rem;
+		line-height: 22px;
+	}
 	fieldset {
 		margin-top:4%;
+	}
+	.info {
+		border-right: 1px solid lightgray;
+		border-left: 1px solid lightgray;
 	}
 
 	#legendbar {
 		margin-right: -10%;
 		margin-left: -10%;
 	}
-	 i {
+	i {
 		 margin-left: 1rem;
 	 }
+	tr {
+		 border-bottom: 1px solid lightgray;
+		 padding: 0.5rem 0;
+	 }
+	tr:nth-child(1) {
+		 border-top: 1px solid lightgray;
+	 }
+	td {
+		border-bottom: none;
+		 background: white;
+		 padding: 0.3rem;
+	}
 }
-
+	.info {
+		border-right: 1px solid lightgray;
+		border-left: 1px solid lightgray;
+	}
 p, span, a, html, legend {
 	color: rgb(72,72,72);
+}
+p {
+	font-size: 0.9rem;
 }
 #title {
 	font-weight: 600;
@@ -149,6 +182,12 @@ p, span, a, html, legend {
 .show-info {
 	display: none;
 }
+.next-info {
+	font-size: 0.9rem;
+}
+label {
+	font-weight: 500;
+}
 </style>
 <div class="submit-form">
 <%= form_for book, url: path, method: form_method, multipart: true, :html => {class: 'submit-form-content'} do |f| %>
@@ -156,7 +195,9 @@ p, span, a, html, legend {
 		<legend>
 			<div id="legendbar" style="display: flex;">
 				<i class="fas fa-book-open"></i>
-				<div style="width: 80%;"><p id="title">도서 정보</p>
+				<div style="width: 80%;">
+					<p id="title">도서 정보</p>
+					<span style="font-size: 0.8rem;">찾는 책을 클릭하면 자동으로 입력됩니다</span>
 					<div class="row">
 					<input type="text" class="sub search col-10" placeholder="저자나 책 이름 검색" style="height: 40px; margin-top: 3%; width: 100%">
 					<%= link_to '<i class="fas fa-search" style = "margin: 0;"></i>'.html_safe,  '', class: 'find-info col-2', remote: true %>
@@ -167,7 +208,7 @@ p, span, a, html, legend {
 		<div class="show-info">
 		<div class="table-top" style="display: flex; justify-content: space-between;">
 			<span style="font-size: 0.9rem;">상위 5개 검색 결과입니다</span>
-			<span>출처 : <a href="https://book.naver.com/" target="_blank" style="color: blue;">네이버 북스</a></span>
+			<span style="font-size: 0.9rem;">출처 : <a href="https://book.naver.com/" target="_blank" style="color: blue; font-size: 0.9rem;">네이버 도서정보</a></span>
 		</div>
 		
 		<table class="info"></table>
