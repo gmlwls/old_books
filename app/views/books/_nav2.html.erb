@@ -173,7 +173,7 @@ nav#mobilesearch {
       </li>
       <% if user_signed_in? %>
         <li class="nav-item read">
-          <div class="dropdown" id="bell1">
+          <div class="dropdown" id="bell1" style="width: 40px;">
             <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="bell2"><i class="far fa-bell" style="color: #fdd400"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
             <div class="dropdown-menu" aria-labelledby="dropdownAlart">
               <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>

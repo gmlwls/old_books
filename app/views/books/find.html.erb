@@ -6,10 +6,11 @@
   html {
 	font-family: 'Nanum Gothic', sans-serif;
 }
-  .result {
+  .result span{
     text-align: center;
     font-size: 1.2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(253, 212, 0, 0.6);
   }
 
     #mobilebtn {
@@ -50,6 +51,23 @@ span.last {
 .page {
   margin: 1rem 0;
 }
+@media all and (max-width: 576px){
+.book_contents {
+  padding-top: 0rem;
+}
+}
+@media all and (min-width: 576px) and (max-width: 992px){
+
+}
+@media all and (min-width: 992px) {
+.book_contents {
+  padding-top: 2rem;
+}
+}
+
+
+
+
 
 </style>
 
@@ -60,13 +78,13 @@ span.last {
 <main>
 
   <div class="books_title">
-    <div class="result"><strong style="font-weight: 600">"<%=params[:search]%>"</strong>에 대한 검색 결과입니다</div>
+    <div class="result"><span><strong style="font-weight: 600">"<%=params[:search]%>"</strong>에 대한 검색 결과입니다</span></div>
     <div class="choice">
     <span class="active option" id = "0">전체</span> | <span class="option" id = "1">이름순</span> | <span class="option" id = "2">가격순</span> | <span class="option" id = "3">인기순</span>    
     </div>
   </div>
 
-  <div class="book_contents container" style="padding-bottom: 10rem; padding-top: 0rem; min-height: 80vh;">
+  <div class="book_contents container" style="padding-bottom: 8rem; min-height: 80vh;">
     <div class="no_books"><p style="font-size: 1rem; margin: 0;">책이 없어요ㅠㅠㅠ</p></div>    
     <div class="row">
       <%= render 'book_div', books: @books %>
