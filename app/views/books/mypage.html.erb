@@ -165,7 +165,10 @@ main {
   display: flex;
   cursor: pointer;
 }
-
+.show {
+  padding-top: 40%;
+  padding-left: 40%;
+}
 
 </style>
 <%= render 'nav2' %>
@@ -209,7 +212,7 @@ main {
         <% end %>
         <% end %>
         <div class='book'>
-        <div class="inner-image show-books"><span>+</span></div>
+        <div class="inner-image show show-books"><span>+</span></div>
       </div>
       </div>
     </div>
@@ -249,7 +252,9 @@ main {
           <h4 class="card-title" style="text-align:center"></h4>
         <% end %>
         <% end %>
-        <div class='book show-zzims'><span>+</span></div>
+        <div class='book'>
+          <div class="inner-image show show-zzims"><span>+</span></div>
+        </div>
       </div>    
     </div>
     <div class="zzims-list row" style="display: none;">
