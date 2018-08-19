@@ -285,7 +285,7 @@ $(document).ready(function () {
     	$('.next-info').html("다음 5개 결과보기");
     });
     
-	$(document).on('touchstart click', 'tr', function () {
+	$(document).on('click', 'tr', function () {
 		var title = $(this).data("title");
     	var author = $(this).data("author");
     	var price = $(this).data("price");
