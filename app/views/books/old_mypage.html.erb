@@ -195,14 +195,14 @@ main {
     </h4>
     <div class="trade_content">
       <div class="msgs">
-        <% current_user.new_notifications.unread_by(current_user).each do |m| %>
+        <% current_user.new_notifications.unread_by(current_user).reverse.each do |m| %>
           <%= link_to m, class: 'msg row' do %>
             <div class="msg_bell col-md-2">읽지 않음</div>
             <div class="msg_title col-md-8"><%= m.content %></div>
             <div class="msg_time col-md-2"><%= m.created_at.strftime("%Y-%m-%d") %></div>
           <% end %>
         <% end %>
-        <% current_user.new_notifications.read_by(current_user).each do |m| %>
+        <% current_user.new_notifications.read_by(current_user).reverse.each do |m| %>
           <%= link_to m , class: 'msg row' do %>
             <div class="msg_bell col-md-1">읽음</div>
             <div class="msg_title col-md-9"><%= m.content %></div>

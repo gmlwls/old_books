@@ -12,9 +12,9 @@ class RepliesController < ApplicationController
     @reply.user_id = current_user.id
     @reply.save
 
-    if @comment.user_id != current_user.id
+    # if @comment.user_id != current_user.id
       @new_notification = NewNotification.create! user: @comment.user, content: "#{current_user.username}님이 회원님의 댓글에 대댓글을 달았습니다. (#{@book.bookname})" ,content_truncate: "#{current_user.username}님이 회원님의 댓글에 대댓글을 달았습니다. (#{@book.bookname})".truncate(20, omission: '...'), link: book_path(@book)
-    end
+    # end
 
     redirect_to "/books/#{@book.id}/#reply-#{@reply.id}"
 
