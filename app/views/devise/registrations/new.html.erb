@@ -68,6 +68,7 @@
   @media (max-width: 575px){
    .signin_form {
       width: 90%;
+      padding-top: 15%;
     }
   }
   
@@ -142,7 +143,7 @@ label, legend, p, span, html {
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="signin_form">
   <a href="/"><p id="logo">반짝</p></a>
-  <p style="text-align:center; margin-bottom: 7%;">* 간단한 가입으로 개이득을 누리세요 * </p>
+  <p style="text-align:center; margin-bottom: 12%;">* 간단한 가입으로 개이득을 누리세요 * </p>
 
 <legend>기본 정보</legend><hr>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -155,11 +156,11 @@ label, legend, p, span, html {
   <div class="field" style="display: flex; justify-content:space-between;">
   <div class="sec">
     <%= f.label :학과 %><br />
-    <%= f.text_field :school, autofocus: true, autocomplete: "school", required: true, placeholder: "예) 서강학과" %>
+    <%= f.text_field :school, autofocus: true, autocomplete: "school", required: true, placeholder: "ex) 서강학과" %>
   </div>
   <div class="sec">
     <%= f.label :학번 %><br />
-    <%= f.number_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "두자리 숫자 기입 ex.14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
+    <%= f.number_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "ex) 14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
   </div>
   </div>
 

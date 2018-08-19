@@ -32,8 +32,8 @@ a {
 
 .minititle span {
   font-weight: 600;
-  font-size: 1.2rem;
-  color: #1f2d3d;
+  font-size: 1rem;
+  color: hsl(0,0%,13%);
 }
 
 
@@ -68,6 +68,10 @@ a {
 
   .navbar {
     padding-right: 3%;
+  }
+
+  .logo {
+    margin-right: 8%;
   }
 }
 @media all and (min-width: 577px) and (max-width: 992px){
