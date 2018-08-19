@@ -2,7 +2,7 @@
 	<div id="comment-<%=comment.id%>">
 	<% if (comment.secret == true)  %>
 		<% if (comment.user == current_user || comment.book.user == current_user) %>
-		    <strong><%= comment.user.username %></strong>  <%= comment.content %><br>
+		    <strong><%= comment.user.username %></strong> [비밀댓글] <%= comment.content %><br>
 		    <% if comment.user == current_user %>
 		    <%= link_to "삭제", book_comment_path(book, comment), method: :delete %>
 		    <% end %>
