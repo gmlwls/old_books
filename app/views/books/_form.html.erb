@@ -55,10 +55,6 @@ tr:nth-child(1) {
 	border-top: 1px solid lightgray;
 }
 
-tr:hover {
-	background-color: #d9d9d9;
-}
-
 .info {
 	width: 100% !important;
 }
@@ -170,7 +166,6 @@ p {
 #legendbar {
 	background-color: rgb(242,244,241);
 	padding: 1rem;
-	border: 1px solid lightgray;
 }
 .discnt {
 	height:68%;
@@ -196,7 +191,7 @@ label {
 			<div id="legendbar" style="display: flex;">
 				<i class="fas fa-book-open"></i>
 				<div style="width: 80%;">
-					<p id="title">도서 정보</p>
+					<p id="title">도서 검색</p>
 					<span style="font-size: 0.8rem;">찾는 책을 클릭하면 자동으로 입력됩니다</span>
 					<div class="row">
 					<input type="text" class="sub search col-10" placeholder="저자나 책 이름 검색" style="height: 40px; margin-top: 3%; width: 100%">
@@ -259,9 +254,11 @@ label {
 	  </div> 
 
 		<div class="file-input">
-				<%= f.button '찾아보기', class: 'button' %>
-				<%= f.label '첫번째 사진이 대문사진으로 등록됩니다', for: 'formControlFile', class: 'label' %>
-				<%= f.file_field :img_url, multiple: true, class: 'form-control-file', id: 'formControlFile1', :required => true %>
+			<%= f.label :사진업로드, class: 'form-label' %>
+			<p style="font-size: 0.8rem; margin-bottom: 3%; color: hsl(0,0%,29%);">첫 번째 사진이 대표 사진으로 등록됩니다. </p>
+			<%= f.button '찾아보기', class: 'button' %>
+			<%= f.label '여러 개 첨부 가능', for: 'formControlFile', class: 'label' %>
+			<%= f.file_field :img_url, multiple: true, class: 'form-control-file', id: 'formControlFile1', :required => true %>
 		</div>
 
 		<div class="form-group">
