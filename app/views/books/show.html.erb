@@ -439,7 +439,7 @@ form.new_reply .repl {
 				<!-- 정원아 여기야! -->
 				<div class="mainimg">
 				<% @book.img_url.each do |x| %>
-				<% if x.img_url %>
+				<% if x %>
 					<div class="image eachimg" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
 				<% end %>
 				<% end %>
