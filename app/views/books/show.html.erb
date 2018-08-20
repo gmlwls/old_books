@@ -378,7 +378,7 @@ form.new_reply .repl {
 			<div class="title"><h4>기본정보</h4><hr></div>
 			<div class="row">
 				<div class="col-sm-5 col-lg-4 col-xl-4" style="padding: 0;">
-					<% if @book.img_url %>
+					<% if @book.img_url.first %>
 					<div class="image2" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=@book.img_url.first.path%>);">
 					<% end %>
 						<% if @book.sell %>
