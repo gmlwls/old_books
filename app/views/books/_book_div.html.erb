@@ -197,7 +197,9 @@ html {
 <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
   <%= link_to book_path(b.id)do %>
   <div class="card-image-top">
+    <% if b.img_url %>
     <div class="inner-image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)">
+    <% end %>
       <% if b.sell %>
       <div class="img-cover text-center">판매완료</div>
       <% end %>
