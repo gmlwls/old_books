@@ -197,7 +197,7 @@
 </div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field field1">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "세인트 이메일" , pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", placeholder: "your_email@sogang.ac.kr"%>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", placeholder: "your_email@sogang.ac.kr"%>
   </div>
 
   <div class="field field1" style="margin-top: -2%;">
