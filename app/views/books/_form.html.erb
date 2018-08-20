@@ -215,7 +215,7 @@ label {
 
 		<%= f.label :도서명, class: 'form-label'%>
 		<div class="form-group2">
-			<%= f.text_field :bookname, class: 'form-control bookname', :required => true, :autocomplete => :off%>
+			<%= f.text_field :bookname, class: 'form-control bookname',  :autocomplete => :off, :required => true%>
 	  </div>
 		
 		<div class="form-group2"> 
@@ -263,7 +263,7 @@ label {
 
 		<div class="form-group">
 			<%= f.label :상세정보, class: 'form-label' %>			
-			<%= f.text_area :content, class: 'form-control', placeholder: '책의 상태, 에디션, 거래 방법, 연락 방법 등의 추가 정보를 입력해 주세요'%>
+			<%= f.text_area :content, class: 'form-control', placeholder: '책의 상태, 에디션, 거래 방법, 연락 방법 등의 추가 정보를 입력해 주세요. (카카오톡 아이디나 오픈채팅 주소를 적어두시면 잠재적 구매자와 더욱 빠르게 거래를 진행할 수 있습니다.)', :required => true%>
 		</div>
 
 		<div class="btn-groups">

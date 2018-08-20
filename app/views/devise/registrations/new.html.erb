@@ -150,24 +150,24 @@ label, legend, p, span, html {
   <p><%= devise_error_messages! %></p>
   <div class="field">
     <%= f.label :이름 %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username", required: true, autocomplete: "off" %>
+    <%= f.text_field :username, autofocus: true, placeholder: "김서강",  autocomplete: "off", required: true %>
   </div>
   
   <div class="field" style="display: flex; justify-content:space-between;">
   <div class="sec">
     <%= f.label :학과 %><br />
-    <%= f.text_field :school, autofocus: true, autocomplete: "school", required: true, placeholder: "ex) 서강학과" %>
+    <%= f.text_field :school, autofocus: true, autocomplete: "off", required: true, placeholder: "ex) 서강학과" %>
   </div>
   <div class="sec">
     <%= f.label :학번 %><br />
-    <%= f.number_field :studentid, autofocus: true, autocomplete: "studentid", required: true, placeholder: "ex) 14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
+    <%= f.number_field :studentid, autofocus: true, autocomplete: "off", required: true, placeholder: "ex) 14", in: 1.0..20.0, step: 1.0, :pattern => '.{1,20}' %>
   </div>
   </div>
 
 <legend>계정 정보</legend><hr>
   <div class="field">
     <%= f.label :이메일 %><span style="color:blue; font-size: 0.95rem; margin-left: 2%;">(세인트 이메일로 인증 메일이 전송됩니다)</span><br>
-    <%= f.email_field :email, pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", autofocus: true, autocomplete: "email", required: true, placeholder: "example@sogang.ac.kr" %>
+    <%= f.email_field :email, pattern: "[A-Za-z0-9]{1,20}@sogang.ac.kr", autofocus: true, autocomplete: "off", required: true, placeholder: "example@sogang.ac.kr" %>
   </div>
 
   <div class="field">
