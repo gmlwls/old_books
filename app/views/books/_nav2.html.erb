@@ -101,6 +101,7 @@ transition-duration: 0s;
     margin-top: 4%;
 }
 #mobilebtn {
+  display: flex;
   cursor:pointer;
   color: white;
   visibility: hidden;
@@ -109,9 +110,13 @@ transition-duration: 0s;
   margin-right: 0.5rem;
 }
 
+
 nav#mobilesearch {
   visibility: hidden !important;
   width: 0px !important;
+}
+.dropdown-menu {
+  width: auto;
 }
 
 /* 전체 화면 그냥 이렇게 지정한 것임 */
@@ -138,7 +143,6 @@ nav#mobilesearch {
 }
 
 @media all and (min-width: 1200px) {
-
 }
 
 
@@ -159,7 +163,26 @@ nav#mobilesearch {
     <% end %> 
   </nav>
 -->
-  <div id="mobilebtn" onclick="openNav()"><i class="fas fa-bars" id="bar"></i></div>
+  
+  <div id="mobilebtn">
+    <!-- mobile bell -->
+    <% if user_signed_in? %>
+    <li class="nav-item read" style="margin-right: 5%;">
+      <div class="dropdown" id="bell1" style="width: 50px;">
+        <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="bell2"><i class="far fa-bell" style="color: #fdd400"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownAlart">
+          <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
+          <div class="dropdown-divider"></div>
+            <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_notifications_read_all_path, class: 'dropdown-item' %>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <!-- mobile bar -->
+    <i class="fas fa-bars" id="bar" onclick="openNav()"></i>
+  </div>
+  
+
   <div class="collapse navbar-collapse head-nav" id="navbarNav" style="justify-content:flex-end;">
     <ul class="navbar-nav">
       <li class="nav-item active">
