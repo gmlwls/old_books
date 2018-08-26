@@ -428,53 +428,51 @@ form.new_reply .repl {
 						<% end %>		
 					</div>
 				</div>
-			</div>
-		</div>
-    
-    <div class="book-detail book-detail2">
-			<h4>상세정보</h4>
-			<hr>	
-			<div class="content">
-				<div class="inner_content maincontent">
-				<!-- 정원아 여기야! -->
-				<div class="mainimg">
-				<% @book.img_url.each do |x| %>
-				<% if x %>
-					<div class="image eachimg" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
-				<% end %>
-				<% end %>
+			</div>		
+			<div class="book-detail book-detail2">
+				<h4>상세정보</h4>
+				<hr>	
+				<div class="content">
+					<div class="inner_content maincontent">
+					<!-- 정원아 여기야! -->
+						<div class="mainimg">
+							<% @book.img_url.each do |x| %>
+								<% if x %>
+									<div class="image eachimg" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=x.path%>);"></div>
+								<% end %>
+							<% end %>
+						</div>
+						<div class="maincontent2">
+							<p><%= @book.content %></p>
+						</div>
+					</div>
 				</div>
-				<div class="maincontent2">
-					<p><%= @book.content %></p>
-				</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="book-detail book-detail2">
-			<h4 id="comment-box">댓글</h4>
-			<div class="content">
-			<div class="inner_content" style="padding-bottom: 0.1rem; padding-top: 0.1rem;">
-				<ul class="comments" style="margin:0.5rem;">
-        	<% @book.comments.each do |comment| %>
-        		<%= render partial: "comments/item", locals: { book: @book, comment: comment } %>
-        		<div id="comment-<%=comment.id%>-replyform", class="ml-2"></div>
-						<hr>
-        	<% end %>
-    		</ul> 
-			</div>
-			  <!-- 댓글생성 -->
-				<div class="cmtcreate">
-				<%= form_for [@book, @book.comments.new], remote: true do |f| %>
-				<div class="top">
-				  <%= f.text_field :content, :autocomplete => :off,:required => true %>
-				  <%= f.submit "작성",class:'submitbtn' %>
-				</div>
-				<div class="bottom" style="text-align: right; margin: 0.5rem 0">
-				  <%= f.check_box(:secret) %>
-				  <%= label_tag(:secret, '비밀댓글') %>
-				</div>
-				<% end %>
+			</div>	
+			<div class="book-detail book-detail2" style="width:100%;">
+				<h4 id="comment-box">댓글</h4>
+				<div class="content">
+					<div class="inner_content" style="padding-bottom: 0.1rem; padding-top: 0.1rem;">
+						<ul class="comments" style="margin:0.5rem;">
+        			<% @book.comments.each do |comment| %>
+        				<%= render partial: "comments/item", locals: { book: @book, comment: comment } %>
+        				<div id="comment-<%=comment.id%>-replyform", class="ml-2"></div>
+								<hr>
+        			<% end %>
+    				</ul> 
+					</div>
+			  	<!-- 댓글생성 -->
+					<div class="cmtcreate">
+						<%= form_for [@book, @book.comments.new], remote: true do |f| %>
+							<div class="top">
+				  			<%= f.text_field :content, :autocomplete => :off,:required => true %>
+				  			<%= f.submit "작성",class:'submitbtn' %>
+							</div>
+							<div class="bottom" style="text-align: right; margin: 0.5rem 0">
+				  			<%= f.check_box(:secret) %>
+				  			<%= label_tag(:secret, '비밀댓글') %>
+							</div>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
