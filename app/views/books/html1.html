@@ -1,4 +1,12 @@
 <style>
+  ul li {
+    list-style:none;
+    cursor:pointer;
+  }
+  
+  /* -----------
+  여기서부터 tab 
+  --------------*/
   .tab-wrap {
     border-radius: 0px;
     max-width: 100%;
@@ -7,6 +15,8 @@
     position: relative;
     list-style: none;
     background-color: #fff;
+    margin: 40px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   
   .tab {
@@ -56,6 +66,7 @@
   }
   .tab + label {
     box-shadow: 0 -1px 0 #eee inset;
+    border-radius: 6px 6px 0 0;
     cursor: pointer;
     display: block;
     text-decoration: none;
@@ -77,6 +88,7 @@
     box-shadow: 0 1px 0 #f4f4f4 inset;
   }
   .tab__content {
+    padding: 10px 25px;
     background-color: transparent;
     position: absolute;
     width: 100%;
@@ -87,195 +99,62 @@
   }
   
   /* boring stuff */
-  * {
-    font-family: 'Nanum Square', 'Nanum Gothic', sans-serif;
-  }
   body {
-    height: auto;
-    min-height: 50vh;
-    font-size: 16px;
-    line-height: 26px;
+    font-family: 'Helvetica', sans-serif;
     font-weight: 300;
   }
-  html {
-    font-family: 'Nanum Square', 'Nanum Gothic', sans-serif !important;
-    height: auto;
-    min-height: 50vh;
-  }
-  label {
-    font-family: 'Nanum Square', 'Nanum Gothic', sans-serif;
-    font-weight: 400;
-    font-size: 0.95rem;
-  }
-
-  main {
-    height: auto;
-    min-height: 100vh;
-    overflow-y: hidden;
-  }
+  
   .container {
-    position: relative;
     margin: 0 auto;
     display: block;
-    max-width: 1000px;
-    padding: 0;
-
+    max-width: 800px;
   }
   .container > *:not(.tab-wrap) {
     padding: 0 80px;
-  } 
-
-  /* other */
-  .card {
-    border-radius: 0;
   }
-
-  .top_menu {
-    width:100%;
-    height:70px;
-    background-color: yellow;
-  }
-  .card-body {
-    text-align: center;
-  }
-  .fin {
-    color: red;
-    font-weight: bold;
-    margin-top: 3%;
-  }
-
-  .card-image-top {
-    height: 150px;
-    width: 150px;
-    margin: 0 auto;
-  }
-  .won {
-    font-weight: bold;
-    margin-right: 2%;
-  }
-  .discnt {
-    color: red;
-    font-size: 0.9rem;
-  }
-  .page {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 5% 30%;
-  }
-  .pignation > span {
-    margin-right: 2%;
-  }
-
-  span.next,
-  span.prev {
-    display: none;
-  }
-  .card {
-    border: none;
-  }
-
-  @media all and (min-width: 320px) and (max-width: 767px) {
-  #eachcard a {
-    display: flex;
-    height: 160px;
-  }
-  .card-image-top {
+  
+  h1,
+  h2 {
     margin: 0;
-    height: 100%;
+    color: #444;
+    text-align: center;
+    font-weight: 400;
   }
-  .inner-image {
-    width: 150px;
-    height: 100%;
+  
+  h2 {
+    font-size: 1em;
+    margin-bottom: 30px;
   }
-  .card-text {
-    display: flex;
-    justify-content: center;
+  
+  h3 {
+    font-weight: 400;
   }
-  .card-text p {
-    font-size: 0.9rem;
+  
+  p {
+    line-height: 1.6;
+    margin-bottom: 20px;
   }
-  .card-body {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .card-title {
-    font-size: 0.85rem;
-  }
-  main,
-  .container {
-    background-color: #fbfbfb;
-    margin-bottom: -1rem;
-  }
-  .card-title {
-    width:95%;
-    padding-left: 1rem;
-  }
-  #eachcard {
-    padding: 0 0.1rem;
-    margin-bottom: 0.7rem;
-    border:0;
-    box-shadow: 0 1px 4px 0;
-    color: hsla(0,0%,0%,0.1);
-    border-radius: 0;
-  }
-  .footer {
-    padding-top: 0rem !important;
-  }
-  .choice {
-    padding-top: 2rem;
-    margin-bottom: -2rem;
-    margin-right: -1.5rem;
-  }
-  .inner-image {
-    background-size: cover;
-  }
-
-}
+  
+  
+  
   </style>
-
- <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
+  <!-- style tag 끝나는 곳에 nav2가 있길래 -->
   <%= render 'nav2' %>
-  <main>
-    <div class="top_menu"></div>  
+  <main>  
     <div class="container">
       <div class="tab-wrap">
-        <!-- 3개의 탭 제목들 -->
         <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
         <label for="tab1">최근 소식</label>
   
         <input type="radio" id="tab2" name="tabGroup1" class="tab" checked>
-        <label for="tab2">내가 올린 책</label>
+        <label for="tab2">내가 찜한 책</label>
   
         <input type="radio" id="tab3" name="tabGroup1" class="tab">
         <label for="tab3">내가 찜한 책</label>
-        
-        <!-- //3개의 탭 제목들 -->
-
-        <!-- 3개의 탭 내용들 -->
-
-        <!-- 첫번째 탭 내용 시작 -->
+  
         <div class="tab__content">
-         <div class="no_news_1"><p style="font-size: 1rem; margin: 0;">최근 소식이 없습니다</p></div>
+          <h3>최근 소식</h3>
           <div class="trade_content">
-            <div class="msgs">
-            
-              <div class="msg row">
-                <div class="msg_bell col-1">x</div>
-                <div class="msg_title col-6">내용입니다</div>
-                <div class="msg_time col-4">시간</div>
-              </div>
-              <div class="msg row">
-                <div class="msg_bell col-1">o</div>
-                <div class="msg_title col-6">내용입니다</div>
-                <div class="msg_time col-4">시간</div>
-              </div>
-              
-            </div>
-            
-            <!--
             <div class="msgs">
               <% @noti.unread_by(current_user).each do |m| %>
                 <%= link_to m, class: 'msg row' do %>
@@ -292,27 +171,27 @@
                 <% end %>
               <% end %>
             </div>
-          -->
           </div>
         </div>
-        <!--// 첫 번째 탭 내용 끝 -->
-
-        <!-- 두 번째 탭 내용 시작 -->
+  
         <div class="tab__content">
-        <div class="no_news_2"><p style="font-size: 1rem; margin: 0;">내가 올린 책이 없습니다</p></div>
-          <div class="mybook_content" style="margin-top: 1%;">
-          <div class="row">
+          <h3>내가 올린 책</h3>
+          <div>
           <% @books.each do |b| %>
-            <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard" style="margin-top: 3%;">
+            <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
               <%= link_to book_path(b.id)do %>
-              <div class="card-image-top">              
-                <div class="inner-image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)"></div>
+              <div class="card-image-top">
+                <div class="inner-image" style="background-image: url(https://dsgut53a1wh4g.cloudfront.net/<%=b.img_url.first.path%>)">
+                  <% if b.sell %>
+                  <div class="img-cover text-center">판매완료</div>
+                  <% end %>
+                </div>
               </div>
               <div class="card-body">
                 <div class="card-title"><%=b.bookname%> | <%= b.author%></div>
                 <div class="card-text">
-                  <p class="won"><%= b.price%>원</p>
-                  <p class="discnt">
+                  <p id="won"><%= b.price%>원</p>
+                  <p id="discnt">
                     <% if b.discount>=0 %>
                     [<%= b.discount%>%&darr;]
                     <% else %>
@@ -320,9 +199,6 @@
                     <% end %>
                   </p>
                 </div>
-                <% if b.sell %>
-                  <p class="fin">판매완료</p>
-                <% end %>
               </div>
               <% end %>
             </div>
@@ -330,14 +206,13 @@
             <!-- book에 대한 paginate -->
             <div class="page"><%= paginate @books %></div> 
           </div>
-          </div>
         </div>
-        <!-- // 두 번째 탭 내용 끝 -->
-
-        <!-- 세 번째 탭 내용 시작 -->
+  
         <div class="tab__content">
-         <div class="no_news_3"><p style="font-size: 1rem; margin: 0;">내가 찜한 책이 없습니다</p></div>
-          <div class="zzim_content row">
+          <h3>내가 찜한 책</h3>
+          <div>
+            <!-- tab3 내용 시작  -->
+            <!-- each문 시작 위의 내가 올린 책의 class 구조를 그대로 따랐음.  -->
             <% @likes.each do |b| %>
             <div class="col-12 col-xl-3 col-md-4 col-sm-6 card" id="eachcard">
               <%= link_to book_path(b.book.id)do %>
@@ -351,8 +226,8 @@
               <div class="card-body">
                 <div class="card-title"><%=b.book.bookname%> | <%= b.book.author%></div>
                 <div class="card-text">
-                  <p class="won"><%= b.book.price%>원</p>
-                  <p class="discnt">
+                  <p id="won"><%= b.book.price%>원</p>
+                  <p id="discnt">
                     <% if b.book.discount>=0 %>
                     [<%= b.book.discount%>%&darr;]
                     <% else %>
@@ -366,47 +241,7 @@
             <% end %>
             <!-- like에 대한 paginate -->
             <div class="page"><%= paginate @likes %></div> 
+            <!-- each 문 끝 -->
             <!-- tab3 내용 끝  -->
           </div>
         </div>
-        <!-- // 세 번째 탭 내용 끝 -->
-      </div>
-    </div>
-  </main>
-<%= render 'footer' %>
-
-<script>
-$(document).ready(function () {
-  // 검색 결과 유무에 따라 멘트 등장
-  // 첫번째 탭 
-  var tradenum = $('.msg').length;
-  if(tradenum==0) {
-    $('.no_news_1').css('visibility','visible');
-    $('.no_news_1').css('height','1rem');
-  }
-  else {
-    $('.no_news_1').css('visibility','hidden');
-    $('.no_news_1').css('height','0');
-  }
-  // 두번째 탭 
-  var mybooknum = $('.card').length;
-  if(mybooknum==0) {
-    $('.no_news_2').css('visibility','visible');
-    $('.no_news_2').css('height','1rem');
-  }
-  else {
-    $('.no_news_2').css('visibility','hidden');
-    $('.no_news_2').css('height','0');
-  }
-  // 세번째 탭 
-  var myzzimnum = $('.card').length;
-  if(myzzimnum==0) {
-    $('.no_news_3').css('visibility','visible');
-    $('.no_news_3').css('height','1rem');
-  }
-  else {
-    $('.no_news_3').css('visibility','hidden');
-    $('.no_news_3').css('height','0');
-  }
-});  
-</script>

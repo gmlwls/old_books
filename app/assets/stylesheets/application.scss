@@ -39,7 +39,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, main {
     display: block;
 }
-body {
+body,html {
 	font-family: 'Nanum Square', 'Nanum Gothic', 'APPLE SD Gothic Neo', sans-serif;
     line-height: 1;
 }
