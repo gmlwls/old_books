@@ -162,13 +162,22 @@ p#discnt {
 
 
 /* media queries */
-@media all and (min-width: 320px){
+@media all and (min-width: 320px) and (max-width: 575px){
 
 .file-input {
 	width: 100%;
 	padding: 0;
 	margin-bottom: 5%;
 }
+ #mobilebtn {
+	 margin-left:-1rem;
+ }
+ a.dropdown-toggle {
+	 margin-left: -2rem;
+ }
+ .read {
+	 width: auto !important;
+ }
 }
 @media all and (min-width: 576px) and (max-width: 991px){
 

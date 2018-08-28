@@ -130,7 +130,11 @@ nav#mobilesearch {
 @media all and (min-width: 320px) and (max-width: 576px) {
   #mobilebtn {
     visibility: visible;
-    margin-top: 0rem;
+    margin-top: 0;
+    margin-left: -15px;
+  }
+  .read {
+    width:50px;
   }
 }
 
@@ -168,7 +172,7 @@ nav#mobilesearch {
     <!-- mobile bell -->
     <% if user_signed_in? %>
     <li class="nav-item read" style="margin-right: 5%;">
-      <div class="dropdown" id="bell1" style="width: 50px;">
+      <div class="dropdown" id="bell1">
         <a class="dropdown-toggle" id="dropdownAlart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="bell2"><i class="far fa-bell" style="color: #fdd400"></i><%= current_user.new_notifications.unread_by(current_user).count %></b></a>
         <div class="dropdown-menu" aria-labelledby="dropdownAlart">
           <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %>
