@@ -263,4 +263,13 @@ nav#mobilesearch {
     document.getElementById("clsbtn").style.visibility = "hidden";
     document.getElementById("mySidenav").style.width = "0";
   };
+
+  $(document).ready(function () {
+    if ( $('b').text()[0] == 0) {
+      $('.dropdown-menu').css('left','-84px');
+    }
+    else {
+      $('.dropdown-menu').css('left','-200px');
+    }
+});
 </script>

@@ -54,7 +54,6 @@ a {
 .dropdown-menu {
   width: 300px;
   text-align: center;
-  left: -84px;
 }
 
 @media all and (max-width: 576px) {
