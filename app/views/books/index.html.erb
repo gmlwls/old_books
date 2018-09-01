@@ -83,7 +83,7 @@ span.last {
       <%= render 'book_div', books: @books %>
     </div>
   </div>
-   <div class="page"><%= paginate @books %></div> 
+   <div class="page"><%= paginate @books, window: 2 %></div> 
 </main>
 <%= render 'footer' %>
 
