@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-	before_action :authenticate_user!, :except => [:index, :introduction, :sgmail]
+	before_action :authenticate_user!, :except => [:index, :find, :introduction, :sgmail]
 	respond_to :js, :json, :html
 	def index
 		@books = Book.order('created_at DESC').page params[:page]
